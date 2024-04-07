@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects-detail.css}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+   <div id="projects"></div>
+   
+      <div class="projects-detail">
+	   	<div class="projects-header">
+	   		<h4 class="projects-title">Project Detail</h4>
+	   	</div>
+	   	<div th:each="project : ${projects}" class="projects-detail-div">
+		    <div class="projects-detail-name">
+		   		<label th:text="${project.projectName}"></label>
+		   		<br>
+		   		<br>
+		   		<p th:text="${project.projectDetail}"></p>
+		   		
+		   		<label>Project Status : </label>
+		   		<label th:text="${project.status}" class="label-status"></label>
+		   	</div>
+		   	<div class="projects-detail-status">
+		   		<div class="projects-detail-status-div">
+		   			<p>Type :</p>
+		   			<p th:text="${project.type}"></p>
+		   		</div>
+		   		<div class="projects-detail-status-div">
+		   			<p>Cost :</p>
+		   			<p th:text="${project.rate}"></p>
+		   		</div>
+		   		<div class="projects-detail-status-div">
+		   			<p> Start Date :</p>
+		   			<p th:text="${#dates.format(project.startDate, 'dd-MM-yyyy')}"></p>	   		
+		   		</div>
+		   		<div class="projects-detail-status-div">
+		   			<p> End Date :</p>
+		   			<p th:text="${#dates.format(project.endDate, 'dd-MM-yyyy')}"></p>
+		   		</div>
+		   		<div class="projects-detail-status-div">
+		   			<p> Priority :</p>
+		   			<p th:text="${project.priority}"></p>
+		   		</div>
+		   		<div class="projects-detail-status-div">
+		   			<p> Status :</p>
+		   			<p th:text="${project.status}"></p>
+		   		</div>
+		   	</div>
+	   	</div>
+   </div>   
+   
+    <script>
+	      $(function() {
+	         $("#projects").load("http://localhost:8080/projects");
+	      });
+	</script>
+  </body>
+</html>

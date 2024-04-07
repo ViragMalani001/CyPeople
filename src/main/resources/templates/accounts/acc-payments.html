@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Payments Page </title>
+<link rel="stylesheet" th:href="@{/CSS/acc-payments.css}">
+</head>
+<body>
+   <div id="account"></div>
+
+
+    <script>
+	      $(function() {
+	         $("#account").load("http://localhost:8080/account");
+	      });
+	</script>
+</body>
+</html>

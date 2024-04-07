@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects-add.css}" />
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+   <div id="projects-list"></div>
+   
+   <div class="add-projects">
+	   	<h4> Create New Projects </h4>  	
+	   	<hr>
+   		<form action="#" th:action="@{/projects-add}" method="post" th:object="${projects}" class="projects-form" >
+  
+   		   	<input type="hidden" th:field="*{id}" />
+   		   	
+   			<div class="projects-form-div">
+	   				<input th:field="*{projectName}" type="text" placeholder="Project Name">
+	   				<input th:field="*{clientName}" type="text" placeholder="Client Name">
+   			</div>
+   			
+   			<div class="projects-form-div">
+   				<select th:field="*{priority}" required="required">
+   					<option value=""> Priority </option>
+   					<option value="High"> High </option>
+   					<option value="Medium"> Medium </option>
+   					<option value="low"> Low </option>
+   				</select>
+   				<select th:field="*{type}" required="required">
+   					<option value=""> Select Type </option>
+   					<option value="Hourly"> Hourly </option>
+   					<option value="Fixed"> Fixed </option>
+   				</select>
+   			</div>
+   			
+   			<div class="projects-form-div">
+   				<input th:field="*{rate}" type="text" placeholder="Rate*" required="required">
+   				<input th:field="*{teamLeader}" type="text" placeholder="Team Leader" required="required">
+   			</div>
+   			
+   			<div class="projects-form-start-date">   
+   				<label>Start Date</label>			
+				<input th:field="*{startDate}" type="date" required="required"> 
+   			</div>   
+   			
+   			<div class="projects-form-end-date">   			
+   				<label>End Date</label>
+				<input th:field="*{endDate}" type="date" required="required"> 
+   			</div>   
+   			
+   			<div class="projects-form-div">
+	   			<input th:field="*{status}" type="text" placeholder="Status" required="required">
+   			</div>
+   			<div class="projects-form-details">
+   				<textarea th:field="*{projectDetail}" rows="5" cols="" placeholder="Projects Details" required="required"></textarea>
+   			</div>
+   			
+   			<div class="projects-form-action">
+   				<input type="submit" value="Create">
+   				<a href="/projects-list"> Cancel </a>
+   			</div>
+   		</form>
+   </div>
+   
+   
+    <script>
+	      $(function() {
+	         $("#projects-list").load("http://localhost:8080/projects-list");
+	      });
+	</script>
+  </body>
+</html>

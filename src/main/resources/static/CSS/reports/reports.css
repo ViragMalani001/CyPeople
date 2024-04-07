@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.reports-div {
+	padding: 30px;
+	width: 86.7%;
+	height: 86.8%;
+	position: absolute;
+	top: 60px;
+	left: 217px;
+	background-color: #f8fcff;
+	border-top: 7px solid #30acb4;
+	border-right: 7px solid #30acb4;
+	border-bottom: 7px solid #30acb4;
+}
+
+.reports-header label {
+	font-size: 1.5rem;
+}
+
+.reports-header a {
+	margin-left: 50px;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 1.2rem;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	color: black;
+}
+
+.reports-header a:hover {
+	background-color: darkgray;
+	border: 1px solid darkgray;
+	color: white;
+	transition: 0.5s;
+}
+
+.reports-table {
+	margin-top: 50px;
+	width: 80%;
+	height: 60%;
+	border: 1px solid lightgray;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.reports-table table {
+	width: 100%;
+}
+
+.reports-table tr th {
+	padding: 15px;
+	text-align: left;
+	color: white;
+	font-size: 1.2rem;
+	background-color: rgb(182, 182, 182);
+}
+
+.reports-table tr td {
+	height: 40px;
+	padding: 0.5rem 1rem;
+	vertical-align: top;
+	border-bottom: 1px solid lightgray;
+}
+
+.reports-table tr:hover {
+	background-color: #d3d3d3a8;
+}
+
+.reports-table div{
+	display: inline-block;
+}
+
+.reports-table .edit a {
+	padding: 2px;
+	display: inline-block;
+	text-decoration: none;
+	background-color: white;
+	border: 1px solid lightgray;
+	color: #8b8b8b;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.reports-table .edit a:hover {
+	color: white;
+	background-color: #939393;
+	transition: 0.5s;
+}
+
+.reports-table .delete a {
+	padding: 2px;
+	display: inline-block;
+	text-decoration: none;
+	background-color: white;
+	border: 1px solid red;
+	color: red;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.reports-table .delete a:hover {
+	color: white;
+	background-color: red;
+	transition: 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

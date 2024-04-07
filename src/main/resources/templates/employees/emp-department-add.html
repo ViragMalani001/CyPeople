@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title> Employee Add Department </title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-department-add.css}" />
+</head>
+<body> 
+   <div id="emp-department"></div>
+   
+   <div class="add-content">
+   		<h4>Add Department</h4>
+   		<form action="#" th:action="@{/emp-department-add}" th:object="${department}" method="post">
+   			<input type="hidden" th:field="*{id}" />
+   			<div class="emp-add-department-form">
+   				<input class="departmentName" th:field="*{departmentName}" placeholder="DepartmentName" required="required">
+   			</div>
+   			
+   			<div class="emp-add-department-form">
+   				<input type="number" th:field="*{totalEmployee}" placeholder="TotalEmployee">
+	   			<select  th:field="*{departmentHead}">
+   					<option value=""> Select Department Head </option>
+   					<option th:each="employees :${employeeList}"
+   							th:text="${employees.name}"
+   							th:value="${employees.name}">
+   					</option>
+   				</select>
+   			</div>
+   			<div class="emp-add-department-form-action">
+   				<input type="submit" value="Add Department">
+   				<a href="/emp-department"> Cancel </a>
+   			</div>
+   		</form>
+   </div>
+   
+    <script>
+	      $(function() {
+	         $("#emp-department").load("http://localhost:8080/emp-department");
+	      });
+	</script>
+</body>
+</html>

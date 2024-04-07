@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+.dashboard-container {
+	width: 89.5%;
+	height: 92.8%;
+	position: absolute;
+	top: 60px;
+	left: 217px;
+	border-bottom: 7px solid #30acb4;
+	border-right: 7px solid #30acb4;
+	border-top: 7px solid #30acb4;
+	background-color: #f8fcff;
+	overflow: auto;
+}
+
+@media screen and (max-width: 1884px) {
+	.dashboard-container {
+		width: 89.2%;
+		left: 195px;
+	}
+}
+
+@media screen and (max-height: 607px) {
+	.dashboard-container {
+		height: 88%;
+	}
+}
+
+.dashboard-header {
+	margin: 20px 0px 40px 30px;
+}
+
+.dashboard-header label {
+	font-size: 1.5rem;
+}
+
+.emp-list-count {
+	margin: 10px 30px;
+	border: 1px solid;
+	width: 20%;
+	height: 42.5%;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	overflow: auto;
+	scrollbar-width: none;
+	display: inline-block;
+/* 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19); */
+}
+
+.total-emp {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.total-emp div {
+	display: inline;
+}
+
+.emp-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.emp-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-department {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.department-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.department-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-client {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.client-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.client-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-project {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.project-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.project-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-leaveRequest {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.leaveRequest-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.leaveRequest-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+#container{
+	/* 
+	margin: 0 auto;
+	 */
+	width: 30%;
+	height: 50%;
+	display: inline-block;
+	
+}
+#container2{
+	/* 
+	margin: 0 auto;
+	 */
+	width: 30%;
+	height: 50%;
+	display: inline-block;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

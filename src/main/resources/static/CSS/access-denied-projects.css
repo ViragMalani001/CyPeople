@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+body{
+	margin:0px;
+	padding:0px;
+}
+
+/* ------------------- Employee Content -------------------------- */
+.container{
+	width: 1850px;
+	height:800px;
+	position: absolute;
+	top: 134px;
+	left: 217px;
+	border:1px solid lightgray;
+	border-radius: 10px;
+	background-color: white;
+}

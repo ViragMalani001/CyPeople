@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title> Department </title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-department.css}" />
+</head>
+<body>
+   <div id="employees"></div>
+   
+   <div class="emp-list">
+	   	<div class="emp-header">
+	   		<label>Employees Department List</label>
+	   		<a href="/emp-department-add"> Add Department  </a>
+	   	</div>
+	   	<div class="emp-table-div">
+	   		<table class="emp-table">
+	   			<tr>
+	   				<th> Department Name </th>
+	   				<th> Department Head </th>
+	   				<th> Total Employee </th>
+	   				<th sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"> Action </th>
+	   			</tr>
+			   	<tr th:each="employee : ${employees}">
+		            <td th:text="${employee.departmentName}"></td>
+		            <td th:text="${employee.departmentHead}"></td>
+		            <td th:text="${employee.totalEmployee}"></td>
+		            <td sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
+		            	<div class="edit">
+							<a th:href="@{/emp-department-update(employeeId=${employee.id})}" >
+									<i class="material-icons">edit</i>
+							</a>
+						</div>
+						<div class="detele">
+							<a th:href="@{/emp-department-delete(employeeId=${employee.id})}"
+	            				onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+								<i class="material-icons">delete_forever</i>
+							</a>
+						</div>
+		            </td>
+		        </tr>
+	   		</table>
+	   	</div>
+   </div>   
+   
+    <script>
+	      $(function() {
+	         $("#employees").load("http://localhost:8080/employees");
+	      });
+	</script>
+</body>
+</html>

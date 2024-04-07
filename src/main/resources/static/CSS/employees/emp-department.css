@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+body{
+	margin:0px;
+	padding:0px;
+}
+
+.emp-list{
+	width: 80%;
+		  height: 80%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border:1px solid lightgray;
+	border-radius: 10px;
+	background-color: white;
+			overflow: auto;
+	scrollbar-width: none;
+}
+
+.emp-header{
+	padding: 20px 30px;
+	height:28px;
+	position: sticky;
+	top: -1px;
+	background-color: white;
+}
+
+.emp-list .emp-header label{
+	float:left;
+	font-size: 1.5rem;
+}
+.emp-list .emp-header a{
+	padding:8px;
+	float:right;
+	font-size:1rem;	
+	background-color:white;
+	border:1px solid lightgray;
+	border-radius:5px;
+	cursor: pointer;
+	text-decoration:none;
+	color:black;
+}
+.emp-list .emp-header a:hover{
+	background-color:#939393;
+	color: white;
+	transition: 0.5s;
+}
+
+.emp-table{
+	  width: 100%;
+}
+.emp-table div{
+	display: inline;
+}
+
+.emp-table-div{
+	margin: 20px;
+	border: 1px solid white;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.emp-table tr th{
+	padding: 15px;
+	text-align:left;
+	color: white;
+	font-size: 1.2rem;
+	background-color: rgb(182, 182, 182);
+}
+
+.emp-table tr td{
+	height:40px;
+	padding:0.5rem 1rem;
+	vertical-align:top;
+		border-bottom: 1px solid lightgray;
+}
+
+.emp-table tr:hover {
+	background-color: #d3d3d3a8;
+}
+.emp-table .edit a{
+	padding:2px;
+	background-color:white;
+	border:1px solid lightgray;
+	color:#8b8b8b;	
+	border-radius:5px;
+	font-size:0.1rem;	
+	cursor: pointer;
+
+}
+.emp-table .edit a:hover{
+	color:white;
+	background-color:#939393;
+		transition: 0.5s;
+}
+.emp-table a{
+	padding:2px;
+	display:inline-block;
+	text-decoration:none;
+	background-color:white;
+	border:1px solid red;
+	color:red;	
+	border-radius:5px;
+	font-size:0.1rem;	
+	cursor: pointer;
+}
+.emp-table a:hover{
+	color:white;
+	background-color:red;
+	transition: 0.5s;
+}

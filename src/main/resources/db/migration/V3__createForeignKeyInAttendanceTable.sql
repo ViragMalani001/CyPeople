@@ -1,0 +1,1 @@
+alter table attendance_count add constraint fk_attendance_count foreign key (name) references login(username) on delete cascade on update cascade;

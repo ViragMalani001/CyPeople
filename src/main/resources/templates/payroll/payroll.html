@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payroll</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/payroll/payroll.css}" />
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    <div id="cypeople"></div>
+    
+    	<div class="payroll-div">
+    		<ul>
+    			<li> <a th:href="@{/payslip}"> PaySlip </a> </li>
+    			<li> <a th:href="@{/emp-salary}"> Employee Salary </a> </li>
+    		</ul>
+    	</div>
+    <script>
+	      $(function() {
+	         $("#cypeople").load("http://localhost:8080/cypeople");
+	      });
+	</script>
+  </body>
+</html>

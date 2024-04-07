@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Employee Details </title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-detail.css}">
+</head>
+<body>
+	<div id="employees"></div>
+	
+	<div class="emp-detail">
+		<div class="emp-detail-label">
+			<label> Employee Detail </label>
+			<a th:href="@{/emp-list}"> Employee List </a>
+		</div>
+		
+		<div class="emp-detail-table">
+			<table>
+				<tr>
+					<th> Name </th>
+					<th> Employee Id </th>
+					<th> Phone </th>
+	 				<th> Email </th>
+					<th> JoinDate </th>
+					<th> Role </th>
+					<th> Salary HourlyRet </th>
+					<th> HouseRent </th>
+					<th> MedicalAllowances </th>
+					<th> SpecialAllowances </th>
+					<th> HealthInsurance </th>
+					<th> TDS </th>
+				</tr>
+				<tr th:each="employeesDetails : ${employeesDetail}"> 
+					<td th:text="${employeesDetails.name}"></td>
+					<td th:text="${employeesDetails.employeeId}"></td>
+					<td th:text="${employeesDetails.phone}"></td>
+					<td th:text="${employeesDetails.email}"></td>
+					<td th:text="${#dates.format(employeesDetails.joinDate, 'dd-MM-yyyy')}"></td>
+					<td th:text="${employeesDetails.role}"></td>
+					<td th:text="${employeesDetails.salaryHourlyRet}"></td>
+					<td th:text="${employeesDetails.houseRentAllowances}"></td>
+					<td th:text="${employeesDetails.medicalAllowances}"></td>
+					<td th:text="${employeesDetails.specialAllowances}"></td>
+					<td th:text="${employeesDetails.healthInsurance}"></td>
+					<td th:text="${employeesDetails.TDS}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+
+
+    <script>
+	      $(function() {
+	         $("#employees").load("http://localhost:8080/employees");
+	      });
+	</script>
+</body>
+</html>

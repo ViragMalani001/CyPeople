@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+table{
+	margin: 200px auto;
+	padding: 100px 65px;
+	border:2px solid black;
+	border-radius:10px;
+	font-family:cursive;
+	font-size:25px;
+}
+
+th,td{
+	padding:10px;
+}
+
+input{
+	border:2px solid;
+	border-radius:10px;
+	padding:6px
+	
+}
+
+button{
+	display:block;
+	margin:auto;
+	padding: 8px;
+	font-family:cursive;
+	font-size: 20px;
+	background-color: white;
+	border: 2px solid;
+	border-radius: 10px;
+}

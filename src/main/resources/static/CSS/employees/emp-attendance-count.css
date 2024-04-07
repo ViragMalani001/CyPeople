@@ -1,0 +1,137 @@
+ @charset "UTF-8";
+
+body{
+	margin:0px;
+	padding:0px;
+}
+
+.emp-attendance{
+	width: 80%;
+		  height: 80%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border:1px solid lightgray;
+	border-radius: 10px;
+	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.avg-attendance{
+	margin: 20px;
+}
+
+.avg-attendance-div .border{
+	margin-right: 20px;
+	padding:10px;
+	display:inline-block;
+	width:200px;
+	height:100px;
+	background-color: #454545;
+	border:none;
+	border-radius:15px;
+	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.attendance-div{
+	margin-left:20px;
+	overflow: auto;
+}
+
+.attendance-history{
+	margin: 10px;
+}
+.attendance-history h2{
+	display: inline;
+}
+.attendance-history form{
+	display: inline;
+}
+
+.attendance-history a{
+	padding:8px;
+	font-size:1rem;	
+	background-color:white;
+	border:1px solid lightgray;
+	border-radius:5px;
+	cursor: pointer;
+	text-decoration:none;
+	color:black;
+}
+
+.attendance-history a:hover{
+	background-color:#939393;
+	color: white;
+	transition: 0.5s;
+}
+
+.attendance-history button{
+	margin-left: 10px;
+	padding:8px;
+	font-size:1rem;	
+	background-color:white;
+	border:1px solid lightgray;
+	border-radius:5px;
+	cursor: pointer;
+	text-decoration:none;
+	color:black;
+}
+
+.attendance-history button:hover{
+	background-color:#939393;
+	color: white;
+	transition: 0.5s;
+}
+
+.attendance-history-detail-div{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.attendance-history-detail{
+	margin:10px;
+	padding:10px;
+	width:200px;
+	height:10%;
+	background-color: #454545;
+	border-radius:15px;
+	color: white;
+	font-size: 1.1rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.attendance-history-detail .date{
+	margin-bottom: 10px;
+
+}
+
+.attendance-history-detail button{
+	padding: 7px;
+	background-color: #85ac52;
+	color: white;
+	border-radius: 5px;
+	border: none;
+}
+.attendance-history-detail button:hover{
+	background-color: #708f45;
+}
+
+.attendance-history-detail .punch-in{
+	float: left;
+}
+.attendance-history-detail .punch-in label{
+	display:block;
+	margin-bottom: 10px;
+}
+
+
+.attendance-history-detail .punch-out{
+	float: right;
+}
+.attendance-history-detail .punch-out label{
+	display: block;
+	margin-bottom: 10px;
+}

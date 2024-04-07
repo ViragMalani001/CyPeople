@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Setting</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/setting/setting.css}" />
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+   <div id="cypeople"></div>
+   
+   <div class="setting">
+   		<span>Setting </span>
+   </div>
+   
+    <script>
+	      $(function() {
+	         $("#cypeople").load("http://localhost:8080/cypeople");
+	      });
+	</script>
+  </body>
+</html>

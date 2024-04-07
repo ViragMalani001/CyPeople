@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body{
+  margin:0px;
+  padding:0px;
+}
+
+/* ---------------------navbar --------------------------*/
+
+.navbar {
+	padding: 15px 25px;
+	background-color: black;
+	
+}
+
+.navbar a {
+	font-size: 26px;
+	text-decoration: none;
+	color: #85ac52;  	
+}
+
+.navbar .search-container {
+  float: right;
+}
+
+.navbar .search-container form{
+	display: inline;
+}
+
+.search-container span{
+	margin:0px 20px 0px 30px;
+	font-family: serif;
+	font-size: 1.2rem;
+	color: white;
+}
+
+.search-container form input{
+	margin:-5px 0px 0px 0px ;
+	padding: 6px 15px;
+	border: none;
+	border-radius: 5px;
+	background-color: #85ac52;
+	color: white;
+	font-family: times new roman;
+	font-size: 20px;
+	cursor: pointer;
+}

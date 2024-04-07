@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.emp-detail{
+		width: 85%;
+	height: 80%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border:1px solid #8ad0e70f;
+	border-radius: 10px;
+	background-color: #8ad0e70f;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.emp-detail-label{
+	margin: 20px;
+}
+
+.emp-detail-label label{
+	font-size: 2rem;
+}
+.emp-detail a{
+	margin-top: 10px;
+	display: block;
+	text-decoration: none;
+	font-size: 1.3rem;
+	color: blue;
+}
+
+.emp-detail-table table{
+	width: 100%;
+	border-radius: 15px;
+	background-color: white;
+}
+
+.emp-detail-table tr th{
+	padding: 15px;
+	text-align:left;
+	color: white;
+	font-size: 1.2rem;
+	background-color: rgb(182, 182, 182);
+}
+
+.emp-detail-table tr td{
+	height:40px;
+	padding:0.5rem 1rem;
+	vertical-align:top;
+		border-bottom: 1px solid lightgray;
+	
+}
+
+.emp-detail-table tr:hover {
+	background-color: #d3d3d3a8;
+}

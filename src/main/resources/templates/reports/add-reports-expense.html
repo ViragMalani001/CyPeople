@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title> Report Add </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/reports/add-report-expense.css}" />
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+   <div id="reports"></div>
+   
+   <div class="add-reports">
+   		<h4> Add Report </h4>   	
+   		<hr>	
+   		<form th:action="@{/add-reports-expense}" th:object="${reportsList}" method="post">
+   			<div class="reports-form">
+   				<input type="hidden" th:field="*{id}">
+	   			<div class="reports-form-1">
+	   				<label>Item</label>
+	   			   	<input type="text" th:field="*{item}" placeholder="Item">
+	   			</div>
+	   			
+	   			<div class="reports-form-2">
+	   				<label> Purchased By </label>
+	   				<input type="text" th:field="*{purchasedBy}" placeholder="Purchased By">
+	   			</div>
+	   			
+	   			<div class="reports-form-3">
+	   				<label> Purchased Form </label>
+	   				<input type="text" th:field="*{purchasedFrom}" placeholder="Purchased From">
+	   			</div>
+	   			
+	   			<div class="reports-form-4">
+	   				<label> Purchased Date </label>
+	   				<input type="date" th:field="*{purchasedDate}" placeholder="Purchased Date">
+	   			</div>
+	   			
+	   			<div class="reports-form-5">
+	   				<label> Amount </label>
+	   				<input type="text" th:field="*{amount}" placeholder="Amount">
+	   			</div>
+	   			
+	   			<div class="reports-form-6">
+	   				<label> Paid By</label>
+	   				<select th:field="*{paidBy}">
+		   				<option value="cheque"> Cheque </option>
+		   				<option value="cash"> Cash </option>
+		   			</select>
+	   			</div>
+	   			
+	   			<div class="reports-form-7">
+	   				<label> Status </label>
+	   				<select th:field="*{status}">
+		   				<option value="Approved"> Approved </option>
+		   				<option value="Pending"> Pending </option>
+		   			</select>
+	   			</div>
+	   				   			
+   			</div>
+	   			<div class="reports-form-8">
+	   			   	<input type="submit" placeholder="Add Report">
+	   				<a th:href="@{reports}"> Cancel </a>
+	   			</div>   			
+   		</form>
+   </div>
+   
+    <script>
+	      $(function() {
+	         $("#reports").load("http://localhost:8080/reports");
+	      });
+	</script>
+
+</body>
+</html>

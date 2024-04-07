@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.add-projects {
+	position: absolute;
+	top:25px;
+	left:790px;
+	border:0.5px solid lightgray;
+	width: 620px;
+	height:620px;
+	border-radius:10px;
+	overflow: auto;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: 2s;
+}
+
+.add-projects h4{
+	padding-left:50px;
+	font-size:1rem;
+}
+
+hr{
+	border:1px solid lightgray;
+}
+
+
+.projects-form-div{
+	margin:10px 20px;
+}
+
+.projects-form-div input{
+	width:260px;
+	padding: 8px 0px 8px 10px;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+}
+
+.projects-form-div select{
+	width:270px;
+	display:inline;
+	padding: 8px 0px 8px 10px;
+	border: 1px solid lightgray;
+	border-radius: 6px;	
+}
+
+.projects-form-details textarea{
+	width: 525px;
+	margin:10px 20px;
+	padding:10px;
+	padding-bottom:60px;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+}
+
+.projects-form-start-date label{
+	display:block;
+	margin:10px 20px;
+}
+.projects-form-start-date input{
+	margin:0px 20px;
+	width:200px;
+	padding: 8px 0px 8px 10px;
+	border: 1px solid lightgray;
+	border-radius: 6px;	
+}
+.projects-form-end-date label{
+	display:block;
+	margin:10px 20px;
+}
+.projects-form-end-date input{
+	margin:0px 20px;
+	width:200px;
+	padding: 8px 0px 8px 10px;
+	border: 1px solid lightgray;
+	border-radius: 6px;	
+}
+
+.projects-form-action input{
+	margin:0px 20px;
+	padding: 8px;
+	background-color: lightblue	;
+	color:white;
+	border: 1px solid lightblue;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1rem;
+}
+.projects-form-action a{
+	padding: 8px;
+	text-decoration:none;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	color:darkgray;
+	cursor: pointer;
+}
+.projects-form-action a:hover{
+	background-color: darkgray;
+	color: white;
+	border:1px solid darkgray;
+}

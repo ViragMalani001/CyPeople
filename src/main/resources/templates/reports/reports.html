@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Reports</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/reports/reports.css}" />
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+</head>
+<body>
+	<div id="cypeople"></div>
+
+	<div class="reports-div">
+		<div class="reports-header">
+			<label> Report Expense </label> <a th:href="@{/add-reports-expense}">
+				Add Report </a>
+		</div>
+
+		<div class=reports-table>
+			<table>
+				<tr>
+					<th>Item</th>
+					<th>Purchased By</th>
+					<th>Purchased From</th>
+					<th>Purchased Date</th>
+					<th>Amount</th>
+					<th>Paid By</th>
+					<th>Status</th>
+					<th sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">Action</th>
+				</tr>
+				<tr th:each="reportsList :${reportsList}">
+					<td th:text="${reportsList.item}"></td>
+					<td th:text="${reportsList.purchasedBy}"></td>
+					<td th:text="${reportsList.purchasedFrom}"></td>
+					<td th:text="${reportsList.purchasedDate}"></td>
+					<td th:text="${reportsList.amount}"></td>
+					<td th:text="${reportsList.paidBy}"></td>
+					<td th:text="${reportsList.status}"></td>
+					<td sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
+						<div class="edit">
+							<a th:href="@{/reports-update(reportsId=${reportsList.id})}">
+								<i class="material-icons">edit</i>
+							</a>
+						</div>
+						<div class="detele">
+							<div class="delete">
+								<a th:href="@{/reports-delete(reportsId=${reportsList.id})}"
+									onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+									<i class="material-icons">delete_forever</i>
+								</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<script>
+		$(function() {
+			$("#cypeople").load("http://localhost:8080/cypeople");
+		});
+	</script>
+</body>
+</html>

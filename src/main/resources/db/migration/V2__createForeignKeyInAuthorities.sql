@@ -1,0 +1,1 @@
+alter table authorities add constraint fk_authorities foreign key (username) references login(username) on delete cascade on update cascade;
