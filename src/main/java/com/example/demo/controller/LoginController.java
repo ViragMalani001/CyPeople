@@ -41,7 +41,6 @@ public class LoginController {
 		return "access-denied-employees";
 	}
 	
-	
 	@GetMapping("/cypeople")
 	public String showLoginFrom() {
 		return "cypeople";
