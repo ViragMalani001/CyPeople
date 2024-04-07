@@ -25,7 +25,6 @@ public class ClientController {
 		this.clientsService = clientsService;
 	}
 
-	
 	// ----------------------------- Clients Page ------------------------------
 	@GetMapping("/clients")
 	public String showClientsPage() {

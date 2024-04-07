@@ -15,7 +15,6 @@ public class AccountsController {
 		this.accountsService = accountsService;
 	}
 	
-	
 	@GetMapping("/accounts")
 	public String showAccountsPage() {
 		return "/accounts/accounts";
