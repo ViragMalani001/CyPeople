@@ -25,6 +25,8 @@ public class SecurityConfig {
     	theUserDetailsManager
     		.setAuthoritiesByUsernameQuery("SELECT username, authority FROM Authorities WHERE username=?");
     	
+    	
+    	
         return theUserDetailsManager;
     }
     

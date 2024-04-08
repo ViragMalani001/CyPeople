@@ -12,7 +12,16 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -20,18 +29,6 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-//	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, targetEntity = Employee.class)
-//	@JoinColumn(name = "name")
-//	private Login login;
-	
-//	public Login getLogin() {
-//		return login;
-//	}
-//
-//	public void setLogin(Login login) {
-//		this.login = login;		
-//	}
 
 	private String name;
 	private String employeeId;
@@ -64,6 +61,18 @@ public class Employee {
 	
 	@Email
 	private String email;
+	
+	
+//	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, targetEntity = Employee.class)
+//	@JoinColumn(name = "name")
+//	private Login login;
+//	public Login getLogin() {
+//		return login;
+//	}
+//
+//	public void setLogin(Login login) {
+//		this.login = login;		
+//	}
 	
 	public Employee() {
 		super();
