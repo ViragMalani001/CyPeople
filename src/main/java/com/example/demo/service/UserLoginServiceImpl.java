@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.LoginDAO;
-import com.example.demo.entity.Login;
+import com.example.demo.entity.Registration;
 
 @Service
 public class UserLoginServiceImpl implements UserLoginService {
@@ -19,7 +19,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 	}
 
 	@Override
-	public List<Login> findLoginUsersList() {
+	public List<Registration> findLoginUsersList() {
 		
 		return this.loginDAO.findLoginUsersList();
 	}

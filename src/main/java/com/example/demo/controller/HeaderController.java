@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.entity.Login;
+import com.example.demo.entity.Registration;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,7 +23,7 @@ public class HeaderController {
 	}
 	
 	@GetMapping("/header")
-	public String showHeaderPage(HttpSession session , Login login, Model theModel) {
+	public String showHeaderPage(HttpSession session , Registration login, Model theModel) {
 
 //		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 //		Collection<? extends GrantedAuthority> currentUserAuthority = SecurityContextHolder.getContext().getAuthentication().getAuthorities();

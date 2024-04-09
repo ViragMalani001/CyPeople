@@ -2,28 +2,74 @@
 
 import javax.sql.DataSource;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
-@Configuration
-public class SecurityConfig {
+import com.example.demo.service.UserDetailsServiceImpl;
 
+import ch.qos.logback.core.pattern.color.BoldCyanCompositeConverter;
+
+@Configuration
+@EnableWebSecurity 
+public class SecurityConfig{
+
+	@Bean
+	public UserDetailsService getUserDetailService() {
+		return new 	UserDetailsServiceImpl();
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider() {
+		
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		daoAuthenticationProvider.setUserDetailsService(getUserDetailService());
+		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+		return daoAuthenticationProvider;
+	}
+	
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+		auth.authenticationProvider(authenticationProvider());
+		
+	}
+	
+//	protected void configure(HttpSecurity http) throws Exception{
+//		http.authorizeRequests()
+//		.requestMatchers("/employees/emp-list").hasAnyRole("MANAGER", "ADMIN")
+//        .requestMatchers("/employees/emp-leave").hasAnyRole("MANAGER", "ADMIN")
+//        .requestMatchers("/employees/clients-list").hasAnyRole("MANAGER", "ADMIN")
+//        .requestMatchers("/employees/emp-department").hasAnyRole("MANAGER", "ADMIN")
+//        
+//        .requestMatchers("/emp-department-add").hasAnyRole("MANAGER", "ADMIN")
+//        .requestMatchers("/add-clients").hasAnyRole("MANAGER", "ADMIN")
+//        .requestMatchers("/projects-add").hasAnyRole("MANAGER", "ADMIN")
+//        .anyRequest().authenticated()
+//	}
+	
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
 
     	JdbcUserDetailsManager theUserDetailsManager = new JdbcUserDetailsManager(dataSource);
     	
     	theUserDetailsManager
-    		.setUsersByUsernameQuery("SELECT username, password, enabled FROM Login WHERE username=?");
+    		.setUsersByUsernameQuery("SELECT email, password, enabled FROM Registration WHERE username=?");
     	
     	theUserDetailsManager
-    		.setAuthoritiesByUsernameQuery("SELECT username, authority FROM Authorities WHERE username=?");
+    		.setAuthoritiesByUsernameQuery("SELECT email, role FROM Registration WHERE username=?");
     	
     	
     	
@@ -51,14 +97,10 @@ public class SecurityConfig {
                         .formLogin(form ->
                                 form
                                         .loginPage("/login")
-                                        .loginProcessingUrl("/authenticateTheUser")
+//                                        .loginProcessingUrl("/authenticateTheUser")
                                         .defaultSuccessUrl("/dashboard", true)
                                         .permitAll()
                         )
-//                        .sessionManagement(session -> session
-//                                .maximumSessions(1)
-//                                .maxSessionsPreventsLogin(true)
-//                            )
                         .logout(logout -> logout.permitAll()
                         )
                         

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.Login;
+import com.example.demo.entity.Registration;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -20,10 +20,10 @@ public class LoginDAOJpaImpl implements LoginDAO {
 	}
 
 	@Override
-	public List<Login> findLoginUsersList() {
+	public List<Registration> findLoginUsersList() {
 		
-		TypedQuery<Login> theQuery = entityManager.createQuery("FROM Login", Login.class);
-		List<Login> findLoginUsersList = theQuery.getResultList();
+		TypedQuery<Registration> theQuery = entityManager.createQuery("FROM Login", Registration.class);
+		List<Registration> findLoginUsersList = theQuery.getResultList();
 		return findLoginUsersList;
 	}
 	

@@ -2,11 +2,11 @@ package com.example.demo.dao;
 
 import java.util.List;
 
-import com.example.demo.entity.Login;
+import com.example.demo.entity.Registration;
 
 public interface LoginDAO {
 
 	
-	List<Login> findLoginUsersList();
+	List<Registration> findLoginUsersList();
 
 }

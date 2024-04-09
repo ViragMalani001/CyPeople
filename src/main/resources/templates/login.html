@@ -1,126 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title> 
-         <style type="text/css">
-	         body{
-	         	background-color: #dbdbdb99;
-	         	font-family: Times New Roman;
-	         }
-	         
-	         .first-title{
-	         	font-size: 1.7rem;
-	         	text-align: center;
-	         }
-	         
-	         .second-title{
-	         	font-size: 1.2rem;
-	         	text-align: center;
-	         }
-	         
-	         .notice{
-	         	font-size: 1.2rem;
-	         	text-align: center;
-	         	color: red;
-	         }
-	         
-	         .notice-logout{
-	         	font-size: 1.2rem;
-	         	text-align: center;
-	         	color: blue;
-	         }
-	         
-			table{
-				margin: 200px auto;
-				padding: 100px 65px;
-				border-radius:10px;
-				background-color: white;
-				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			}
-			
-			td{
-				padding: 10px;
-			}
-			tr{
-				font-size: 1.2rem;
-			}
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/login.css}">
 
-			.input{
-				padding:16px;
-				border:1px solid lightgray;
-				border-radius:5px;
-				width: 330px;
-				font-size: 1rem;
-			}
-			
-			.sign-in{
-				float: right;
-			}
-			
-			a{
-				text-decoration: none;
-				font-size: 1.3rem;
-			}
-			
-			a:hover{
-				color: blue;
-			}
-			.button{
-				display:block;
-				margin:auto;
-				padding: 12px;
-				background-color: white;
-				border: 1px solid lightgray;
-				border-radius: 5px;
-				font-size: 1.3rem;
-				font-family: Times New Roman;
-			}
-			.button:hover {
-				border:none;
-				background-color: blue;
-				color: white;
-				cursor: pointer;
-				transition: 0.2s;
-			}
-         </style>
 </head>
 <body>
-    <div class="main-container">
-        <form action="#" th:action="@{/authenticateTheUser}" method="POST">
-        	<table class="container-table">
-        		<tr>
-        			<td class="first-title" colspan="2"> Sign in to CyPeople </td>
-        		</tr>
-        		<tr>
-        			<td class="second-title" colspan="2"> Use your CyPeople Account </td>
-        		</tr>
-        		<tr  th:if="${param.error}">
-					<td class="notice" colspan="2"> Invalid username and password. </td>        		</tr>
-        		<tr th:if="${param.logout}">
-        			<td class="notice-logout" colspan="2"> Your have Successfully logout. </td>
-        		</tr>
-        		<tr>
-        			<td class="input-td" colspan="2">
-        				<input class="input" type="text" id="username" name="username" placeholder="Username" required>
-        			</td>
-        		</tr>
-	            <tr>
-	                <td colspan="2">
-	                	<input class="input" type="password" id="password" name="password" placeholder="Password" required>
-	                	<input type="checkbox">
-	                </td>
-	            </tr>
-	            <tr>
-	            	<td> 
-	            		<a href="/login"> Create account </a>
-	            	</td>
-	            	<td class="sign-in">
-	            		<input class="button" type="submit" value="Sign in" />
-	            	</td>
-	            </tr>
-        	</table>
-        </form>
-    </div>
+	<div class="main-container">
+		<form action="#" th:action="@{/login}" method="POST">
+			<table class="container-table">
+				<tr>
+					<td class="first-title" >Sign in to CyPeople</td>
+				</tr>
+				<tr>
+					<td class="second-title" >Use your CyPeople Account.</td>
+				</tr>
+				<tr th:if="${param.error}">
+					<td class="notice" >Invalid username and password.</td>
+					<!-- <th:block th:text="${#param.removeAttribute('error')}"></th:block> -->
+				</tr>
+				<tr th:if="${param.logout}">
+					<td class="notice-logout">Your have Successfully
+						logout.</td>
+					<!-- <th:block th:text="${#param.removeAttribute('logout')}"></th:block> -->
+				</tr>
+				<tr>
+					<td class="input-td">
+						<label for="email"> Email Id </label>
+						<input id="email"
+							type="text" name="email" placeholder="Email"
+							required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="password"> Password </label>
+						<input id="password" class="input" type="password"
+								name="password" placeholder="Password" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a th:href="@{/registration}"> Create account </a>
+						<button type="submit"> Sign In </button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

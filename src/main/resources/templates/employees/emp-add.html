@@ -1,91 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title> Add Employee </title>
-    
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-add.css}" />
+<meta charset="UTF-8" />
+<title>Add Employee</title>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/employees/emp-add.css}" />
 </head>
-<body> 
-   <div id="emp-list"></div>
-   
-   <div class="add-content">
-   		<h4>Add Employee</h4>
-   		<hr>
-   		<form action="#" th:action="@{/emp-add}" th:object="${employees}" method="post">
-   			<input type="hidden" th:field="*{id}" />
-   			
-   			<div class="emp-form-div">
-   				<input type="text" th:field="*{name}" placeholder="Enter UserName">
-   				<!-- 
+<body>
+	<div id="emp-list"></div>
+
+	<div class="add-content">
+		<h4>Add Employee</h4>
+		<hr>
+		<form action="#" th:action="@{/emp-add}" th:object="${employees}"
+			method="post">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="emp-form-div">
+				<input type="text" name="name" placeholder="Enter UserName">
+				<!-- 
 			 	<select  th:field="*{name}"> 
 			 		<option th:text="${username}" th:value="${username}"></option>
   				</select>
    				 -->
-   				<input type="text" th:field="*{employeeId}" placeholder="Employee Id" required="required">
-   			</div>
-   			
-   			<div class="emp-form-number">
-   			   	<input type="text" th:field="*{phone}"  placeholder="Phone Number" required="required">
-   			   	<span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error"></span>
-   			   	
-   			   	<input type="text" th:field="*{email}" placeholder="Email" required="required">
-   			   	 <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
-   			</div>
-   			
-   			<div class="emp-form-date">   
-   				<label>Join Date</label>			
-				<input type="date" th:field="*{joinDate}" placeholder="Join Date" required="required"> 
-				<select th:field="*{role}" required="required">
-   					<option value="">Select Department</option>
-   					<option th:each="department :${departments}"  
-   							th:text="${department.departmentName}" 
-   							th:value="${department.departmentName}">
-   					</option>
-   				</select>
-   			</div>   				
-   			
-   			<div class="emp-form-salaryDetail" sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
-   				<div class="salary-ret">   				
-	   				<label>Salary Hourly Ret</label>
-	   				<input type="number" th:field="*{salaryHourlyRet}" placeholder="Hourly Ret"> 
-   				</div>
-   				<div class="house-rent">
-   					<label> House Rent Allowances </label>
-   					<input type="number" th:field="*{houseRentAllowances}" placeholder="House Rent">
-   				</div>
-   				<div class="medical-allowances">
-   					<label> Medical Allowances </label>
-   					<input type="number" th:field="*{medicalAllowances}" placeholder="Medical Allowances">
-   				</div>
-   				<div class="special-allowances">
-   					<label> Special Allowances </label>
-   					<input type="number" th:field="*{specialAllowances}" placeholder="Special Alowances">
-   				</div>
-   				<div class="health-allowances">
-   					<label> health Insurance </label>
-   					<input type="number" th:field="*{healthInsurance}" placeholder="Health Insurance">
-   				</div>
-   				<div class="tds">
-   					<label> TDS </label>
-   					<input type="number" th:field="*{TDS}" placeholder="TDS">
-   				</div>
-   			</div>
-   			
-   			
-   			
-   			<div class="emp-form-action">
-   				<input type="submit" value="Add Employee">
-   				<a href="/emp-list"> Cancel </a>
-   			</div>
-   		</form>
-   </div>
+				<input type="text" name="employeeId" placeholder="Employee Id"
+					required="required">
+			</div>
 
-    <script>
-	      $(function() {
-	         $("#emp-list").load("http://localhost:8080/emp-list");
-	      });
+			<div class="emp-form-number">
+				<input type="text" name="phone" placeholder="Phone Number"
+					required="required"> <span
+					th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+					class="error"></span> <input type="text" name="email"
+					placeholder="Email" required="required"> <span
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+					class="error"></span>
+			</div>
+
+			<div class="emp-form-date">
+				<label>Join Date</label> <input type="date" name="joinDate"
+					placeholder="Join Date" required="required"> <select
+					th:field="*{role}" name="role" required="required">
+					<option value="">Select Department</option>
+					<option th:each="department :${departments}"
+						th:text="${department.departmentName}"
+						th:value="${department.departmentName}"></option>
+				</select>
+			</div>
+
+			<div class="emp-form-salaryDetail"
+				sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
+				<div class="salary-ret">
+					<label>Salary Hourly Ret</label> <input type="number"
+						name="salaryHourlyRet" placeholder="Hourly Ret">
+				</div>
+				<div class="house-rent">
+					<label> House Rent Allowances </label> <input type="number"
+						name="houseRentAlowances" placeholder="House Rent">
+				</div>
+				<div class="medical-allowances">
+					<label> Medical Allowances </label> <input type="number"
+						name="medicalAllowances" placeholder="Medical Allowances">
+				</div>
+				<div class="special-allowances">
+					<label> Special Allowances </label> <input type="number"
+						name="specialAllowances" placeholder="Special Alowances">
+				</div>
+				<div class="health-allowances">
+					<label> health Insurance </label> <input type="number"
+						name="healthInsurance" placeholder="Health Insurance">
+				</div>
+				<div class="tds">
+					<label> TDS </label> <input type="number" name="TDS"
+						placeholder="TDS">
+				</div>
+			</div>
+
+
+
+
+			<div class="emp-form-action">
+				<input type="submit" value="Add Employee"> <a
+					href="/emp-list"> Cancel </a>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		$(function() {
+			$("#emp-list").load("http://localhost:8080/emp-list");
+		});
 	</script>
 </body>
 </html>

@@ -15,14 +15,7 @@ body {
 	text-align: center;
 }
 
-.notice {
-	font-size: 1.2rem;
-	text-align: center;
-	color: red;
-}
-
-.notice-logout {
-	font-size: 1.2rem;
+.message{
 	text-align: center;
 	color: blue;
 }
@@ -45,11 +38,19 @@ body {
 	font-size: 1.2rem;
 }
 
-.container-table tr td input {
+.container-table tr td input{
 	padding: 16px;
-	width: 90%;
 	border: 1px solid lightgray;
 	border-radius: 5px;
+	width: 90%;
+	font-size: 1rem;
+}
+
+.container-table tr td select{
+	padding: 16px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	width: 98%;
 	font-size: 1rem;
 }
 
@@ -67,10 +68,10 @@ a:hover {
 	color: blue;
 }
 
-button {
-	padding: 12px;
+.submit-button {
 	display: block;
 	float: right;
+	padding: 12px;
 	background-color: white;
 	border: 1px solid lightgray;
 	border-radius: 5px;
@@ -78,7 +79,23 @@ button {
 	font-family: Times New Roman;
 }
 
-button:hover {
+.submit-button:hover {
+	border: 1px solid blue;
+	color: blue;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.reset-button {
+	padding: 12px;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	font-family: Times New Roman;
+}
+
+.reset-button:hover {
 	border: 1px solid blue;
 	color: blue;
 	cursor: pointer;
