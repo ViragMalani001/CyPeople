@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class RegistrationController {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private RegistrationJPARepository loginJPARepository;
+	private RegistrationJPARepository registrationJPARepository;
 	
 	@GetMapping("/login")
 	public String showLoginForm() {
@@ -43,7 +44,7 @@ public class RegistrationController {
 		try {
 			registration.setEnabled(true);
 			registration.setPassword(passwordEncoder.encode(registration.getPassword()));
-			Registration saveDetail = this.loginJPARepository.save(registration);
+			Registration saveDetail = this.registrationJPARepository.save(registration);
 //			model.addAttribute("registrationDetail", saveDetail);
 //			model.addAttribute("registrationDetail", registration);
 			session.setAttribute("message", new Message("Successfully Register.", "Success"));

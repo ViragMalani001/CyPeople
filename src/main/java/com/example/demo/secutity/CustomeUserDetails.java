@@ -10,11 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.example.demo.entity.Registration;
 
 public class CustomeUserDetails implements UserDetails {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	private Registration registration;
 	
 	public CustomeUserDetails(Registration registration) {

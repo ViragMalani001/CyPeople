@@ -3,69 +3,163 @@
 <head>
 <meta charset="UTF-8" />
 <title>Registration Form</title>
-<link rel="stylesheet" th:href="@{/CSS/registration.css}">
+<!-- <link rel="stylesheet" th:href="@{/CSS/registration.css}"> -->
+<style type="text/css">
+body {
+	background-color: #dbdbdb99;
+	font-family: Times New Roman;
+}
+
+.first-title {
+	font-size: 1.7rem;
+	text-align: center;
+}
+
+.second-title {
+	font-size: 1.2rem;
+	text-align: center;
+}
+
+.message {
+	text-align: center;
+	color: blue;
+}
+
+.container-table {
+	margin: 80px auto;
+	padding: 50px;
+	width: 25%;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.container-table td {
+	padding: 10px;
+}
+
+.container-table tr {
+	font-size: 1.2rem;
+}
+
+.container-table tr td input {
+	padding: 16px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	width: 90%;
+	font-size: 1rem;
+}
+
+.container-table tr td select {
+	padding: 16px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	width: 98%;
+	font-size: 1rem;
+}
+
+.container-table tr td label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 1.3rem;
+}
+
+a:hover {
+	color: blue;
+}
+
+.submit-button {
+	display: block;
+	float: right;
+	padding: 12px;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	font-family: Times New Roman;
+}
+
+.submit-button:hover {
+	border: 1px solid blue;
+	color: blue;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.reset-button {
+	padding: 12px;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	font-family: Times New Roman;
+}
+
+.reset-button:hover {
+	border: 1px solid blue;
+	color: blue;
+	cursor: pointer;
+	transition: 0.2s;
+}
+</style>
 </head>
 <body>
 
 	<div class="main-container">
-		<form action="#" th:action="@{/registration}" method="POST" th:object="${registrationDetail}">
+		<form action="#" th:action="@{/registration}" method="POST"
+			th:object="${registrationDetail}">
 			<table class="container-table">
 				<tr>
-					<td class="first-title" > Register to CyPeople </td>
+					<td class="first-title">Register to CyPeople</td>
 				</tr>
 				<tr>
-					<td class="second-title" > Register your CyPeople Account </td>
+					<td class="second-title">Register your CyPeople Account</td>
 				</tr>
 				<tr>
-					<td th:if="${session.message}">
-						<label class="message" th:text="${session.message.content}"></label>
-						<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+					<td th:if="${session.message}"><label class="message"
+						th:text="${session.message.content}"></label> <!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
 					</td>
+				</tr>
+				<tr>
+					<td><label for="name"> Your Name </label> <input type="text"
+						id="name" name="name" placeholder="Enter Your Name"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><label for="role"> Role </label> <select id="role"
+						name="role" required="required">
+							<option value="">Select Role</option>
+							<option value="ROLE_EMPLOYEE">Employee</option>
+							<option value="ROLE_MANAGER">Manager</option>
+							<option value="ROLE_ADMIN">Admin</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><label for="email"> Email </label> <input id="email"
+						type="email" name="email" placeholder="Email" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="password"> Password </label> <input
+						id="password" type="password" name="password"
+						placeholder="Password" required="required"></td>
 				</tr>
 				<tr>
 					<td>
-						<label for ="name"> Your Name </label>
-						<input
-							type="text" id="name" name="name" placeholder="Enter Your Name"
-							required="required">
+						<button class="reset-button" type="reset">Reset</button>
+						<button class="submit-button" type="submit">Submit</button>
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label for="role"> Role </label>
-						<select id="role" name="role" required="required">
-							<option value=""> Select Role </option>
-							<option value="ROLE_EMPLOYEE"> Employee </option>
-							<option value="ROLE_MANAGER"> Manager </option>
-							<option value="ROLE_ADMIN"> Admin </option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="email"> Email </label>
-						<input id="email" type="email" name="email" placeholder="Email" required="required">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="password"> Password </label>
-						<input id="password" type="password" name="password" placeholder="Password" required="required">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<button class="reset-button" type="reset"> Reset </button>
-						<button class="submit-button" type="submit"> Submit </button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a th:href="@{/login}"> Back Login </a>
-					</td>
+					<td><a th:href="@{/login}"> Back Login </a></td>
 				</tr>
 
-				
+
 			</table>
 		</form>
 	</div>

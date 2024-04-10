@@ -1,4 +1,4 @@
- package com.example.demo.secutity;
+package com.example.demo.secutity;
 
 import javax.sql.DataSource;
 
@@ -17,107 +17,82 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.example.demo.service.UserDetailsServiceImpl;
 
-import ch.qos.logback.core.pattern.color.BoldCyanCompositeConverter;
-
 @Configuration
-@EnableWebSecurity 
-public class SecurityConfig{
+@EnableWebSecurity
+public class SecurityConfig {
 
 	@Bean
 	public UserDetailsService getUserDetailService() {
-		return new 	UserDetailsServiceImpl();
+		return new UserDetailsServiceImpl();
 	}
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
+// Authentication Provider
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
-		
+
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setUserDetailsService(getUserDetailService());
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 		return daoAuthenticationProvider;
 	}
-	
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
-		
+
 	}
-	
-//	protected void configure(HttpSecurity http) throws Exception{
-//		http.authorizeRequests()
-//		.requestMatchers("/employees/emp-list").hasAnyRole("MANAGER", "ADMIN")
-//        .requestMatchers("/employees/emp-leave").hasAnyRole("MANAGER", "ADMIN")
-//        .requestMatchers("/employees/clients-list").hasAnyRole("MANAGER", "ADMIN")
-//        .requestMatchers("/employees/emp-department").hasAnyRole("MANAGER", "ADMIN")
-//        
-//        .requestMatchers("/emp-department-add").hasAnyRole("MANAGER", "ADMIN")
-//        .requestMatchers("/add-clients").hasAnyRole("MANAGER", "ADMIN")
-//        .requestMatchers("/projects-add").hasAnyRole("MANAGER", "ADMIN")
-//        .anyRequest().authenticated()
-//	}
-	
-    @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource) {
 
-    	JdbcUserDetailsManager theUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-    	
-    	theUserDetailsManager
-    		.setUsersByUsernameQuery("SELECT email, password, enabled FROM Registration WHERE username=?");
-    	
-    	theUserDetailsManager
-    		.setAuthoritiesByUsernameQuery("SELECT email, role FROM Registration WHERE username=?");
-    	
-    	
-    	
-        return theUserDetailsManager;
-    }
-    
-    
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    	return http
-    					.authorizeHttpRequests(configurer ->
-                        	configurer
-                        		
-                        		.requestMatchers("/employees/emp-list").hasAnyRole("MANAGER", "ADMIN")
-                                .requestMatchers("/employees/emp-leave").hasAnyRole("MANAGER", "ADMIN")
-                                .requestMatchers("/employees/clients-list").hasAnyRole("MANAGER", "ADMIN")
-                                .requestMatchers("/employees/emp-department").hasAnyRole("MANAGER", "ADMIN")
-                                
-                                .requestMatchers("/emp-department-add").hasAnyRole("MANAGER", "ADMIN")
-                                .requestMatchers("/add-clients").hasAnyRole("MANAGER", "ADMIN")
-                                .requestMatchers("/projects-add").hasAnyRole("MANAGER", "ADMIN")
-                                .anyRequest().authenticated()
-                		)
+//    @Bean
+//    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+//
+//    	JdbcUserDetailsManager theUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+//    	
+//    	theUserDetailsManager
+//    		.setUsersByUsernameQuery("SELECT email, password, enabled FROM Registration WHERE email=?");
+//    	
+//    	theUserDetailsManager
+//    		.setAuthoritiesByUsernameQuery("SELECT email, role FROM Registration WHERE email=?");
+//	
+//        return theUserDetailsManager;
+//    }
 
-                        .formLogin(form ->
-                                form
-                                        .loginPage("/login")
-//                                        .loginProcessingUrl("/authenticateTheUser")
-                                        .defaultSuccessUrl("/dashboard", true)
-                                        .permitAll()
-                        )
-                        .logout(logout -> logout.permitAll()
-                        )
-                        
-	//                .exceptionHandling(configurer ->
-	//                				configurer.accessDeniedPage("/access-denied")
-	//                );
-                        
-                    .exceptionHandling(exceptionHandling ->
-                            exceptionHandling
-                                    .accessDeniedHandler(accessDeniedHandler())
-                    )
-                    .build();
-    }
-    
-    @Bean
-    public AccessDeniedHandler accessDeniedHandler() {
-        return new CustomAccessDeniedHandler();
-    }
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeHttpRequests(configurer -> configurer
+						.requestMatchers("/employees/emp-list").hasAnyRole("MANAGER", "ADMIN")
+						.requestMatchers("/employees/emp-leave").hasAnyRole("MANAGER", "ADMIN")
+						.requestMatchers("/employees/clients-list").hasAnyRole("MANAGER", "ADMIN")
+						.requestMatchers("/employees/emp-department").hasAnyRole("MANAGER", "ADMIN")
+		
+						.requestMatchers("/emp-department-add").hasAnyRole("MANAGER", "ADMIN")
+						.requestMatchers("/add-clients").hasAnyRole("MANAGER", "ADMIN")
+						.requestMatchers("/projects-add").hasAnyRole("MANAGER", "ADMIN")
+						.anyRequest().authenticated())
+
+				.formLogin(form -> form.
+						loginPage("/login")
+						.loginProcessingUrl("/authentication")
+						.defaultSuccessUrl("/dashboard", true)
+						.failureUrl("/registration")
+						.permitAll()
+
+				).logout(logout -> logout.permitAll())
+
+				// .exceptionHandling(configurer ->
+				// configurer.accessDeniedPage("/access-denied")
+				// );
+
+				.exceptionHandling(exceptionHandling -> exceptionHandling.accessDeniedHandler(accessDeniedHandler()));
+		return http.build();
+	}
+
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler() {
+		return new CustomAccessDeniedHandler();
+	}
 }
-
