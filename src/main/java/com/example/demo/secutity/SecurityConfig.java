@@ -1,7 +1,5 @@
 package com.example.demo.secutity;
 
-import javax.sql.DataSource;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -10,17 +8,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
+import com.example.demo.entity.Registration;
 import com.example.demo.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+	public Registration registration() {
+		return new Registration();
+	}
 	@Bean
 	public UserDetailsService getUserDetailService() {
 		return new UserDetailsServiceImpl();
@@ -29,37 +29,22 @@ public class SecurityConfig {
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
-	}
+	} 
 
 // Authentication Provider
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-		daoAuthenticationProvider.setUserDetailsService(getUserDetailService());
+		daoAuthenticationProvider.setUserDetailsService(this.getUserDetailService());
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 		return daoAuthenticationProvider;
 	}
 
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
-
 	}
-
-//    @Bean
-//    public UserDetailsManager userDetailsManager(DataSource dataSource) {
-//
-//    	JdbcUserDetailsManager theUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-//    	
-//    	theUserDetailsManager
-//    		.setUsersByUsernameQuery("SELECT email, password, enabled FROM Registration WHERE email=?");
-//    	
-//    	theUserDetailsManager
-//    		.setAuthoritiesByUsernameQuery("SELECT email, role FROM Registration WHERE email=?");
-//	
-//        return theUserDetailsManager;
-//    }
-
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
@@ -82,11 +67,7 @@ public class SecurityConfig {
 						.permitAll()
 
 				).logout(logout -> logout.permitAll())
-
-				// .exceptionHandling(configurer ->
-				// configurer.accessDeniedPage("/access-denied")
-				// );
-
+				
 				.exceptionHandling(exceptionHandling -> exceptionHandling.accessDeniedHandler(accessDeniedHandler()));
 		return http.build();
 	}
