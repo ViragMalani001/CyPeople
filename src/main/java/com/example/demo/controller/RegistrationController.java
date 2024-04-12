@@ -1,25 +1,30 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import com.example.demo.JPARepository.RegistrationJPARepository;
 import com.example.demo.entity.Registration;
 import com.example.demo.helper.Message;
+//import com.example.demo.secutity.BCryptPasswordEncoder;
 
 import jakarta.servlet.http.HttpSession;
 
 
 @Controller
 public class RegistrationController {
-	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+//	
+//	@Autowired
+//	private final PasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 	
 	@Autowired
 	private RegistrationJPARepository registrationJPARepository;
@@ -42,10 +47,8 @@ public class RegistrationController {
 		
 		try {
 			registration.setEnabled(true);
-			registration.setPassword(this.passwordEncoder.encode(registration.getPassword()));
+//			registration.setPassword(this.passwordEncoder().encode(registration.getPassword()));
 			Registration saveDetail = this.registrationJPARepository.save(registration);
-//			model.addAttribute("registrationDetail", saveDetail);
-//			model.addAttribute("registrationDetail", registration);
 			session.setAttribute("message", new Message("Successfully Register.", "Success"));
 			return "registration";
 			

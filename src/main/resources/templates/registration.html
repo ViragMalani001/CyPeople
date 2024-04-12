@@ -121,8 +121,9 @@ a:hover {
 					<td class="second-title">Register your CyPeople Account</td>
 				</tr>
 				<tr>
-					<td th:if="${session.message}"><label class="message"
-						th:text="${session.message.content}"></label> <!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+					<td th:if="${session.message}">
+<!-- 					<label class="message" th:text="${session.message.content}"></label> 
+						<th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
 					</td>
 				</tr>
 				<tr>

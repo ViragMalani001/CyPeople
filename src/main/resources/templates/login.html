@@ -111,8 +111,8 @@ button:hover {
 					<!-- <th:block th:text="${#param.removeAttribute('logout')}"></th:block> -->
 				</tr>
 				<tr>
-					<td class="input-td"><label for="email"> Email Id </label> <input
-						id="email" type="text" name="email" placeholder="Email" required>
+					<td class="input-td"><label for="email"> User Name </label> <input
+						id="email" type="text" name="username" placeholder="UserName" required>
 					</td>
 				</tr>
 				<tr>
@@ -121,7 +121,8 @@ button:hover {
 						placeholder="Password" required></td>
 				</tr>
 				<tr>
-					<td><a th:href="@{/registration}"> Create account </a>
+					<td>
+						<!-- <a th:href="@{/registration}"> Create account </a> -->
 						<button type="submit">Sign In</button></td>
 				</tr>
 			</table>
