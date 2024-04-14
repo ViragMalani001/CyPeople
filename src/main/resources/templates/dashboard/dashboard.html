@@ -6,20 +6,21 @@
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/dashboard/dashboard.css}" />
-
-
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
+<!-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<script type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 <body>
-   <div id="manubar"></div>
-   
+	<div id="manubar"></div>
+
 	<div class="dashboard-container">
 		<div class="dashboard-header">
 			<label> Dashboard </label>
@@ -74,12 +75,56 @@
 			</div>
 
 		</div>
-		<div id="container"></div>
-		<div id="container2"></div>
+        <div id="chart_div"></div>
+        <div id="piechart">
 	</div>
 
+<script th:inline="javascript">
+        var real_data = /*[[${chartData}]]*/'noValue';
+        $(document).ready(function() {
+            google.charts.load('current', {
+                packages : [ 'corechart', 'bar' ]
+            });
+            google.charts.setOnLoadCallback(drawColumnChart);
+            google.charts.setOnLoadCallback(drawPieChart);
+        });
+        function drawColumnChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year');
+            data.addColumn('number', 'Views');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : 'Blog stats',
+                hAxis : {
+                    title : 'Years',
+                },
+                vAxis : {
+                    title : 'View Count'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document
+                    .getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+        function drawPieChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year');
+            data.addColumn('number', 'Views');
+            Object.keys(real_data).forEach(function(key) {
+                data.addRow([ key, real_data[key] ]);
+            });
+            var options = {
+                title : 'Blog stats'
+            };
+            var chart = new google.visualization.PieChart(document
+                    .getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
 
-	<script th:inline="javascript">
+<!-- 	<script th:inline="javascript">
 		$(function() {
 			Highcharts
 					.chart(
@@ -160,13 +205,13 @@
 						[ 'Failure', [ [ $fail ] ] ] ]
 			} ]
 		});
-	</script>
+	</script> -->
 
-   
-    <script>
-	      $(function() {
-	         $("#manubar").load("http://localhost:8080/manubar");
-	      });
+
+	<script>
+		$(function() {
+			$("#manubar").load("http://localhost:8080/manubar");
+		});
 	</script>
 </body>
 </html>

@@ -29,10 +29,10 @@ public class ProjectsController {
 	}
 	
 	@GetMapping("/projects-add")
-	public String projectsAddPage(Model theModel){
+	public String projectsAddPage(Model model){
 		
 		Projects projects = new Projects();
-		theModel.addAttribute("projects",projects);
+		model.addAttribute("projects",projects);
 		return "/projects/projects-add";		
 	}
 	
@@ -45,18 +45,18 @@ public class ProjectsController {
 	
 	
 	@GetMapping("/projects-list")
-	public String showProjectsListPage(Model theModel){
+	public String showProjectsListPage(Model model){
 		
 		List<Projects> projects = this.projectsService.findProjectsList();
-		theModel.addAttribute("projects",projects);
+		model.addAttribute("projects",projects);
 		return "/projects/projects-list";
 	}
 	
 	@GetMapping("/projects-update")
-	public String projectUpdatePage(@RequestParam("projectId") int theId, Model theModel) {
+	public String projectUpdatePage(@RequestParam("projectId") int theId, Model model) {
 				
 		Projects project = this.projectsService.findProjectsById(theId);
-		theModel.addAttribute("projects",project);
+		model.addAttribute("projects",project);
 		return "projects/projects-add";	
 	}
 	
@@ -69,10 +69,10 @@ public class ProjectsController {
 	
 	
 	@GetMapping("/projects-detail")
-	public String showProjectsDetailPage(Model theModel){
+	public String showProjectsDetailPage(Model model){
 		
 		List<Projects> projects = this.projectsService.findProjectsList();
-		theModel.addAttribute("projects",projects);
+		model.addAttribute("projects",projects);
 		return "/projects/projects-detail";
 	}
 }

@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-body{
-	margin:0px;
-	padding:0px;
+body {
+	margin: 0px;
+	padding: 0px;
 }
 
-.projects-detail{
-	width: 1850px;
-	height:800px;
+.projects-detail {
+	width: 50%;
+	height: 80%;
 	position: absolute;
 	top: 134px;
 	left: 217px;
@@ -15,27 +15,30 @@ body{
 	border-radius: 10px;
 	overflow: auto;
 	scrollbar-width: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 }
 
-.projects-header{
-	margin:20px;
-	padding:0rem;
-	height:28px;
+.projects-header {
+	margin: 20px;
+	padding: 0rem;
+	height: 28px;
 }
 
-.projects-detail .projects-header h4{
-	margin-top:10px;
-	display:inline-block;	
+.projects-detail .projects-header h4 {
+	margin-top: 10px;
+	display: inline-block;
 }
 
-.projects-detail-div{
+.projects-detail-div {
 	display: flex;
 	margin-top: 10px;
 }
-.projects-detail-name{
-	margin-left:20px;
-	margin-right:20px;
-	padding:20px;
+
+.projects-detail-name {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 20px;
 	width: 700px;
 	height: 210px;
 	background-color: white;
@@ -43,12 +46,11 @@ body{
 	border-radius: 10px;
 	overflow: auto;
 	scrollbar-width: none;
-	
 }
 
-.projects-detail-status{
-	margin-right:20px;
-	padding:20px;
+.projects-detail-status {
+	margin-right: 20px;
+	padding: 20px;
 	width: 300px;
 	height: 210px;
 	background-color: white;
@@ -60,11 +62,11 @@ body{
 	scrollbar-width: none;
 }
 
-.label-status{
+.label-status {
 	color: red;
 }
 
-.projects-detail-status-div{
+.projects-detail-status-div {
 	display: flex;
 	justify-content: space-between;
 }

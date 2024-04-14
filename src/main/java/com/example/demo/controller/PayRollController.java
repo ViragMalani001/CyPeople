@@ -40,7 +40,7 @@ public class PayRollController {
 	}
 	
 	@GetMapping("/emp-salary")
-	public String showEmpSalaryPage(Model theModel) {
+	public String showEmpSalaryPage(Model model) {
 		
 		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 		String totalHours = this.employeeService.attendanceHoursCount(currentUser);
@@ -52,10 +52,10 @@ public class PayRollController {
 		double hourlyRate = 148;
 		double totalSalary = totalHoursInt * hourlyRate;
 		
-		theModel.addAttribute("totalHours", totalHours);
-		theModel.addAttribute("totalSalary",totalSalary);
-		theModel.addAttribute("employeeList", employeeList);
-		theModel.addAttribute("currentUser",currentUserName);
+		model.addAttribute("totalHours", totalHours);
+		model.addAttribute("totalSalary",totalSalary);
+		model.addAttribute("employeeList", employeeList);
+		model.addAttribute("currentUser",currentUserName);
 		return "/payroll/emp-salary";
 	}
 	

@@ -1,32 +1,33 @@
 @charset "UTF-8";
-body{
-	margin:0px;
-	padding:0px;
+
+body {
+	margin: 0px;
+	padding: 0px;
 }
 
 /* ------------------- Clients Content -------------------------- */
 .clients-content {
-  width: 89.5%;
-  height: 92.8%;
-  position:absolute;
-  top: 60px;
-  left: 217px;
-  background-color: #f8fcff; 
-  border-top: 7px solid #30acb4;
-  border-right: 7px solid #30acb4;
-  border-bottom: 7px solid #30acb4;
+	width: 89.5%;
+	height: 92.8%;
+	position: absolute;
+	top: 60px;
+	left: 217px;
+	background-color: #f8fcff;
+	border-top: 7px solid #30acb4;
+	border-right: 7px solid #30acb4;
+	border-bottom: 7px solid #30acb4;
 }
 
 .clients-content ul {
-  margin: 0px;
-  padding: 0px;
+	margin: 0px;
+	padding: 0px;
 	width: 100%;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
 }
 
-.clients-content ul li a{
+.clients-content ul li a {
 	padding: 20px 16px;
 	display: block;
 	text-decoration: none;
@@ -34,7 +35,8 @@ body{
 	border-radius: 0px 0px 10px 10px;
 }
 
-.clients-content li a:hover{
-  background-color: #30acb4;
-  color: white;
-  transition: 0.3s;}
+.clients-content li a:hover {
+	background-color: #30acb4;
+	color: white;
+	transition: 0.3s;
+}

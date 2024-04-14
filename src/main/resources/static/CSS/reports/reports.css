@@ -28,25 +28,38 @@ body {
 	text-decoration: none;
 	font-size: 1.2rem;
 	background-color: white;
-	border: 1px solid lightgray;
 	border-radius: 8px;
 	color: black;
+	border: 1px solid darkgray;
 }
 
 .reports-header a:hover {
 	background-color: darkgray;
 	border: 1px solid darkgray;
+	border: none;
 	color: white;
 	transition: 0.5s;
 }
 
 .reports-table {
-	margin-top: 50px;
 	width: 80%;
-	height: 60%;
-	border: 1px solid lightgray;
+	height: 80%;
+	margin-top: 50px;
 	background-color: white;
 	border-radius: 10px;
+	overflow: auto; scrollbar-width : none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	scrollbar-width: none;
+}
+
+.reports-table-div {
+	margin: 20px;
+	width: 97%;
+	height: 85%;
+	border: 1px solid none;
+	border-radius: 15px;
+	overflow: auto;
 }
 
 .reports-table table {
@@ -72,7 +85,7 @@ body {
 	background-color: #d3d3d3a8;
 }
 
-.reports-table div{
+.reports-table div {
 	display: inline-block;
 }
 
@@ -111,16 +124,3 @@ body {
 	background-color: red;
 	transition: 0.5s;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

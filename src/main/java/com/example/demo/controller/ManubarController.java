@@ -31,33 +31,11 @@ public class ManubarController {
 	@GetMapping("/cypeople")
 	public String showCyPeoplePage(Model model) {
 		
-		long employeeCount = this.dashboardService.employeeCount();
-		long departmentCount = this.dashboardService.departmentCount();
-		long clientCount = this.dashboardService.clientCount();
-		long projectCont = this.dashboardService.projectsCount();
-		long leaveRequestCount = this.dashboardService.leaveRequestCount();
-		
-		model.addAttribute("employeeCount", employeeCount);
-		model.addAttribute("departmentCount", departmentCount);
-		model.addAttribute("clientCount", clientCount);
-		model.addAttribute("projectCount", projectCont);
-		model.addAttribute("leaveRequestCount", leaveRequestCount);
-
-		Map<String, Integer> surveyMap = new LinkedHashMap<>();
-		surveyMap.put("Java", 40);
-		surveyMap.put("Dev oops", 25);
-		surveyMap.put("Python", 20);
-		surveyMap.put(".Net", 15);
-		model.addAttribute("surveyMap", surveyMap);
-		
-		model.addAttribute("pass", 50);
-		model.addAttribute("fail", 50);
-		
-		return "/fragment/dashboard";
+		return "/dashboard/dashboard";
 	}
 	
 	@GetMapping("/manubar")
-	public String showHeaderPage(HttpSession session , Registration login, Model theModel) {
+	public String showHeaderPage(HttpSession session , Registration login, Model model) {
 
 //		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 //		Collection<? extends GrantedAuthority> currentUserAuthority = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
@@ -71,7 +49,7 @@ public class ManubarController {
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
 		String userName = (String) session.getAttribute("username");
-		theModel.addAttribute("username",userName);
+		model.addAttribute("username",userName);
 		
 //		Set CurrentUserName authority Session
 		for (GrantedAuthority authority : authorities) {
@@ -81,7 +59,7 @@ public class ManubarController {
 		    
 		    String currentUserAuthority = (String) session.getAttribute("userAuthority");
 		    String userAuthority = currentUserAuthority.substring(5);
-		    theModel.addAttribute("userAuthority",userAuthority);
+		    model.addAttribute("userAuthority",userAuthority);
 		    
 		    
 		}

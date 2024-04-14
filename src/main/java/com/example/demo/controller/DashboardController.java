@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.LinkedHashMap;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +14,11 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
-public class DeshboardController {
+public class DashboardController {
 
 	private DashboardService dashboardService;
 
-	public DeshboardController(DashboardService dashboardService) {
+	public DashboardController(DashboardService dashboardService) {
 		super();
 		this.dashboardService = dashboardService;
 	}
@@ -25,20 +26,11 @@ public class DeshboardController {
 	@GetMapping("/dashboard")
 	public String showDashboardPage(Model model, HttpSession session) {
 		
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username", userName);
-
-		String userRole = (String) session.getAttribute("userAuthority");
-		String userAuthority = userRole.substring(5);
-		model.addAttribute("userAuthority",userAuthority);
-		
 		long employeeCount = this.dashboardService.employeeCount();
 		long departmentCount = this.dashboardService.departmentCount();
 		long clientCount = this.dashboardService.clientCount();
 		long projectCont = this.dashboardService.projectsCount();
 		long leaveRequestCount = this.dashboardService.leaveRequestCount();
-		
-		
 		
 		model.addAttribute("employeeCount", employeeCount);
 		model.addAttribute("departmentCount", departmentCount);
@@ -46,19 +38,14 @@ public class DeshboardController {
 		model.addAttribute("projectCount", projectCont);
 		model.addAttribute("leaveRequestCount", leaveRequestCount);
 		
+        Map<String, Integer> graphData = new TreeMap<>();
+        graphData.put("2016", 147);
+        graphData.put("2017", 1256);
+        graphData.put("2018", 3856);
+        graphData.put("2019", 19807);
+        model.addAttribute("chartData", graphData);
 		
-		
-		Map<String, Integer> surveyMap = new LinkedHashMap<>();
-		surveyMap.put("Java", 40);
-		surveyMap.put("Dev oops", 25);
-		surveyMap.put("Python", 20);
-		surveyMap.put(".Net", 15);
-		model.addAttribute("surveyMap", surveyMap);
-		
-		model.addAttribute("pass", 50);
-		model.addAttribute("fail", 50);
-		
-		return "/dashboard";
+		return "/dashboard/dashboard";
 	}
 	
 	

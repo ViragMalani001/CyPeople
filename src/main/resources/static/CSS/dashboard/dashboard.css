@@ -35,18 +35,18 @@
 }
 
 .emp-list-count {
-	margin: 10px 30px;
+	margin: 10px;
 	border: 1px solid;
 	width: 20%;
-	height: 42.5%;
+	height: 42.8%;
 	background-color: white;
-	border: 1px solid lightgray;
+	border: none;
 	border-radius: 8px;
 	overflow: auto;
 	scrollbar-width: none;
 	display: inline-block;
-/* 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
-		rgba(0, 0, 0, 0.19); */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 }
 
 .total-emp {
@@ -143,36 +143,19 @@
 	font-size: 1.2rem;
 }
 
-#container{
-	/* 
-	margin: 0 auto;
-	 */
+#chart_div {
+	margin-right: 10px;
 	width: 30%;
-	height: 50%;
+	height: 44%;
 	display: inline-block;
-	
-}
-#container2{
-	/* 
-	margin: 0 auto;
-	 */
-	width: 30%;
-	height: 50%;
-	display: inline-block;
-	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#piechart {
+	width: 30%;
+	height: 44%;
+	display: inline-block;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}

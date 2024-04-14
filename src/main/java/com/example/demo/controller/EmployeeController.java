@@ -42,44 +42,44 @@ public class EmployeeController {
 
 //---------------------  Employees List Controller   -----------------------------------------
 	@GetMapping("/emp-list")
-	public String showEmpAllPage(Model theModel, HttpSession session) {
+	public String showEmpAllPage(Model model, HttpSession session) {
 
 		List<Employee> employeesList = this.employeeService.findAll();
-		theModel.addAttribute("employees", employeesList);
+		model.addAttribute("employees", employeesList);
 
 //		Session
 		String userName = (String) session.getAttribute("username");
-		theModel.addAttribute("username", userName);
+		model.addAttribute("username", userName);
 
 		String userRole = (String) session.getAttribute("userAuthority");
 		String userAuthority = userRole.substring(5);
-		theModel.addAttribute("userAuthority",userAuthority);
+		model.addAttribute("userAuthority",userAuthority);
 		
 		return "/employees/emp-list";
 	}
 
 	@GetMapping("/emp-add")
-	public String empAddPage(Model theModel, HttpSession session) {
+	public String empAddPage(Model model, HttpSession session) {
 
 		String userName = (String) session.getAttribute("username");
-		theModel.addAttribute("username", userName);
+		model.addAttribute("username", userName);
 
 		Employee employees = new Employee();
-		theModel.addAttribute("employees", employees);
+		model.addAttribute("employees", employees);
 
 		List<Department> department = this.employeeService.findDepartmentList();
-		theModel.addAttribute("departments", department);
+		model.addAttribute("departments", department);
 
 		return "/employees/emp-add";
 	}
 
 	@PostMapping("/emp-add")
 	public String empAddPage(@Valid @ModelAttribute("employees") Employee employee, BindingResult theBindingResult,
-			Model theModel, HttpSession session) {
+			Model model, HttpSession session) {
 
 		if (theBindingResult.hasErrors()) {
 			List<Department> department = this.employeeService.findDepartmentList();
-			theModel.addAttribute("departments", department);
+			model.addAttribute("departments", department);
 			return "/employees/emp-add";
 		} else {
 			this.employeeService.save(employee);
@@ -88,16 +88,16 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-update")
-	public String empUpdate(@RequestParam("employeeId") int theId, Model theModel, HttpSession session) {
+	public String empUpdate(@RequestParam("employeeId") int theId, Model model, HttpSession session) {
 
 		String userName = (String) session.getAttribute("username");
 
 		List<Department> department = this.employeeService.findDepartmentList();
 		Employee theEmployee = employeeService.findById(theId);
 
-		theModel.addAttribute("departments", department);
-		theModel.addAttribute("employees", theEmployee);
-		theModel.addAttribute("username", userName);
+		model.addAttribute("departments", department);
+		model.addAttribute("employees", theEmployee);
+		model.addAttribute("username", userName);
 		return "employees/emp-add";
 	}
 
@@ -109,10 +109,10 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-detail")
-	public String empDetailPage(Model theModel) {
+	public String empDetailPage(Model model) {
 
 		List<Employee> employee = this.employeeService.findAll();
-		theModel.addAttribute("employeesDetail", employee);
+		model.addAttribute("employeesDetail", employee);
 		return "/employees/emp-detail";
 	}
 
@@ -138,20 +138,20 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-leave-add")
-	public String empLeaveAddPage(HttpSession session, Model theModel, LeaveRequest leaveRequest, Employee employee) {
+	public String empLeaveAddPage(HttpSession session, Model model, LeaveRequest leaveRequest, Employee employee) {
 
 		String userName = (String) session.getAttribute("username");
-		theModel.addAttribute("username", userName);
+		model.addAttribute("username", userName);
 
 		String currentUserAuthority = (String) session.getAttribute("userAuthority");
 		String userAuthority = currentUserAuthority.substring(5);
-		theModel.addAttribute("userAuthority", userAuthority);
+		model.addAttribute("userAuthority", userAuthority);
 
 		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 		String currentUserId = this.employeeService.findByCurrentUserId(currentUser);
 
-		theModel.addAttribute("employees", leaveRequest);
-		theModel.addAttribute("currentUserId", currentUserId);
+		model.addAttribute("employees", leaveRequest);
+		model.addAttribute("currentUserId", currentUserId);
 		return "/employees/emp-leave-add";
 	}
 
@@ -179,11 +179,11 @@ public class EmployeeController {
 //	-------------------------   Attendance Controller   -----------------------------------------------------------
 
 	@GetMapping("/emp-attendance-count")
-	public String showAttendancePage(HttpSession session, Model theModel) {
+	public String showAttendancePage(HttpSession session, Model model) {
 
 		String currentUserAuthority = (String) session.getAttribute("userAuthority");
 		String userAuthority = currentUserAuthority.substring(5);
-		theModel.addAttribute("userAuthority", userAuthority);
+		model.addAttribute("userAuthority", userAuthority);
 
 		AttendanceCount attendanceCount = new AttendanceCount();
 		LocalDate date = LocalDate.now();
@@ -194,12 +194,12 @@ public class EmployeeController {
 		long totalAttendance = this.employeeService.attendanceCount(currentUser);
 		String totalHours = this.employeeService.attendanceHoursCount(currentUser);
 
-		theModel.addAttribute("employees", employeeName);
-		theModel.addAttribute("attendanceCount", totalAttendance);
-		theModel.addAttribute("totalHours", totalHours);
-		theModel.addAttribute("date", date);
-		theModel.addAttribute("dateTime", dateTime);
-		theModel.addAttribute("punchDateTime", attendanceCount);
+		model.addAttribute("employees", employeeName);
+		model.addAttribute("attendanceCount", totalAttendance);
+		model.addAttribute("totalHours", totalHours);
+		model.addAttribute("date", date);
+		model.addAttribute("dateTime", dateTime);
+		model.addAttribute("punchDateTime", attendanceCount);
 
 		return "/employees/emp-attendance-count";
 	}
@@ -226,45 +226,45 @@ public class EmployeeController {
 
 //	-------------------------    Employees Department Controller   -------------------------------------------------------
 	@GetMapping("/emp-department")
-	public String showEmpDepartmentPage(Model theModel) {
+	public String showEmpDepartmentPage(Model model) {
 
 		List<Department> employeeDep = this.employeeService.findDepartmentList();
 		List<Object[]> groupByRole = this.employeeService.groupByRole();
 
-		theModel.addAttribute("employees", employeeDep);
-		theModel.addAttribute("role", groupByRole);
+		model.addAttribute("employees", employeeDep);
+		model.addAttribute("role", groupByRole);
 
 		return "/employees/emp-department";
 	}
 
 	@GetMapping("/emp-department-add")
-	public String empDepAddPage(Model theModel, Department department) {
+	public String empDepAddPage(Model model, Department department) {
 
 		List<Employee> employees = this.employeeService.findAll();
 
-		theModel.addAttribute("employeeList", employees);
-		theModel.addAttribute("department", department);
+		model.addAttribute("employeeList", employees);
+		model.addAttribute("department", department);
 		return "/employees/emp-department-add";
 	}
 
 	@PostMapping("/emp-department-add")
-	public String empDepAddPage(@ModelAttribute("department") Department employeeDepartment, Model theModel) {
+	public String empDepAddPage(@ModelAttribute("department") Department employeeDepartment, Model model) {
 
 		List<Employee> employees = this.employeeService.findAll();
 
 		this.employeeService.saveDepartmentList(employeeDepartment);
-		theModel.addAttribute("employeeList", employees);
+		model.addAttribute("employeeList", employees);
 		return "redirect:/emp-department";
 	}
 
 	@GetMapping("/emp-department-update")
-	public String empDepartmentUpdate(@RequestParam("employeeId") int theId, Model theModel) {
+	public String empDepartmentUpdate(@RequestParam("employeeId") int theId, Model model) {
 
 		List<Employee> employees = this.employeeService.findAll();
 		Department theEmployee = this.employeeService.findeDepartmentById(theId);
 
-		theModel.addAttribute("employeeList", employees);
-		theModel.addAttribute("department", theEmployee);
+		model.addAttribute("employeeList", employees);
+		model.addAttribute("department", theEmployee);
 		return "/employees/emp-department-add";
 	}
 

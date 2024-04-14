@@ -24,42 +24,42 @@ public class ReportsController {
 	}
 
 	@GetMapping("/reports")
-	public String showReportsPage(Model theModel) {
+	public String showReportsPage(Model model) {
 		
 		List<Reports> reportsList = this.reportsService.findAll();
 		
-		theModel.addAttribute("reportsList",reportsList);
+		model.addAttribute("reportsList",reportsList);
 		
 		return "/reports/reports";
 	}
 	
 	@GetMapping("/add-reports-expense")
-	public String showAddReportsPage(Model theModel){
+	public String showAddReportsPage(Model model){
 
 		Reports reports = new Reports();
 		
-		theModel.addAttribute("reportsList",reports);
+		model.addAttribute("reportsList",reports);
 		return "/reports/add-reports-expense";
 	}
 	
 	@PostMapping("/add-reports-expense")
-	public String showSaveReportsDetai(@ModelAttribute("reportsList") Reports reports, Model themodel ) {
+	public String showSaveReportsDetai(@ModelAttribute("reportsList") Reports reports, Model model ) {
 		
 		this.reportsService.saveDetails(reports);
 		return "redirect:/reports";
 	}
 	
 	@GetMapping("/reports-update")
-	public String showReportsUpdateForm(@RequestParam("reportsId") int theId, Model theModel) {
+	public String showReportsUpdateForm(@RequestParam("reportsId") int theId, Model model) {
 		
 		Reports reports = this.reportsService.findById(theId);
 		
-		theModel.addAttribute("reportsList", reports);
+		model.addAttribute("reportsList", reports);
 		return "/reports/add-reports-expense";
 	}
 	
 	@GetMapping("/reports-delete")
-	public String shwoReportsDeetePage(@RequestParam("reportsId") int theId, Model theModel) {
+	public String shwoReportsDeetePage(@RequestParam("reportsId") int theId, Model model) {
 		
 		this.reportsService.deleteById(theId);
 		return "redirect:/reports";

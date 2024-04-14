@@ -32,18 +32,18 @@ public class ClientController {
 	}
 	
 	@GetMapping("/clients-list")
-	public String showClientsListPage(Model theModel) {
+	public String showClientsListPage(Model model) {
 				
 		List<Clients> clients = this.clientsService.findClientsList();
-		theModel.addAttribute("clients",clients);
+		model.addAttribute("clients",clients);
 		return "/clients/clients-list";
 	}
 	
 	@GetMapping("/add-clients")
-	public String showAddClientsPage(Model theModel) {
+	public String showAddClientsPage(Model model) {
 		
 		Clients clients = new Clients();
-		theModel.addAttribute(clients);
+		model.addAttribute(clients);
 		return "/clients/add-clients";
 	}
 	
@@ -59,10 +59,10 @@ public class ClientController {
 	}
 	
 	@GetMapping("/clients-update")
-	public String empUpdate(@RequestParam("clientId") int theId, Model theModel) {
+	public String empUpdate(@RequestParam("clientId") int theId, Model model) {
 
 		Clients theClients = this.clientsService.findClientsById(theId);
-		theModel.addAttribute("clients", theClients);
+		model.addAttribute("clients", theClients);
 		return "clients/add-clients";
 	}
 	
