@@ -88,16 +88,16 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-update")
-	public String empUpdate(@RequestParam("employeeId") int theId, Model model, HttpSession session) {
+	public String empUpdate(@RequestParam("employeeId") int theId, Model model) {
 
-		String userName = (String) session.getAttribute("username");
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username", userName);
 
+		Employee theEmployee = this.employeeService.findById(theId);
 		List<Department> department = this.employeeService.findDepartmentList();
-		Employee theEmployee = employeeService.findById(theId);
 
-		model.addAttribute("departments", department);
 		model.addAttribute("employees", theEmployee);
-		model.addAttribute("username", userName);
+		model.addAttribute("departments", department);
 		return "employees/emp-add";
 	}
 

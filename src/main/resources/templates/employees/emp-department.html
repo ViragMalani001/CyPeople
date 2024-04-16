@@ -20,13 +20,11 @@
 	   			<tr>
 	   				<th> Department Name </th>
 	   				<th> Department Head </th>
-	   				<th> Total Employee </th>
 	   				<th sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"> Action </th>
 	   			</tr>
 			   	<tr th:each="employee : ${employees}">
 		            <td th:text="${employee.departmentName}"></td>
 		            <td th:text="${employee.departmentHead}"></td>
-		            <td th:text="${employee.totalEmployee}"></td>
 		            <td sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
 		            	<div class="edit">
 							<a th:href="@{/emp-department-update(employeeId=${employee.id})}" >

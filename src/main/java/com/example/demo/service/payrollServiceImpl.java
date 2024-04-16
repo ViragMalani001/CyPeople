@@ -43,6 +43,7 @@ public class payrollServiceImpl implements payrollService {
 		
 		String hourseReteS = employeeDetail.getSalaryHourlyRet();
 		double hourlyRateD = Double.parseDouble(hourseReteS);
+		
 		double totalSalary = totalHoursInt * hourlyRateD;
 		
 		String HouseRents = employeeDetail.getHouseRentAllowances();

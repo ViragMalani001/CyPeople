@@ -18,19 +18,15 @@ public class Department {
 	private String departmentName;
 	private String departmentHead;
 	
-	@Column(name="total_employee")
-	private String totalEmployee;
-	
 	public Department() {
 		super();
 	}
 
-	public Department(int id, String departmentName, String departmentHead, String totalEmployee) {
+	public Department(int id, String departmentName, String departmentHead) {
 		super();
 		this.id = id;
 		this.departmentName = departmentName;
 		this.departmentHead = departmentHead;
-		this.totalEmployee = totalEmployee;
 	}
 
 	public int getId() {
@@ -54,18 +50,10 @@ public class Department {
 		this.departmentHead = departmentHead;
 	}
 
-	public String getTotalEmployee() {
-		return totalEmployee;
-	}
-
-	public void setTotalEmployee(String totalEmployee) {
-		this.totalEmployee = totalEmployee;
-	}
-
 	@Override
 	public String toString() {
 		return "EmployeeDepartment [id=" + id + ", departmentName=" + departmentName + ", departmentHead="
-				+ departmentHead + ", totalEmployee=" + totalEmployee;
+				+ departmentHead;
 	}
 	
 	

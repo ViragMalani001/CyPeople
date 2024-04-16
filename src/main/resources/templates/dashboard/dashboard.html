@@ -6,16 +6,21 @@
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/dashboard/dashboard.css}" />
+
+<!-- Google PNG  -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
-<!-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<!-- Html Page Load -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Chart -->
 <script type="text/javascript"
-    src="https://www.gstatic.com/charts/loader.js"></script>
+	src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Department Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>
 <body>
@@ -25,187 +30,143 @@
 		<div class="dashboard-header">
 			<label> Dashboard </label>
 		</div>
-
-		<div class="emp-list-count">
-			<div class="total-emp">
-				<div class="emp-png">
-					<i class="material-icons" style="font-size: 36px">people</i>
+		<div class="dashboard-second-container">
+			<div class="emp-list-count">
+				<div class="total-emp">
+					<div class="emp-png">
+						<i class="material-icons" style="font-size: 36px">people</i>
+					</div>
+					<div class="emp-count">
+						<label> Total Employee </label> <label th:text="${employeeCount}"></label>
+					</div>
 				</div>
-				<div class="emp-count">
-					<label> Total Employee </label> <label th:text="${employeeCount}"></label>
+
+				<div class="total-department">
+					<div class="department-png">
+						<i class="material-icons" style="font-size: 36px">collections_bookmark</i>
+					</div>
+					<div class="department-count">
+						<label> Total Department </label> <label
+							th:text="${departmentCount}"></label>
+					</div>
+				</div>
+
+				<div class="total-client">
+					<div class="client-png">
+						<i class="material-icons" style="font-size: 36px">person_add </i>
+					</div>
+					<div class="client-count">
+						<label> Total client </label> <label th:text="${clientCount}"></label>
+					</div>
+				</div>
+
+				<div class="total-project">
+					<div class="project-png">
+						<i class="material-icons" style="font-size: 36px">add_to_photos</i>
+					</div>
+					<div class="project-count">
+						<label> Total projects </label> <label th:text="${projectCount}"></label>
+					</div>
+				</div>
+
+				<div class="total-leaveRequest">
+					<div class="leaveRequest-png">
+						<i class="material-icons" style="font-size: 36px">event_available</i>
+					</div>
+					<div class="leaveRequest-count">
+						<label> Total leaveRequest </label> <label
+							th:text="${leaveRequestCount}"></label>
+					</div>
 				</div>
 			</div>
 
-			<div class="total-department">
-				<div class="department-png">
-					<i class="material-icons" style="font-size: 36px">collections_bookmark</i>
-				</div>
-				<div class="department-count">
-					<label> Total Department </label> <label
-						th:text="${departmentCount}"></label>
-				</div>
-			</div>
-
-			<div class="total-client">
-				<div class="client-png">
-					<i class="material-icons" style="font-size: 36px">person_add </i>
-				</div>
-				<div class="client-count">
-					<label> Total client </label> <label th:text="${clientCount}"></label>
-				</div>
-			</div>
-
-			<div class="total-project">
-				<div class="project-png">
-					<i class="material-icons" style="font-size: 36px">add_to_photos</i>
-				</div>
-				<div class="project-count">
-					<label> Total projects </label> <label th:text="${projectCount}"></label>
-				</div>
-			</div>
-
-			<div class="total-leaveRequest">
-				<div class="leaveRequest-png">
-					<i class="material-icons" style="font-size: 36px">event_available</i>
-				</div>
-				<div class="leaveRequest-count">
-					<label> Total leaveRequest </label> <label
-						th:text="${leaveRequestCount}"></label>
-				</div>
-			</div>
-
+			<div id="employeeCount" class="chartDiv"> <label> Total Employee each Department </label> </div>
+			<div id="genderChart" class="genderCount"> <label>Employee Structure</label> </div>
 		</div>
-        <div id="chart_div"></div>
-        <div id="piechart">
 	</div>
 
-<script th:inline="javascript">
-        var real_data = /*[[${chartData}]]*/'noValue';
-        $(document).ready(function() {
-            google.charts.load('current', {
-                packages : [ 'corechart', 'bar' ]
-            });
-            google.charts.setOnLoadCallback(drawColumnChart);
-            google.charts.setOnLoadCallback(drawPieChart);
-        });
-        function drawColumnChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Year');
-            data.addColumn('number', 'Views');
-            Object.keys(real_data).forEach(function(key) {
-                data.addRow([ key, real_data[key] ]);
-            });
-            var options = {
-                title : 'Blog stats',
-                hAxis : {
-                    title : 'Years',
-                },
-                vAxis : {
-                    title : 'View Count'
-                }
-            };
-            var chart = new google.visualization.ColumnChart(document
-                    .getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-        function drawPieChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Year');
-            data.addColumn('number', 'Views');
-            Object.keys(real_data).forEach(function(key) {
-                data.addRow([ key, real_data[key] ]);
-            });
-            var options = {
-                title : 'Blog stats'
-            };
-            var chart = new google.visualization.PieChart(document
-                    .getElementById('piechart'));
-            chart.draw(data, options);
-        }
-    </script>
-
-<!-- 	<script th:inline="javascript">
-		$(function() {
-			Highcharts
-					.chart(
-							'container',
-							{
-								chart : {
-									type : 'column'
-								},
-								title : {
-									text : 'Technology Popularity In India'
-								},
-								subtitle : {
-									text : 'All Details is not true its a dummy Map'
-								},
-								xAxis : {
-									categories : [ [ $surveyMap.keySet() ] ],
-									crosshair : true
-								},
-								yAxis : {
-									min : 0,
-									max : 100,
-									title : {
-										text : 'Technology rating [in %]'
-									}
-								},
-								tooltip : {
-									headerFormat : '<span style="font-size:10px">{point.key}</span><table>',
-									pointFormat : '<tr><td style="color:{series.color};padding:0">{series.name}: </td>'
-											+ '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
-									footerFormat : '</table>',
-									shared : true,
-									useHTML : true
-								},
-								plotOptions : {
-									column : {
-										pointPadding : 0.2,
-										borderWidth : 0
-									}
-								},
-								series : [ {
-									name : 'Technology',
-									data : [ [ $surveyMap.values() ] ]
-								} ]
-							});
-		});
-	</script>
 	<script th:inline="javascript">
-		Highcharts.chart('container2', {
-			chart : {
-				type : 'pie',
-				options3d : {
-					enabled : true,
-					alpha : 50,
-					beta : 0
-				}
+		var data = [
+		/*[# th:each="result : ${departments}"]*/
+		{
+			labels : /*[[${result[1]}]]*/[],
+			count : /*[[${result[0]}]]*/[]
+		},
+		/*[/]*/
+		];
+		var labels = data.map(function(item) {
+			return item.labels;
+		});
+		var counts = data.map(function(item) {
+			return item.count;
+		});
+
+		var ctx = document.createElement('canvas').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type : 'bar',
+			data : {
+				labels : labels,
+				datasets : [ {
+					label : 'Employee Counts By Department',
+					data : counts,
+					backgroundColor : 'rgba(54, 162, 235, 0.2)',
+					borderColor : 'rgba(54, 162, 235, 1)',
+					borderWidth : 1
+				} ]
 			},
-			title : {
-				text : 'Result Status'
-			},
-			tooltip : {
-				pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
-			},
-			plotOptions : {
-				pie : {
-					allowPointSelect : true,
-					cursor : 'pointer',
-					depth : 35,
-					dataLabels : {
-						enabled : true,
-						format : '{point.name}'
+			options : {
+				scales : {
+					y : {
+						beginAtZero : true
 					}
 				}
-			},
-			series : [ {
-				type : 'pie',
-				name : 'Ratio',
-				data : [ [ 'Success', [ [ $pass ] ] ],
-						[ 'Failure', [ [ $fail ] ] ] ]
-			} ]
+			}
 		});
-	</script> -->
+
+		var chartContainer = document.getElementById('employeeCount');
+		chartContainer.appendChild(ctx.canvas);
+	</script>
+	<script th:inline="javascript">
+		var data = [
+		/*[# th:each="result : ${genderCount}"]*/
+		{
+			count : /*[[${result[0]}]]*/[],
+			gender : /*[[${result[1]}]]*/[]
+		},
+		/*[/]*/
+		];
+
+		var labels = data.map(function(item) {
+			return item.gender;
+		});
+		var counts = data.map(function(item) {
+			return item.count;
+		});
+
+		var ctx = document.createElement('canvas').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type : 'doughnut',
+			data : {
+				labels : labels,
+				datasets : [ {
+					label : 'Employee Gender Distribution',
+					data : counts,
+					backgroundColor : [ 'rgba(255, 99, 132, 0.5)', // Red
+					'rgba(54, 162, 235, 0.5)', // Blue
+					],
+					borderColor : [ 'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)', ],
+					borderWidth : 1
+				} ]
+			},
+			options : {
+				cutoutPercentage : 1,
+			}
+		});
+		var chartContainer = document.getElementById('genderChart');
+		chartContainer.appendChild(ctx.canvas);
+	</script>
+
 
 
 	<script>

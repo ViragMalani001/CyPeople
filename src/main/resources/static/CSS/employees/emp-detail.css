@@ -20,6 +20,11 @@
 .emp-detail-label label{
 	font-size: 2rem;
 }
+
+.emp-detail {
+	font-size: 0.9rem;
+}
+
 .emp-detail a{
 	margin-top: 10px;
 	display: block;

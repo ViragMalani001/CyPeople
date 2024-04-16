@@ -1,5 +1,7 @@
 package com.example.demo.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
@@ -49,6 +51,22 @@ public class DashboardADAOImpl implements DashboardDAO {
 		
 		TypedQuery<Long> theQuery = entityManager.createQuery("SELECT count(name) FROM LeaveRequest", long.class);
 		return theQuery.getSingleResult();
+	}
+
+	@Override
+	public List<Object[]> departmentCountByDepartment() {
+		
+		TypedQuery<Object[]> query = entityManager.createQuery("SELECT COUNT(e.name), e.role FROM Employee e GROUP BY e.role", Object[].class);
+		List<Object[]> resultList = query.getResultList();
+		return resultList;
+	}
+
+	@Override
+	public List<Object[]> genderCount() {
+		
+		TypedQuery<Object[]> query = entityManager.createQuery("SELECT COUNT(e.name), e.gender FROM Employee e GROUP BY gender ", Object[].class);
+		List<Object[]> genderCount = query.getResultList();
+		return genderCount;
 	}
 	
 	

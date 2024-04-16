@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DashboardDAO;
@@ -40,6 +42,17 @@ public class DashboardServiceImpl implements DashboardService {
 	public long leaveRequestCount() {
 		
 		return this.dashboardDAO.leaveRequestCount();
+	}
+
+	@Override
+	public List<Object[]> departmentCountByDepartment() {
+		return this.dashboardDAO.departmentCountByDepartment();
+	}
+
+	@Override
+	public List<Object[]> genderCount() {
+		
+		return this.dashboardDAO.genderCount();
 	}
 	
 }

@@ -1,14 +1,20 @@
 package com.example.demo.dao;
 
+import java.util.List;
+
 public interface DashboardDAO {
 
-	public long employeeCount();
+	long employeeCount();
 	
-	public long departmentCount();
+	long departmentCount();
 	
-	public long clientCount();
+	long clientCount();
 	
-	public long projectsCount();
+	long projectsCount();
 	
-	public long leaveRequestCount();
+	long leaveRequestCount();
+	
+	List<Object[]> departmentCountByDepartment();
+	
+	List<Object[]> genderCount();
 }

@@ -37,6 +37,8 @@ public class Employee {
 	@Size(min=10, max=10, message = "Enter Valid Number")
 	private String phone;
 	
+	private String gender;
+	
 	private Date joinDate;
 	private String role;
 	
@@ -77,13 +79,11 @@ public class Employee {
 	public Employee() {
 		super();
 	}
-	
-	 
 
 	public Employee(int id, String name, String employeeId,
 			@NotNull @Size(min = 10, max = 10, message = "Enter Valid Number") String phone, Date joinDate, String role,
 			String salaryHourlyRet, String houseRentAllowances, String medicalAllowances, String specialAllowances,
-			String healthInsurance, String tDS, @Email String email) {
+			String healthInsurance, String tDS, @Email String email, String gender) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -98,9 +98,8 @@ public class Employee {
 		this.healthInsurance = healthInsurance;
 		TDS = tDS;
 		this.email = email;
+		this.gender = gender;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -205,18 +204,21 @@ public class Employee {
 	public void setTDS(String tDS) {
 		TDS = tDS;
 	}
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", employeeId=" + employeeId + ", phone=" + phone
-				+ ", joinDate=" + joinDate + ", role=" + role + ", salaryHourlyRet=" + salaryHourlyRet
+		return "Employee [id=" + id + ", name=" + name + ", employeeId=" + employeeId + ", phone=" + phone + ", gender="
+				+ gender + ", joinDate=" + joinDate + ", role=" + role + ", salaryHourlyRet=" + salaryHourlyRet
 				+ ", houseRentAllowances=" + houseRentAllowances + ", medicalAllowances=" + medicalAllowances
 				+ ", specialAllowances=" + specialAllowances + ", healthInsurance=" + healthInsurance + ", TDS=" + TDS
 				+ ", email=" + email + "]";
 	}
-
-	
-	
-	
-
 }
