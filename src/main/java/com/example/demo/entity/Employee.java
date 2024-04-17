@@ -64,6 +64,9 @@ public class Employee {
 	@Email
 	private String email;
 	
+	@Column
+	private String performance;
+	
 	
 //	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, targetEntity = Employee.class)
 //	@JoinColumn(name = "name")
@@ -83,7 +86,7 @@ public class Employee {
 	public Employee(int id, String name, String employeeId,
 			@NotNull @Size(min = 10, max = 10, message = "Enter Valid Number") String phone, Date joinDate, String role,
 			String salaryHourlyRet, String houseRentAllowances, String medicalAllowances, String specialAllowances,
-			String healthInsurance, String tDS, @Email String email, String gender) {
+			String healthInsurance, String tDS, @Email String email, String gender, String performance) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -99,6 +102,7 @@ public class Employee {
 		TDS = tDS;
 		this.email = email;
 		this.gender = gender;
+		this.performance = performance;
 	}
 
 	public int getId() {
@@ -213,12 +217,22 @@ public class Employee {
 		this.gender = gender;
 	}
 
+	public String getPerformance() {
+		return performance;
+	}
+
+	public void setPerformance(String performance) {
+		this.performance = performance;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", employeeId=" + employeeId + ", phone=" + phone + ", gender="
 				+ gender + ", joinDate=" + joinDate + ", role=" + role + ", salaryHourlyRet=" + salaryHourlyRet
 				+ ", houseRentAllowances=" + houseRentAllowances + ", medicalAllowances=" + medicalAllowances
 				+ ", specialAllowances=" + specialAllowances + ", healthInsurance=" + healthInsurance + ", TDS=" + TDS
-				+ ", email=" + email + "]";
+				+ ", email=" + email + ", performance=" + performance + "]";
 	}
+
+
 }

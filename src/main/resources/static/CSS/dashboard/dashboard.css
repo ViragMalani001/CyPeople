@@ -156,10 +156,10 @@
 		rgba(0, 0, 0, 0.19);
 	background-color: white;
 	border-radius: 10px;
-	border-radius: 10px
+	
 }
 
-.chartDiv label{
+.chartDiv label {
 	font-size: 1.5rem;
 }
 
@@ -175,9 +175,117 @@
 		rgba(0, 0, 0, 0.19);
 }
 
-.genderCount label{
+.genderCount label {
 	font-size: 1.5rem;
 }
+
+.emp-performance {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	width: 60%;
+	height: 70%;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	float: left;
+	width: 60%;
+}
+
+.emp-performance label {
+	margin-left: 20px;
+}
+
+.emp-performance .performance-div {
+	margin: 20px;
+	height: 90%;
+	border: 1px solid none;
+	border-radius: 15px;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.emp-performance label {
+	font-size: 1.5rem;
+}
+
+.performance-table {
+	width: 100%;
+}
+
+.performance-table tr th {
+	padding: 15px;
+	text-align: left;
+	position: sticky;
+	top: 0;
+	color: white;
+	font-size: 1.2rem;
+	background-color: rgb(182, 182, 182);
+	top: 0;
+}
+
+.performance-table tr td {
+	height: 40px;
+	padding: 0.5rem 1rem;
+	vertical-align: top;
+	border-bottom: 1px solid lightgray;
+}
+
+.performance-table tr:hover {
+	background-color: #d3d3d3a8;
+}
+
+.toDoList {
+	margin-left: 10px;
+	margin-bottom: 30px;
+	width: 32%;
+	height: 45%;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	float: left;
+	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.toDoList .toDoList-div {
+	margin: 15px;
+}
+
+.toDoList-add-div {
+	position: sticky;
+	top: -1px;
+	height: 50px;
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+}
+
+.toDoList label {
+	font-size: 1.5rem;
+}
+
+.toDoList-add-div a{
+	display: inline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

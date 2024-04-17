@@ -16,3 +16,15 @@ body{
   border-right: 7px solid #30acb4;
   border-bottom: 7px solid #30acb4;
 }
+
+.setting span{
+	margin: 20px;
+	display: block;
+	font-size: 2rem;
+	
+}
+
+.setting img{
+	margin: 20px;
+	width: 30px;
+}

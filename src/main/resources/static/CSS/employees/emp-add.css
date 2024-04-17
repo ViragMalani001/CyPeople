@@ -10,8 +10,8 @@ body {
 	top: 25px;
 	left: 790px;
 	border: 0.5px solid lightgray;
-	width: 600px;
-	height: 500px;
+	width: 29%;
+	height: 60%;
 	border-radius: 10px;
 	overflow: auto;
 	background-color: white;
@@ -96,14 +96,14 @@ hr {
 }
 
 .emp-form-salaryDetail div {
-	margin-top: 20px;
+	margin: 20px 15px 0px 0px;
+	width: 30%;
 	display: inline-block;
 }
 
 .emp-form-salaryDetail input {
 	margin-top: 5px;
 	padding: 8px;
-	width: 80%;
 	display: block;
 	border-radius: 6px;
 	border: 1px solid lightgray;

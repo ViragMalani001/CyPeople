@@ -13,7 +13,7 @@ body{
   border-bottom: 7px solid #30acb4;
   border-left: 7px solid #30acb4;
   border-top: 7px solid #30acb4;
-  background-color: #f8fcff; 
+  background-color: white; 
   overflow: scroll;
   scrollbar-width: none;
 }

@@ -1,0 +1,1 @@
+alter table employee add column performance varchar(20);
