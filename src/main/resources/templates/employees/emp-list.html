@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="emp-list(employeesList)">
 <head>
 <meta charset="UTF-8" />
 <title>All Employees</title>
@@ -12,8 +12,9 @@
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-	<div id="employees"></div>
+<!-- 	<div id="employees"></div> -->
 	
+	<div th:replace="/employees/employees :: employees"></div>
 	<div class="emp-list">
 		<div class="emp-header">
 			<label> Employees List </label> <a href="/emp-add"> Add Employee
@@ -30,7 +31,7 @@
 					<th>Role</th>
 					<th>Action</th>
 				</tr>
-				<tr th:each="employee : ${employees}">
+				<tr th:each="employee : ${employeesList}">
 					<td th:text="${employee.name}"></td>
 					<td th:text="${employee.employeeId}"></td>
 					<td th:text="${employee.email}"></td>
@@ -62,10 +63,10 @@
 		</div>
 	</div>
 	
-	<script>
+<!-- 	<script>
 		$(function() {
 			$("#employees").load("http://localhost:8080/employees");
 		});
-	</script>
+	</script> -->
 </body>
 </html>

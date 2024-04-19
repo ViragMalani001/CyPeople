@@ -10,7 +10,9 @@
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-	<div id="emp-list"></div>
+	<!-- <div id="emp-list"></div> -->
+	
+	<div th:replace="manubar::manubar(${username}, ${userAuthority})"></div>
 	<div class="add-content">
 		<h4>Add Employee</h4>
 		<hr>
@@ -94,10 +96,10 @@
 		</form>
 	</div>
 
-	<script>
+<!-- 	<script>
 		$(function(){
 			$("#emp-list").load("http://localhost:8080/emp-list");
 		});
-	</script>
+	</script> -->
 </body>
 </html>

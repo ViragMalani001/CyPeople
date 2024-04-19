@@ -156,7 +156,6 @@
 		rgba(0, 0, 0, 0.19);
 	background-color: white;
 	border-radius: 10px;
-	
 }
 
 .chartDiv label {
@@ -255,48 +254,62 @@
 	margin: 15px;
 }
 
-.toDoList-add-div {
+.toDoList .toDoList-div {
+	margin: 15px;
+}
+
+.toDoList-add-div-1 {
+	padding: 10px;
 	position: sticky;
 	top: -1px;
-	height: 50px;
 	background-color: white;
+	position: sticky;
+}
+
+.toDoList-add-div-2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+}
+
+.toDoList-add-div-2 form {
 	display: flex;
 	justify-content: space-between;
+}
+
+.toDoList-add-div-2 input {
+	padding: 10px;
+	width: 80%;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+	font-size: 1rem;
+}
+
+.toDoList-add-div-2 button {
+	padding: 10px;
+	background-color: white;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+}
+.toDoList-add-div-2 button:hover {
+	background-color: darkgray;
+	color: white;
+	transition: 0.5s;
+}
+
+.toDoList-add-div-3 {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.toDoList-add-div-3 div label{
+	font-size: 1.2rem;
 }
 
 .toDoList label {
 	font-size: 1.5rem;
 }
 
-.toDoList-add-div a{
+.toDoList-add-div a {
 	display: inline;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

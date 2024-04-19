@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="employees">
 <head>
 <meta charset="UTF-8" />
 <title>Employees</title>
@@ -8,8 +8,8 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-
-<div id="manubar"></div>
+<div th:replace="manubar::manubar(${username}, ${userAuthority})"></div>
+<!-- <div id="manubar"></div> -->
 	<div class="emp-content">
 		<ul>
 			<li><a th:href="@{/emp-list}"> All Employees </a></li>
@@ -18,10 +18,10 @@
 			<li><a th:href="@{/emp-department}"> Department </a></li>
 		</ul>
 	</div>
-	<script>
+<!-- 	<script>
 		$(function(){
 			$("#manubar").load("http://localhost:8080/manubar");
 		});
-	</script>
+	</script> -->
 </body>
 </html>

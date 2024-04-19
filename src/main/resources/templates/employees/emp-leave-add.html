@@ -17,7 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
    			<input type="hidden" th:field="*{id}" />
 		   		<div class="emp-form-div">
 			   		<select  th:field="*{name}"> 
-			   			<option th:text="${username}" th:value="${username}"></option>
+			   			<option th:text="${currentUser}" th:value="${currentUser}"></option>
 			   			<!-- 
 	  					<option th:value="${#authentication.principal.username}" sec:authentication="principal.username"></option>
 			   			 -->

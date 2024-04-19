@@ -24,7 +24,8 @@
 
 </head>
 <body>
-	<div id="manubar"></div>
+	<!-- <div id="manubar"></div> -->
+	<div th:replace="manubar::manubar(${username}, ${userAuthority})"></div>
 
 	<div class="dashboard-container">
 		<div class="dashboard-header">
@@ -88,71 +89,51 @@
 			</div>
 		</div>
 		<div class="emp-performance">
-				<label> Employees Performance </label>
-				<div class="performance-div">
-					<table class="performance-table">
-						<tr>
-							<th>NAME</th>
-							<th>DESIGNATION</th>
-							<th>PERFORMANCE</th>
-						</tr>
-						<tr th:each="employees : ${employeeList}">
-							<td th:text="${employees.name}"></td>
-							<td th:text=${employees.role}></td>
-							<td th:text="${employees.performance}"></td>
-						</tr>
-					</table>
-				</div>
+			<label> Employees Performance </label>
+			<div class="performance-div">
+				<table class="performance-table">
+					<tr>
+						<th>NAME</th>
+						<th>DESIGNATION</th>
+						<th>PERFORMANCE</th>
+					</tr>
+					<tr th:each="employees : ${employeeList}">
+						<td th:text="${employees.name}"></td>
+						<td th:text=${employees.role}></td>
+						<td th:text="${employees.performance}"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		
+
 		<div class="toDoList">
 			<div class="toDoList-div">
-				<div class="toDoList-add-div">
+				<div class="toDoList-add-div-1">
 					<label> ToDoList </label>
-					<!-- <a>Add TODO</a> -->
+				<div sec:authorize="hasAnyRole('MANAGER', 'ADMIN')" class="toDoList-add-div-2">
+					<form action="#" th:action="@{/toDoMessage}" th:object="${toDoMessage}" method="post">
+						<input type="hidden" th:field="*{id}" /> 
+						<input th:field="*{message}" type="text" placeholder="ToDo Message">
+						<button type="submit">Send</button>	
+					</form>
 				</div>
+				</div>
+
 				
-				<h3> New Employee intro </h3>
-				<p> SCHEDULED FOR 3:00 P.M. ON DAY </p>
-				
-				<h3>Send email to CEO</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-					
-				<h3>Birthday Wish</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-				
-				<h3> New Employee intro </h3>
-				<p> SCHEDULED FOR 3:00 P.M. ON DAY </p>
-				
-				<h3>Send email to CEO</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-					
-				<h3>Birthday Wish</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-				
-				<h3> New Employee intro </h3>
-				<p> SCHEDULED FOR 3:00 P.M. ON DAY </p>
-				
-				<h3>Send email to CEO</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-					
-				<h3>Birthday Wish</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-				
-				<h3> New Employee intro </h3>
-				<p> SCHEDULED FOR 3:00 P.M. ON DAY </p>
-				
-				<h3>Send email to CEO</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-					
-				<h3>Birthday Wish</h3>
-				<p>SCHEDULED FOR 4:30 P.M. ON DAY</p>
-					
+				<div class="toDoList-add-div-3">
+					<div th:each="messages : ${message}">				
+						<label th:text="${messages.message}"></label>
+					<hr>
+					</div>
+
+				</div>
+
+
 			</div>
 
 		</div>
-		
-		
+
+
 	</div>
 
 	<script th:inline="javascript">
@@ -239,10 +220,10 @@
 
 
 
-	<script>
+<!-- 	<script>
 		$(function() {
 			$("#manubar").load("http://localhost:8080/manubar");
 		});
-	</script>
+	</script> -->
 </body>
 </html>

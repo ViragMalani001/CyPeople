@@ -20,7 +20,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class ManubarController {
 	
-	private static final String Registration = null;
 	private DashboardService dashboardService;
 
 	public ManubarController(DashboardService dashboardService) {
@@ -41,25 +40,26 @@ public class ManubarController {
 //		Collection<? extends GrantedAuthority> currentUserAuthority = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
 //		Set CurrentUserName Session
 		String currentUser = authentication.getName();
 		session.setAttribute("username", currentUser);
-
-		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
 		String userName = (String) session.getAttribute("username");
 		model.addAttribute("username",userName);
+
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		
 		
 //		Set CurrentUserName authority Session
 		for (GrantedAuthority authority : authorities) {
 		    String authorityName = authority.getAuthority();
 		    
 		    session.setAttribute("userAuthority", authorityName);
-		    
 		    String currentUserAuthority = (String) session.getAttribute("userAuthority");
 		    String userAuthority = currentUserAuthority.substring(5);
 		    model.addAttribute("userAuthority",userAuthority);
+		    
+		    session.setAttribute("userNameAuthority", userAuthority);
 		    
 		    
 		}
