@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.time.LocalDate;
 
 
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -37,11 +38,12 @@ public class EmployeeController {
 
 	@GetMapping("/employees")
 	public String showEmployesPage(Model model, HttpSession session) {
-//		Session
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username", userName);
-//		String userRole = (String) session.getAttribute("userNameAuthority");
-//		model.addAttribute("userAuthority",userRole);
+
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		return "/employees/employees";
 	}
 
@@ -49,11 +51,11 @@ public class EmployeeController {
 	@GetMapping("/emp-list")
 	public String showEmpAllPage(Model model, HttpSession session) {
 
-//		Session
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username", userName);
-//		String userRole = (String) session.getAttribute("userNameAuthority");
-//		model.addAttribute("userAuthority",userRole);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		List<Employee> employeesList = this.employeeService.findAll();
 		model.addAttribute("employeesList", employeesList);
@@ -65,12 +67,12 @@ public class EmployeeController {
 
 	@GetMapping("/emp-add")
 	public String empAddPage(Model model, HttpSession session) {
-
-//		session
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username", userName);
-//		String userRole = (String) session.getAttribute("userNameAuthority");
-//		model.addAttribute("userAuthority",userRole);
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 
 		Employee employees = new Employee();
 		model.addAttribute("employees", employees);
@@ -99,7 +101,13 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-update")
-	public String empUpdate(@RequestParam("employeeId") int theId, Model model) {
+	public String empUpdate(@RequestParam("employeeId") int theId, Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 
 		Employee theEmployee = this.employeeService.findById(theId);
 		List<Department> department = this.employeeService.findDepartmentList();
@@ -117,8 +125,14 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-detail")
-	public String empDetailPage(Model model) {
+	public String empDetailPage(Model model, HttpSession session) {
 
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		List<Employee> employee = this.employeeService.findAll();
 		model.addAttribute("employeesDetail", employee);
 		return "/employees/emp-detail";
@@ -126,8 +140,14 @@ public class EmployeeController {
 
 //----------------------------  Leave Controller    ------------------------------------------------------
 	@GetMapping("/emp-leave")
-	public String showEmpLeaveAddPage(Model model) {
+	public String showEmpLeaveAddPage(Model model, HttpSession session) {
 
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		List<LeaveRequest> employees = this.employeeService.findLeaveList();
 		model.addAttribute("employees", employees);
 		return "/employees/emp-leave";
@@ -148,9 +168,13 @@ public class EmployeeController {
 	@GetMapping("/emp-leave-add")
 	public String empLeaveAddPage(HttpSession session, Model model, LeaveRequest leaveRequest, Employee employee) {
 
-		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
-		model.addAttribute("currentUser",currentUser);
-		String currentUserId = this.employeeService.findByCurrentUserId(currentUser);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentAuthority);
+ 		
+		String currentUserId = this.employeeService.findByCurrentUserId(userName);
 
 		model.addAttribute("employees", leaveRequest);
 		model.addAttribute("currentUserId", currentUserId);
@@ -183,9 +207,11 @@ public class EmployeeController {
 	@GetMapping("/emp-attendance-count")
 	public String showAttendancePage(HttpSession session, Model model) {
 
-		String currentUserAuthority = (String) session.getAttribute("userAuthority");
-		String userAuthority = currentUserAuthority.substring(5);
-		model.addAttribute("userAuthority", userAuthority);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority", currentUserAuthority);
 
 		AttendanceCount attendanceCount = new AttendanceCount();
 		LocalDate date = LocalDate.now();
@@ -228,8 +254,14 @@ public class EmployeeController {
 
 //	-------------------------    Employees Department Controller   -------------------------------------------------------
 	@GetMapping("/emp-department")
-	public String showEmpDepartmentPage(Model model) {
+	public String showEmpDepartmentPage(Model model, HttpSession session) {
 
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		List<Department> employeeDep = this.employeeService.findDepartmentList();
 		List<Object[]> groupByRole = this.employeeService.groupByRole();
 
@@ -240,8 +272,14 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/emp-department-add")
-	public String empDepAddPage(Model model, Department department) {
+	public String empDepAddPage(Model model, Department department, HttpSession session) {
 
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("uername",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		List<Employee> employees = this.employeeService.findAll();
 
 		model.addAttribute("employeeList", employees);

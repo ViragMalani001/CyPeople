@@ -10,7 +10,7 @@
 	th:href="@{/CSS/employees/emp-leave.css}" />
 </head>
 <body>
-	<div id="employees"></div>
+<div th:replace="/employees/employees :: employees"></div>
 	<div class="emp-list">
 		<div class="emp-header">
 			<label>Employees Leave List</label> <a href="/emp-leave-add"> Add
@@ -61,11 +61,5 @@
 			</table>
 		</div>
 	</div>
-
-	<script>
-		$(function() {
-			$("#employees").load("http://localhost:8080/employees");
-		});
-	</script>
 </body>
 </html>

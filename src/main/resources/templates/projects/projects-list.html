@@ -5,11 +5,10 @@
     <title>Projects List</title>
     <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects-list.css}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   </head>
   <body>
-   <div id="projects"></div>
    
+   <div th:replace="/projects/projects :: projects"></div>
       <div class="projects-list">
 	   	<div class="projects-header">
 	   		<label>Project List</label>
@@ -54,10 +53,5 @@
 	   	</div>
    </div>   
    
-    <script>
-	      $(function() {
-	         $("#projects").load("http://localhost:8080/projects");
-	      });
-	</script>
   </body>
 </html>

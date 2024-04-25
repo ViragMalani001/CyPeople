@@ -17,6 +17,8 @@ import com.example.demo.entity.Employee;
 import com.example.demo.service.EmployeeService;
 import com.example.demo.service.payrollService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class PayRollController {
 	
@@ -30,17 +32,37 @@ public class PayRollController {
 	}
 
 	@GetMapping("/payroll")
-	public String showPayrollsPage() {
+	public String showPayrollsPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		return "/payroll/payroll";
 	}
 	
 	@GetMapping("/payslip")
-	public String showPaySlipPage() {
+	public String showPaySlipPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		return "/payroll/payslip";
 	}
 	
 	@GetMapping("/emp-salary")
-	public String showEmpSalaryPage(Model model) {
+	public String showEmpSalaryPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 		String totalHours = this.employeeService.attendanceHoursCount(currentUser);

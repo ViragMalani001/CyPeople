@@ -6,18 +6,17 @@ body {
 }
 
 .add-content {
+	width: 80%;
+	height: 55%;
 	position: absolute;
-	top: 25px;
-	left: 790px;
-	border: 0.5px solid lightgray;
-	width: 29%;
-	height: 60%;
+	top: 134px;
+	left: 250px;
 	border-radius: 10px;
-	overflow: auto;
 	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
 		rgba(0, 0, 0, 0.19);
-	transition: 2s;
 }
 
 .add-content h4 {
@@ -29,54 +28,57 @@ hr {
 	border: 1px solid lightgray;
 }
 
-.emp-form-div {
+.emp-form-div{
 	margin: 10px 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
-/*
-.emp-form-div select{
-	width: 49%;
+.emp-form-div div{
+	width: 20%;
+}
+.emp-form-div-1 label{
+	margin-bottom: 10px;
+	display: block;
+}
+
+.emp-form-div-1 input {
+	
 	padding: 8px 0px 8px 10px;
+	width: 90%;
 	border: 1px solid lightgray;
 	border-radius: 6px;
 }
-*/
-.emp-form-div input {
-	width: 47%;
-	padding: 8px 0px 8px 10px;
-	border: 1px solid lightgray;
-	border-radius: 6px;
+
+.emp-form-gender{
+	margin: 10px 20px;
 }
 
-.emp-form-number {
-	margin: 10px 20px;
+.emp-form-gender label{
+	display: block;
+	margin-bottom: 10px;
 }
 
 .emp-form-gender select {
-	margin-left: 20px;
 	padding: 8px 0px 8px 10px;
-	width: 45%;
+	width: 16%;
 	border: 1px solid lightgray;
 	border-radius: 6px;
 }
 
-.emp-form-number input {
-	margin-bottom: 10px;
-	padding: 8px 0px 8px 10px;
-	width: 47%;
-	border: 1px solid lightgray;
-	border-radius: 6px;
-	display: inline-block;
-}
 
+.emp-form-date{
+	margin: 10px 20px;
+}
 .emp-form-date label {
 	display: block;
-	margin: 10px 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .emp-form-date input {
-	margin-left: 20px;
-	width: 260px;
+	width: 15.5%;
 	padding: 8px 0px 8px 10px;
 	border: 1px solid lightgray;
 	border-radius: 6px;
@@ -84,7 +86,7 @@ hr {
 }
 
 .emp-form-date select {
-	width: 45%;
+	width: 16%;
 	padding: 8px 0px 8px 10px;
 	border: 1px solid lightgray;
 	border-radius: 6px;
@@ -92,25 +94,27 @@ hr {
 }
 
 .emp-form-salaryDetail {
-	margin: 0px 20px 20px 20px;
+	margin: 10px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
-.emp-form-salaryDetail div {
-	margin: 20px 15px 0px 0px;
-	width: 30%;
-	display: inline-block;
+.emp-form-salaryDetail div label{
+	margin-bottom: 10px;
 }
 
 .emp-form-salaryDetail input {
-	margin-top: 5px;
 	padding: 8px;
+	width: 90%;
 	display: block;
 	border-radius: 6px;
 	border: 1px solid lightgray;
 }
 
 .emp-form-action input {
-	margin: 0px 20px;
+	margin: 10px 20px;
 	padding: 8px;
 	background-color: lightblue;
 	color: white;
@@ -120,12 +124,7 @@ hr {
 	font-size: 1rem;
 }
 
-.emp-form-action {
-	margin-top: 20px;
-}
-
 .emp-form-action a {
-	margin-top: 20px;
 	padding: 8px;
 	text-decoration: none;
 	border: 1px solid lightgray;

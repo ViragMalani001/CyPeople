@@ -8,8 +8,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-department.css}" />
 </head>
 <body>
-   <div id="employees"></div>
    
+   <div th:replace="/employees/employees :: employees"></div>
    <div class="emp-list">
 	   	<div class="emp-header">
 	   		<label>Employees Department List</label>
@@ -43,10 +43,5 @@
 	   	</div>
    </div>   
    
-    <script>
-	      $(function() {
-	         $("#employees").load("http://localhost:8080/employees");
-	      });
-	</script>
 </body>
 </html>

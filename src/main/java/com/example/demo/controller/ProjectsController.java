@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Projects;
 import com.example.demo.service.ProjectsService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ProjectsController {
 	
@@ -24,12 +26,25 @@ public class ProjectsController {
 
 	
 	@GetMapping("/projects")
-	public String showProjectsPage() {
+	public String showProjectsPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		return "/projects/projects";
 	}
 	
 	@GetMapping("/projects-add")
-	public String projectsAddPage(Model model){
+	public String projectsAddPage(Model model, HttpSession session){
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		Projects projects = new Projects();
 		model.addAttribute("projects",projects);
@@ -45,7 +60,13 @@ public class ProjectsController {
 	
 	
 	@GetMapping("/projects-list")
-	public String showProjectsListPage(Model model){
+	public String showProjectsListPage(Model model, HttpSession session){
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		List<Projects> projects = this.projectsService.findProjectsList();
 		model.addAttribute("projects",projects);
@@ -53,8 +74,14 @@ public class ProjectsController {
 	}
 	
 	@GetMapping("/projects-update")
-	public String projectUpdatePage(@RequestParam("projectId") int theId, Model model) {
-				
+	public String projectUpdatePage(@RequestParam("projectId") int theId, Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		Projects project = this.projectsService.findProjectsById(theId);
 		model.addAttribute("projects",project);
 		return "projects/projects-add";	
@@ -69,7 +96,13 @@ public class ProjectsController {
 	
 	
 	@GetMapping("/projects-detail")
-	public String showProjectsDetailPage(Model model){
+	public String showProjectsDetailPage(Model model, HttpSession session){
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		List<Projects> projects = this.projectsService.findProjectsList();
 		model.addAttribute("projects",projects);

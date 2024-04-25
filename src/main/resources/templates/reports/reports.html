@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar :: layout(~{::section})" th:fragment="reports" >
 <head>
 <meta charset="UTF-8" />
 <title>Reports</title>
 <link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/reports/reports.css}" />
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	th:href="@{/CSS/reports/reports.css}" th:fragment="reportsCSS" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
 </head>
 <body>
-	<div id="manubar"></div>
 
+
+<section>
 	<div class="reports-div">
 		<div class="reports-header">
 			<label> Report Expense </label> <a th:href="@{/add-reports-expense}">
@@ -60,11 +60,7 @@
 			</div>
 		</div>
 	</div>
+</section>
 
-	<script>
-		$(function() {
-			$("#manubar").load("http://localhost:8080/manubar");
-		});
-	</script>
 </body>
 </html>

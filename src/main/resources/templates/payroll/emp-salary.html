@@ -4,11 +4,10 @@
 	<meta charset="UTF-8">
 	<title> Salary Page </title>
 	    <link rel="stylesheet" type="text/css" th:href="@{/CSS/payroll/emp-salary.css}" />
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-	<div id="payroll"></div>
 	
+	<div th:replace="/payroll/payroll :: payroll"></div>
 	<div class="emp-salary">
 		<div class="emp-salary-header">
 			<label> Employee Salary </label>		
@@ -37,10 +36,5 @@
 		</div>
 	</div>
 	
-	<script type="text/javascript">
-		$(function(){
-			$("#payroll").load("http://localhost:8080/payroll");
-		});
-	</script>
 </body>
 </html>

@@ -7,8 +7,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-department-add.css}" />
 </head>
 <body> 
-   <div id="emp-department"></div>
-   
+   <div th:replace="/employees/employees :: employees"></div>
    <div class="add-content">
    		<h4>Add Department</h4>
    		<form action="#" th:action="@{/emp-department-add}" th:object="${department}" method="post">
@@ -33,10 +32,6 @@
    		</form>
    </div>
    
-    <script>
-	      $(function() {
-	         $("#emp-department").load("http://localhost:8080/emp-department");
-	      });
-	</script>
+   
 </body>
 </html>

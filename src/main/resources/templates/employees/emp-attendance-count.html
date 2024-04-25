@@ -9,8 +9,8 @@
 
 </head>
 <body>
-	<div id="employees"></div>
 	
+	<div th:replace="/employees/employees :: employees"></div>
 	<div class="emp-attendance">
 
 		<div class="avg-attendance">
@@ -81,11 +81,6 @@
 		</div>
 	</div>
 
-	<script>
-		$(function() {
-			$("#employees").load("http://localhost:8080/employees");
-		});
-	</script>
 	<script th:inline="javascript">
 	   
 	   function punchTime(button) {

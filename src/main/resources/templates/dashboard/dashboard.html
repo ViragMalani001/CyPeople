@@ -1,32 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar :: layout(~{ :: section})">
 <head>
 <meta charset="UTF-8" />
 <title>Dashboard</title>
 
 <link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/dashboard/dashboard.css}" />
-
-<!-- Google PNG  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-
-<!-- Html Page Load -->
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Chart -->
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
-
-<!-- Department Chart -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+	th:href="@{/CSS/dashboard/dashboard.css}" th:fragment="dashboardCSS" />
 
 </head>
 <body>
-	<!-- <div id="manubar"></div> -->
-	<div th:replace="manubar::manubar(${username}, ${userAuthority})"></div>
 
+	<section>
 	<div class="dashboard-container">
 		<div class="dashboard-header">
 			<label> Dashboard </label>
@@ -217,13 +201,7 @@
 		var chartContainer = document.getElementById('genderChart');
 		chartContainer.appendChild(ctx.canvas);
 	</script>
+	</section>
 
-
-
-<!-- 	<script>
-		$(function() {
-			$("#manubar").load("http://localhost:8080/manubar");
-		});
-	</script> -->
 </body>
 </html>

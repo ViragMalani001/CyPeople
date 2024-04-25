@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="/manubar :: layout(~{::section})">
 <head>
 <meta charset="UTF-8">
 <title> Report Add </title>
-    <link rel="stylesheet" type="text/css" th:href="@{/CSS/reports/add-report-expense.css}" />
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/reports/add-report-expense.css}" th:fragment="addReportExpenseCSS"/>
 </head>
 <body>
-   <div id="reports"></div>
    
+<section>
    <div class="add-reports">
    		<h4> Add Report </h4>   	
    		<hr>	
@@ -63,12 +62,8 @@
 	   			</div>   			
    		</form>
    </div>
+</section>
    
-    <script>
-	      $(function() {
-	         $("#reports").load("http://localhost:8080/reports");
-	      });
-	</script>
 
 </body>
 </html>

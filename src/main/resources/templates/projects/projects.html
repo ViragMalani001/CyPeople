@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar::layout(~{::section})" th:fragment="projects">
   <head>
     <meta charset="UTF-8" />
     <title>Projects</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects.css}" />
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects.css}" th:fragment="projectsCSS"/>
   </head>
   <body>
-   <div id="manubar"></div>
    
+   <section>
    <div class="projects-content">
 		<ul>
 	        <li><a th:href="@{/projects-add}"> Add Projects </a></li>
@@ -16,11 +15,7 @@
 	        <li><a th:href="@{/projects-detail}"> Project Detail </a></li>
 	    </ul>
    </div>
+   </section>
    
-    <script>
-	      $(function() {
-	         $("#manubar").load("http://localhost:8080/manubar");
-	      });
-	</script>
   </body>
 </html>

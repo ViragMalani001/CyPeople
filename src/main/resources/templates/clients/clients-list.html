@@ -9,8 +9,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/CSS/clients/clients-list.css}" />
 </head>
 <body> 
-   <div id="clients"></div>
-   
+   <div th:replace="/clients/clients :: clients"></div>
    <div class="client-list">
    		  <div class="client-header">
 	   		<label>Client List</label>
@@ -49,10 +48,5 @@
 	   		</table>
 	   	</div>
    </div>
-    <script>
-	      $(function() {
-	         $("#clients").load("http://localhost:8080/clients");
-	      });
-	</script>
 </body>
 </html>

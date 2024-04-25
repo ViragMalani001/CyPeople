@@ -8,8 +8,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-leave-add.css}" />
 </head>
 <body> 
-   <div id="emp-leave"></div>
    
+   <div th:replace="/employees/employees :: employees"></div>
    <div class="add-content">
    		<h4>Add leave Request </h4>
    		<hr>
@@ -17,14 +17,13 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
    			<input type="hidden" th:field="*{id}" />
 		   		<div class="emp-form-div">
 			   		<select  th:field="*{name}"> 
-			   			<option th:text="${currentUser}" th:value="${currentUser}"></option>
+			   			<option th:text="${username}" th:value="${username}"></option>
 			   			<!-- 
 	  					<option th:value="${#authentication.principal.username}" sec:authentication="principal.username"></option>
 			   			 -->
 	  				</select>
 	  				
-			   		<select  th:field="*{employeeId}"> 
-			   			<option value=""> Select EmployeeId </option>
+			   		<select  th:field="*{employeeId}">
 	  					<option th:text="${currentUserId}" th:value="${currentUserId}"></option>
 	  				</select>
 		   		</div>
@@ -46,11 +45,5 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
    		</form>
    </div>
-   
-    <script>
-	      $(function() {
-	         $("#emp-leave").load("http://localhost:8080/emp-leave");
-	      });
-	</script>
 </body>
 </html>

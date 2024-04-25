@@ -1,20 +1,23 @@
 @charset "UTF-8";
 
 .emp-detail{
-		width: 85%;
+	padding: 20px;
+		width: 80%;
 	height: 80%;
 	position: absolute;
 	top: 134px;
 	left: 250px;
 	border:1px solid #8ad0e70f;
 	border-radius: 10px;
-	background-color: #8ad0e70f;
+	background-color: white;
 	overflow: auto;
 	scrollbar-width: none;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 }
 
 .emp-detail-label{
-	margin: 20px;
+	margin-bottom: 20px;
 }
 
 .emp-detail-label label{
@@ -33,9 +36,13 @@
 	color: blue;
 }
 
+.emp-detail-table{
+	border: 1px solid none;
+	border-radius: 20px;
+	overflow: auto;
+}
+
 .emp-detail-table table{
-	width: 100%;
-	border-radius: 15px;
 	background-color: white;
 }
 

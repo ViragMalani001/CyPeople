@@ -1,8 +1,13 @@
 package com.example.demo.controller;
 
+import java.util.Collection;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,11 +41,26 @@ public class DashboardController {
 	@GetMapping("/dashboard")
 	public String showDashboardPage(Model model, HttpSession session) {
 
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username", userName);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//			Set CurrentUserName Session
+		String currentUser = authentication.getName();
+		session.setAttribute("username", currentUser);
 
-		String userRole = (String) session.getAttribute("userNameAuthority");
-		model.addAttribute("userAuthority",userRole);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		 
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+//			Set CurrentUserName authority Session
+		for (GrantedAuthority authority : authorities) {
+			String authorityName = authority.getAuthority();
+
+			session.setAttribute("userAuthority", authorityName);
+			String currentUserAuthority = (String) session.getAttribute("userAuthority");
+			String userAuthority = currentUserAuthority.substring(5);
+			session.setAttribute("role", userAuthority);
+			model.addAttribute("userAuthority", userAuthority);
+		}
 
 		long employeeCount = this.dashboardService.employeeCount();
 		model.addAttribute("employeeCount", employeeCount);

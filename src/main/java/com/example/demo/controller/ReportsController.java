@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import com.example.demo.entity.Reports;
 import com.example.demo.service.ReportsService;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class ReportsController {
@@ -24,42 +26,57 @@ public class ReportsController {
 	}
 
 	@GetMapping("/reports")
-	public String showReportsPage(Model model) {
+	public String showReportsPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		List<Reports> reportsList = this.reportsService.findAll();
-		
 		model.addAttribute("reportsList",reportsList);
 		
 		return "/reports/reports";
 	}
 	
 	@GetMapping("/add-reports-expense")
-	public String showAddReportsPage(Model model){
+	public String showAddReportsPage(Model model, HttpSession session){
 
-		Reports reports = new Reports();
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
 		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
+		Reports reports = new Reports();
 		model.addAttribute("reportsList",reports);
 		return "/reports/add-reports-expense";
 	}
 	
 	@PostMapping("/add-reports-expense")
-	public String showSaveReportsDetai(@ModelAttribute("reportsList") Reports reports, Model model ) {
+	public String showSaveReportsDetai(@ModelAttribute("reportsList") Reports reports, Model model) {
 		
 		this.reportsService.saveDetails(reports);
 		return "redirect:/reports";
 	}
 	
 	@GetMapping("/reports-update")
-	public String showReportsUpdateForm(@RequestParam("reportsId") int theId, Model model) {
+	public String showReportsUpdateForm(@RequestParam("reportsId") int theId, Model model, HttpSession session) {
+
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		Reports reports = this.reportsService.findById(theId);
-		
 		model.addAttribute("reportsList", reports);
 		return "/reports/add-reports-expense";
 	}
 	
 	@GetMapping("/reports-delete")
-	public String shwoReportsDeetePage(@RequestParam("reportsId") int theId, Model model) {
+	public String shwoReportsDeetePage(@RequestParam("reportsId") int theId, Model model, HttpSession session) {
 		
 		this.reportsService.deleteById(theId);
 		return "redirect:/reports";

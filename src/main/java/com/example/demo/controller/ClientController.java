@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Clients;
 import com.example.demo.service.ClientsService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -27,20 +28,39 @@ public class ClientController {
 
 	// ----------------------------- Clients Page ------------------------------
 	@GetMapping("/clients")
-	public String showClientsPage() {
+	public String showClientsPage(HttpSession session, Model model) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		return "/clients/clients";
 	}
 	
 	@GetMapping("/clients-list")
-	public String showClientsListPage(Model model) {
-				
+	public String showClientsListPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("username");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		List<Clients> clients = this.clientsService.findClientsList();
 		model.addAttribute("clients",clients);
 		return "/clients/clients-list";
 	}
 	
 	@GetMapping("/add-clients")
-	public String showAddClientsPage(Model model) {
+	public String showAddClientsPage(Model model, HttpSession session) {
+		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		Clients clients = new Clients();
 		model.addAttribute(clients);
@@ -48,8 +68,13 @@ public class ClientController {
 	}
 	
 	@PostMapping("/add-clients")
-	public String clientsDetailsSave(@Valid @ModelAttribute("clients") Clients clients, BindingResult theBindingResult) {
+	public String clientsDetailsSave(@Valid @ModelAttribute("clients") Clients clients, BindingResult theBindingResult, HttpSession session, Model model) {
 		
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		if(theBindingResult.hasErrors()) {
 			return "/clients/add-clients";
@@ -59,8 +84,14 @@ public class ClientController {
 	}
 	
 	@GetMapping("/clients-update")
-	public String empUpdate(@RequestParam("clientId") int theId, Model model) {
+	public String empUpdate(@RequestParam("clientId") int theId, Model model, HttpSession session) {
 
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
 		Clients theClients = this.clientsService.findClientsById(theId);
 		model.addAttribute("clients", theClients);
 		return "clients/add-clients";

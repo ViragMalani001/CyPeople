@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <title>Projects</title>
     <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects-add.css}" />
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   </head>
   <body>
-   <div id="projects-list"></div>
    
+   <div th:replace="/projects/projects :: projects"></div>
    <div class="add-projects">
 	   	<h4> Create New Projects </h4>  	
 	   	<hr>
@@ -64,11 +63,5 @@
    		</form>
    </div>
    
-   
-    <script>
-	      $(function() {
-	         $("#projects-list").load("http://localhost:8080/projects-list");
-	      });
-	</script>
   </body>
 </html>
