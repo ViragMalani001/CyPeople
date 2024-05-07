@@ -9,5 +9,4 @@ import com.example.demo.entity.LeaveRequest;
 public interface LeaveRequestJPArepository extends JpaRepository<LeaveRequest, Integer> {
 
 	Optional<LeaveRequest> findById(int employeeId);
-
 }

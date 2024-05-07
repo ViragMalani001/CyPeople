@@ -12,6 +12,7 @@ import com.example.demo.entity.Department;
 import com.example.demo.entity.Employee;
 import com.example.demo.entity.LeaveRequest;
 
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -118,6 +119,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             this.leaveRequestJPArepository.save(leaveAction);
         }		
 	}
+
 	
 //	----------------  Attendance Count -----------------------
 	@Override

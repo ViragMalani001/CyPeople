@@ -1,10 +1,13 @@
 package com.example.demo.dao;
 
+import java.sql.Date;
+
 import java.time.Duration;
 
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
@@ -130,6 +133,37 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
 		entityManager.remove(deleteLeaveRequest);
 	}
 
+
+//	@Override
+//	public List<LeaveRequestRightJoin> empName() {
+//		TypedQuery<LeaveRequestRightJoin> query = entityManager.createQuery("select new com.example.demo.entity.LeaveRequestRightJoin(e.name, l.employeeId, l.startDate, l.endDate, l.reason, l.approvalStatus) from Employee e right join LeaveRequest l on e.employeeId = l.employeeId", LeaveRequestRightJoin.class);
+//		List<LeaveRequestRightJoin> employeesNameList = query.getResultList();
+//		return employeesNameList;
+//	}
+	
+	@Override
+	public List<LeaveRequest> empNameNew() {
+		TypedQuery<Object[]> query = entityManager.createQuery("select e.name, l.id, l.employeeId, l.startDate, l.endDate, l.reason, l.approvalStatus from Employee e right join LeaveRequest l on e.employeeId = l.employeeId", Object[].class);
+		List<Object[]> resultList = query.getResultList();
+		
+		List<LeaveRequest> employeesNameList = new ArrayList<>();
+
+		for (Object[] result : resultList) {
+		    LeaveRequest leaveRequest = new LeaveRequest();
+		    
+		    leaveRequest.setName((String) result[0]);	
+		    leaveRequest.setId((int) result[1]) ;
+		    leaveRequest.setEmployeeId((String) result[2]);
+		    leaveRequest.setStartDate((Date) result[3]);
+		    leaveRequest.setEndDate((Date) result[4]);
+		    leaveRequest.setReason((String) result[5]);
+		    leaveRequest.setApprovalStatus((String) result[6]);
+		    
+		    employeesNameList.add(leaveRequest);
+		}
+
+		return employeesNameList;
+	}
 	
 //	---------------- Attendance Count List ------------
 	@Override
@@ -242,6 +276,7 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
 		Department deleteDepartmentById = entityManager.find(Department.class, theId);
 		entityManager.remove(deleteDepartmentById);
 	}
+
 
 
 

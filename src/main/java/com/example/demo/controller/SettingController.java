@@ -17,6 +17,9 @@ public class SettingController {
 		
 		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
+		
+		
+		
 		return "/setting/setting";
 	}
 }

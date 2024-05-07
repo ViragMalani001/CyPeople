@@ -1,6 +1,8 @@
 package com.example.demo.dao;
 
 import java.time.LocalDate;
+
+
 import java.util.List;
 
 import com.example.demo.entity.AttendanceCount;
@@ -38,6 +40,10 @@ public interface EmployeeDAO {
 	LeaveRequest findLeaveRequestById(int theId);
 	
 	LeaveRequest saveLeaveRequest(LeaveRequest leaveRequest);
+	
+//	List<LeaveRequestRightJoin> empName();
+	
+	List<LeaveRequest> empNameNew();
 	
 	void deleteLeaveRequestById(int theId);
 	

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Employee;
+import com.example.demo.dao.EmployeeDAO;
 import com.example.demo.entity.AttendanceCount;
 import com.example.demo.entity.Department;
 import com.example.demo.entity.LeaveRequest;
@@ -30,10 +31,13 @@ import jakarta.validation.Valid;
 public class EmployeeController {
 
 	private EmployeeService employeeService;
+	private EmployeeDAO employeeDAO;
 
-	public EmployeeController(EmployeeService employeeService) {
+
+	public EmployeeController(EmployeeService employeeService, EmployeeDAO employeeDAO) {
 		super();
 		this.employeeService = employeeService;
+		this.employeeDAO = employeeDAO;
 	}
 
 	@GetMapping("/employees")
@@ -141,17 +145,32 @@ public class EmployeeController {
 
 //----------------------------  Leave Controller    ------------------------------------------------------
 	@GetMapping("/emp-leave")
-	public String showEmpLeaveAddPage(Model model, HttpSession session) {
+	public String showEmpLeaveAddPage(Model model,LeaveRequest leaveRequest, HttpSession session) {
 
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username",userName);
-		
-		String currentUserAuthority = (String) session.getAttribute("role");
-		model.addAttribute("userAuthority",currentUserAuthority);
-		
-		List<LeaveRequest> employees = this.employeeService.findLeaveList();
-		model.addAttribute("employees", employees);
-		return "/employees/emp-leave";
+		try {
+			String userName = (String) session.getAttribute("username");
+			model.addAttribute("username",userName);
+			
+			String currentUserAuthority = (String) session.getAttribute("role");
+			model.addAttribute("userAuthority",currentUserAuthority);
+			
+//			List<LeaveRequest> employees = this.employeeService.findLeaveList();
+//			model.addAttribute("employees", employees);
+			
+			List<LeaveRequest> leaveRequests = this.employeeDAO.empNameNew();
+			model.addAttribute("employees",leaveRequests);
+			
+			System.out.println("LeaveRequest");
+			System.out.println(leaveRequests.toString());
+			System.out.println("LeaveRequestEnd");
+			
+			return "/employees/emp-leave";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/employees/emp-leave";
+		}
+
 	}
 
 	@PostMapping("/approve")

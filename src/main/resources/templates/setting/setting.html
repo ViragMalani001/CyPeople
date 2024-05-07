@@ -1,54 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar :: layout(~{::section})">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Setting</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/CSS/setting/setting.css}" th:fragment="settingCSS" />
-  </head>
-  <body>
-   
-   <section>
-   <div class="setting">
-   		<span>Setting </span>
-   		<img th:src="@{/images/moon.png}" alt="not found" id="icon" />
-   </div>
-	
-	<script th:inline="javascript">
-/* 		var icon = document.getElementById("icon");
-		
-		icon.onclick = function(){
-			document.body.classList.toggle("dark-theme");
-			if(document.body.classList.contains("dark-theme")){
-				icon.src = "@{/images/sun.png}";
-			}else{
-				icon.src="@{/images/moon.png}";
-			}
-		} */
-		
-/*  var icon = document.getElementById("icon");
-        
-        // Retrieve the theme state from local storage, if available
-        var isDarkTheme = localStorage.getItem("theme") === "dark";
-        if (isDarkTheme) {
-            document.body.classList.add("dark-theme");
-            icon.src = "@{/images/sun.png}"; // Assuming dark theme by default
-        }
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/manubar :: layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Setting</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/setting/setting.css}" th:fragment="settingCSS" />
+</head>
+<body>
 
-        icon.onclick = function(){
-            document.body.classList.toggle("dark-theme");
+	<section>
+		<div class="setting">
+			<span>Setting </span>
+			<!-- <img th:src="@{/images/moon.png}" alt="not found" id="icon" /> -->
+			<!-- <button onClick="darkMode()"> DarkMode </button> -->
+		</div>
 
-            // Store the current theme state in local storage
-            if(document.body.classList.contains("dark-theme")){
-                localStorage.setItem("theme", "dark");
-                // Ensure the correct path to your images
-                icon.src = "@{/images/sun.png}";
-            } else {
-                localStorage.setItem("theme", "light");
-                // Ensure the correct path to your images
-                icon.src = "@{/images/moon.png}";
-            }
-        } */
-	</script>
-   </section>
-  </body>
+		<script th:inline="javascript">
+
+/* 			var icon = document.getElementById("icon");
+			
+			 icon.onclick = function(){
+			 document.body.classList.toggle("dark-theme");
+			 if(document.body.classList.contains("dark-theme")){
+			 icon.src = "@{/images/sun.png}";
+			 }else{
+			 icon.src="@{/images/moon.png}";
+			 }
+			 }
+
+			var icon = document.getElementById("icon");
+			
+			 // Retrieve the theme state from local storage, if available
+			 var isDarkTheme = localStorage.getItem("theme") === "dark";
+			 if (isDarkTheme) {
+			 document.body.classList.add("dark-theme");
+			 icon.src = "@{/images/sun.png}"; // Assuming dark theme by default
+			 }
+
+			 icon.onclick = function(){
+			 document.body.classList.toggle("dark-theme");
+
+			 // Store the current theme state in local storage
+			 if(document.body.classList.contains("dark-theme")){
+			 localStorage.setItem("theme", "dark");
+			 // Ensure the correct path to your images
+			 icon.src = "@{/images/sun.png}";
+			 } else {
+			 localStorage.setItem("theme", "light");
+			 // Ensure the correct path to your images
+			 icon.src = "@{/images/moon.png}";
+			 }
+			 }  */
+		</script>
+	</section>
+</body>
 </html>

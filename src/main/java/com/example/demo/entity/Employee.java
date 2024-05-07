@@ -1,14 +1,17 @@
 package com.example.demo.entity;
 
 import java.sql.Date;
+import java.util.List;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -17,11 +20,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -60,25 +58,12 @@ public class Employee {
 	@Column(name = "tds")
 	private String TDS;
 	
-	
 	@Email
 	private String email;
 	
 	@Column
 	private String performance;
-	
-	
-//	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, targetEntity = Employee.class)
-//	@JoinColumn(name = "name")
-//	private Login login;
-//	public Login getLogin() {
-//		return login;
-//	}
-//
-//	public void setLogin(Login login) {
-//		this.login = login;		
-//	}
-	
+
 	public Employee() {
 		super();
 	}
@@ -104,6 +89,7 @@ public class Employee {
 		this.gender = gender;
 		this.performance = performance;
 	}
+	
 
 	public int getId() {
 		return id;

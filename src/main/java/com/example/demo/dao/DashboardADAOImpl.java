@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
@@ -49,7 +50,7 @@ public class DashboardADAOImpl implements DashboardDAO {
 	@Override
 	public long leaveRequestCount() {
 		
-		TypedQuery<Long> theQuery = entityManager.createQuery("SELECT count(name) FROM LeaveRequest", long.class);
+		TypedQuery<Long> theQuery = entityManager.createQuery("SELECT count(id) FROM LeaveRequest", long.class);
 		return theQuery.getSingleResult();
 	}
 

@@ -22,7 +22,7 @@ public class SecurityConfig {
 				.roles("EMPLOYEE").build();
 		UserDetails priyesh = User.builder()
 				.username("PriyeshGajera")
-				.password("{noop}priyeshgajera")
+				.password("{noop}1234")
 				.roles("MANAGER")
 				.build();
 		UserDetails shekhar = User.builder()
@@ -32,19 +32,6 @@ public class SecurityConfig {
 				.build();
 		return new InMemoryUserDetailsManager(virag, priyesh, shekhar);
 	}
-
-//	@Bean
-//	public UserDetailsManager userDetailsManager(DataSource dataSource) {
-//
-//		JdbcUserDetailsManager theUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-//
-//		theUserDetailsManager
-//				.setUsersByUsernameQuery("select email, password, enabled from Registration where email=?");
-//
-//		theUserDetailsManager.setAuthoritiesByUsernameQuery("select email, role from Registration where email=?");
-//
-//		return theUserDetailsManager;
-//	}
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -73,6 +60,19 @@ public class SecurityConfig {
 		return new CustomAccessDeniedHandler();
 	}
 
+//	@Bean
+//	public UserDetailsManager userDetailsManager(DataSource dataSource) {
+//
+//		JdbcUserDetailsManager theUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+//
+//		theUserDetailsManager
+//				.setUsersByUsernameQuery("select email, password, enabled from Registration where email=?");
+//
+//		theUserDetailsManager.setAuthoritiesByUsernameQuery("select email, role from Registration where email=?");
+//
+//		return theUserDetailsManager;
+//	}
+	
 //	@Bean
 //	public UserDetailsService getUserDetailService() {
 //		return new UserDetailsServiceImpl();

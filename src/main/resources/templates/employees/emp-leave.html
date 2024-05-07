@@ -17,7 +17,7 @@
 				Leave Request </a>
 		</div>
 		<div class="emp-table-div">
-			<table class="emp-table">
+			<table class="emp-table" >
 				<tr>
 					<th>Name</th>
 					<th>Employee Id</th>
@@ -27,7 +27,7 @@
 					<th sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">Action</th>
 					<th>Action Result</th>
 				</tr>
-				<tr th:each="employee : ${employees}">
+				<tr th:each="employee : ${employees}" >
 					<td th:text="${employee.name}"></td>
 					<td th:text="${employee.employeeId}"></td>
 					<td th:text="${#dates.format(employee.startDate, 'dd-MM-yyyy')}"></td>
