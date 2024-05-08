@@ -1,24 +1,18 @@
 package com.example.demo.entity;
 
 import java.sql.Date;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.example.demo.validation.employeeUniqueIdValidation;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "employee")
@@ -29,6 +23,9 @@ public class Employee {
 	private int id;
 
 	private String name;
+	
+	@Column(unique = true)
+	@employeeUniqueIdValidation(message = "Enter Unique EmployeeId")
 	private String employeeId;
 
 	@NotNull
