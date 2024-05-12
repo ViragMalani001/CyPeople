@@ -1,1 +1,0 @@
-alter table reports modify id int AUTO_INCREMENT;

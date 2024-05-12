@@ -1,1 +1,0 @@
-alter table employee change helth_insurance health_insurance varchar(5);

@@ -1,1 +1,0 @@
-alter table reports add column status varchar(8);

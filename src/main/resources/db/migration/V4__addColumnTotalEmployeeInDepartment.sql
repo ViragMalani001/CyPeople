@@ -1,1 +1,0 @@
-alter table department add column total_employee varchar(6);
