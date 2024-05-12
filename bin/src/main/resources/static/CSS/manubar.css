@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+body{
+  margin:0px;
+  padding:0px;
+}
+
+/* ---------------------navbar --------------------------*/
+
+.navbar {
+	padding: 15px 25px;
+	background-color: black;	
+}
+
+.navbar a {
+	font-size: 26px;
+	text-decoration: none;
+	color: #85ac52;  	
+}
+
+.navbar .search-container {
+  float: right;
+}
+
+.navbar .search-container form{
+	display: inline;
+}
+
+.search-container span{
+	margin:0px 20px 0px 30px;
+	font-family: serif;
+	font-size: 1.2rem;
+	color: white;
+}
+
+.search-container form input{
+	margin:-5px 0px 0px 0px ;
+	padding: 6px 15px;
+	border: none;
+	border-radius: 5px;
+	background-color: #85ac52;
+	color: white;
+	font-family: times new roman;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+/* --------------------- Sidepanel ----------------------*/
+.sidepanel {
+  width: 99.35%;
+  height: 92.8%;
+  position:absolute;
+  top:60px;
+  border-bottom: 7px solid #30acb4;
+  border-left: 7px solid #30acb4;
+  border-top: 7px solid #30acb4;
+  border-right: 7px solid #30acb4;
+  background-color: var(--primary-color); 
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+@media screen and (max-height: 607px){
+	.sidepanel{
+		height: 88%;
+	}
+}
+
+.sidepanel ul {
+	margin: 0px;
+	padding:0px;
+	list-style-type: none;
+	width: 9.5%;
+}
+
+.sidepanel li a{
+	padding: 8px 16px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	border-radius: 0px 10px 10px 0px;
+}
+
+.sidepanel li a:hover {
+	color: white;
+	background-color: #30acb4;
+	transition: 0.3s;
+}
+
+.sidepanel li a i{
+	margin: 8px;
+	display: inline-block;
+	
+}
+
+.sidepanel li a span{
+	font-size: 1.5rem;
+}

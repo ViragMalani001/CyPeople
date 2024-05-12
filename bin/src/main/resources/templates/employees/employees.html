@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar::layout(~{::section})" th:fragment="employees">
+<head>
+<meta charset="UTF-8" />
+<title>Employees</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/employees/employees.css}" th:fragment="employeesCSS"/>
+
+</head>
+<body>
+
+<section>
+	<div class="emp-content">
+		<ul>
+			<li><a th:href="@{/emp-list}"> All Employees </a></li>
+			<li><a th:href="@{/emp-leave}"> Leave Requests </a></li>
+			<li><a th:href="@{/emp-attendance-count}"> Attendance </a></li>
+			<li><a th:href="@{/emp-department}"> Department </a></li>
+		</ul>
+	</div>
+</section>
+</body>
+</html>

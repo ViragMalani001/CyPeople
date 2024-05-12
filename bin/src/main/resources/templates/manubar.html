@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+<meta charset="UTF-8">
+<title>Manubar</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/manubar.css}">
+<link rel="stylesheet" href="#" th:replace="/dashboard/dashboard :: dashboardCSS"/>
+<link rel="stylesheet" href="#" th:replace="/employees/employees :: employeesCSS"/>
+<link rel="stylesheet" href="#" th:replace="/clients/clients :: clientsCSS" />
+<link rel="stylesheet" href="#" th:replace="/projects/projects :: projectsCSS" />
+<link rel="stylesheet" href="#" th:replace="/payroll/payroll :: payrollCSS"/>
+<link rel="stylesheet" href="#" th:replace="/reports/reports :: reportsCSS" />
+<link rel="stylesheet" href="#" th:replace="/reports/add-reports-expense :: addReportExpenseCSS" />
+<link rel="stylesheet" href="#" th:replace="/setting/setting :: settingCSS" />
+
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<!-- Google PNG  -->
+<!-- CDN Link (content delivery network) -->
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet"> -->
+	<link rel="stylesheet" th:href="@{/CSS/icon.css}" />
+
+<!-- Chart -->
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Department Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+
+	<!-- Navbar  -->
+	<div class="navbar">
+		<a href="/dashboard"> CyPeople </a>
+		<div class="search-container">
+			<span th:text="${username}"></span> <span th:text="${userAuthority}"></span>
+
+			<form action="#" th:action="@{logout}" method="post">
+				<input type="submit" value="Logout">
+			</form>
+		</div>
+	</div>
+
+	<!-- Sidepanel -->
+	<div class="sidepanel">
+		<ul>
+			<li><a href="dashboard"> <i style="font-size: 22px"
+					class="fa fa-fw fa-home"></i> <span> Dashboard </span></a></li>
+			<li><a href="emp-list"> <i style="font-size: 22px"
+					class="fa fa-users"></i> <span> Employees </span>
+			</a></li>
+			<li><a href="clients-list"> <i style="font-size: 22px"
+					class="fa fa-address-card"></i> <span> Clients </span></a></li>
+			<li><a href="projects-list"> <i style="font-size: 22px"
+					class="fa fa-file"></i> <span> Projects </span>
+			</a></li>
+			<!-- 
+        <li>
+          	<a href="accounts">
+          		<i style="font-size: 22px" class="fa fa-credit-card"></i>
+          		<span> Accounts </span> 
+          	</a>
+			</li>
+         -->
+			<li><a href="emp-salary"> <i style="font-size: 22px"
+					class="fa fa-paypal"></i> <span> PayRoll </span>
+			</a></li>
+			<li><a href="reports"> <i style="font-size: 22px"
+					class="fa fa-comment"></i> <span> Reports </span>
+			</a></li>
+<!-- 			<li><a href="setting"> <i style="font-size: 22px"
+					class="fa fa-gear"></i> <span> Setting </span>
+			</a></li> -->
+		</ul>
+	</div>
+
+	<div th:replace="${content}"></div>
+
+
+</body>
+</html>

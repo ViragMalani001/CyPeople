@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.projects-list {
+	width: 80%;
+	height: 80%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border-radius: 10px;
+	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.projects-header {
+	padding: 20px 30px;
+	height: 28px;
+	position: sticky;
+	top: -1px;
+	background-color: white;
+}
+
+.projects-list .projects-header label {
+	float: left;
+	font-size: 1.5rem;
+}
+
+.projects-list .projects-header a {
+	padding: 8px;
+	float: right;
+	font-size: 1rem;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+
+.projects-list .projects-header a:hover {
+	background-color: #939393;
+	color: white;
+	transition: 0.5s;
+}
+
+.projects-table {
+	width: 100%;
+}
+
+.projects-table div {
+	display: inline;
+}
+
+.projects-table-div {
+	margin: 20px;
+	border: 1px solid white;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.projects-table tr th {
+	padding: 15px;
+	text-align: left;
+	color: white;
+	font-size: 1.2rem;
+		position: sticky;
+	top: 0;
+	background-color: rgb(182, 182, 182);
+}
+
+.projects-table tr td {
+	height: 40px;
+	padding: 0.5rem 1rem;
+	vertical-align: top;
+	border-bottom: 1px solid lightgray;
+}
+
+.projects-table tr:hover {
+	background-color: #d3d3d3a8;
+}
+
+.projects-table .view a {
+	padding: 2px;
+	background-color: white;
+	border: 1px solid lightgray;
+	color: #8b8b8b;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.projects-table .view a:hover {
+	color: white;
+	background-color: #939393;
+	transition: 0.5s;
+}
+
+.projects-table .edit a {
+	padding: 2px;
+	background-color: white;
+	border: 1px solid lightgreen;
+	color: lightgreen;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.projects-table .edit a:hover {
+	color: white;
+	background-color: lightgreen;
+	transition: 0.5s;
+}
+
+.projects-table a {
+	padding: 2px;
+	display: inline-block;
+	text-decoration: none;
+	background-color: white;
+	border: 1px solid red;
+	color: red;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.projects-table a:hover {
+	color: white;
+	background-color: red;
+	transition: 0.5s;
+}

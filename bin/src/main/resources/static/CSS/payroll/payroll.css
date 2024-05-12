@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.payroll-div{
+  width: 89.5%;
+  height: 92.7%;
+  position:absolute;
+  top: 67px;
+  left: 217px;
+  background-color: #f8fcff;
+}
+
+.payroll-div ul{
+  margin: 0px;
+  padding: 0px;
+	width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.payroll-div ul li a{
+	padding: 20px 16px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	border-radius: 0px 0px 10px 10px;
+ }
+ 
+.payroll-div ul li a:hover{
+  background-color: #30acb4;
+  color: white;
+  transition: 0.3s;
+ }

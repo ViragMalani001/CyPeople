@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar :: layout(~{::section})" th:fragment="payroll">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payroll</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/payroll/payroll.css}"  th:fragment="payrollCSS"/>
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    
+    <section>
+    	<div class="payroll-div">
+    		<ul>
+    			<li> <a th:href="@{/emp-salary}"> Employee Salary </a> </li>
+    		</ul>
+    	</div>
+    </section>
+  </body>
+</html>

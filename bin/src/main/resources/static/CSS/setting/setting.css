@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+:root{
+	--primary-color: #f8fcff;
+}
+.dark-theme{
+	--primary-color: black;
+}
+
+body{
+	margin:0px;
+	padding:0px;
+}
+
+.setting{
+  width: 89.5%;
+  height: 92.7%;
+  position:absolute;
+  top: 67px;
+  left: 217px;
+  background-color: var(--primary-color);
+ 
+}
+
+.setting span{
+	margin: 20px;
+	display: block;
+	font-size: 2rem;
+	
+}
+
+#icon{
+	width: 50px;
+	cursor: pointer;
+}

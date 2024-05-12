@@ -1,0 +1,1 @@
+alter table department modify total_employee varchar(6);

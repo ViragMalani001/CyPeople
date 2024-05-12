@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title> Employee Leave Add </title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/employees/emp-leave-add.css}" />
+</head>
+<body> 
+   
+   <div th:replace="/employees/employees :: employees"></div>
+   <div class="add-content">
+   		<h4>Add leave Request </h4>
+   		<hr>
+   		<form action="#" th:action="@{/emp-leave-add}" th:object="${employees}" method="post" >
+   			<input type="hidden" th:field="*{id}" />
+		   		<div class="emp-form-div">
+			   		<select  th:field="*{name}"> 
+			   			<option th:text="${username}" th:value="${username}"></option>
+			   			<!-- 
+	  					<option th:value="${#authentication.principal.username}" sec:authentication="principal.username"></option>
+			   			 -->
+	  				</select>
+	  				
+			   		<select  th:field="*{employeeId}">
+	  					<option th:text="${currentUserId}" th:value="${currentUserId}"></option>
+	  				</select>
+		   		</div>
+		   		<div class="emp-form-date">
+		   			<p> Start Date </p>
+		   			<input type="date" th:field="*{startDate}" placeholder="StartDate" required="required"> 
+		   			<p> End Date </p>
+   					<input type="date" th:field="*{endDate}" placeholder="EndDate" required="required"> 
+		   		</div>
+		   		<div class="emp-form-reason">
+   					<textarea rows="5" cols="" th:field="*{reason}" placeholder="Leave Reason" required="required"></textarea>
+   					<span th:if="${#fields.hasErrors('reason')}" th:error="*{reason}" class="error"></span>
+		   		</div>
+		   		<div class="emp-form-action">
+		   			<input type="submit" value="Add Leave Request">   		
+		   			<a href="/emp-leave"> Cancel </a>
+		   		</div>
+
+
+   		</form>
+   </div>
+</body>
+</html>

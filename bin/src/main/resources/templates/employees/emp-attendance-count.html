@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Employee Attendance Count</title>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/employees/emp-attendance-count.css}" />
+
+</head>
+<body>
+	
+	<div th:replace="/employees/employees :: employees"></div>
+	<div class="emp-attendance">
+
+		<div class="avg-attendance">
+			<div class="detail-current-user">
+				<h2>Detail Current User</h2>
+			</div>
+
+			<div class="avg-attendance-div">
+				<div class="current-username">
+					<h2 sec:authentication="principal.username"></h2>
+				</div>
+
+				<div class="date-time border">
+					<label> Current Date </label>
+					<h3 th:text="${#temporals.format(date, 'dd-MM-yyyy')}"></h3>
+
+				</div>
+
+				<div class="total-attendance border">
+					<label> Total Attendance </label>
+					<h3 th:text="${attendanceCount}"></h3>
+				</div>
+
+
+				<div class="total-hours border">
+					<label> Total Working Hours </label>
+					<h3 th:text="${totalHours}"></h3>
+				</div>
+
+				<div class="role-model border">
+					<label> Role Model </label>
+					<h3 th:text="${userAuthority}"></h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="attendance-div">
+			<div class="attendance-history">
+				<h2>Attendance History</h2>
+				<form th:action="@{/punchDateTime}" method="POST"
+					th:object="${punchDateTime}">
+					<input type="hidden" th:field="*{id}" /> <select
+						style="display: none;" th:field="*{name}">
+						<option th:value="${#authentication.principal.username}"
+							sec:authentication="principal.username"></option>
+					</select>
+					<button type="button" id="punchButton" onclick="punchTime(this)">Punch
+						In</button>
+				</form>
+			</div>
+			<div class="attendance-history-detail-div">
+				<div th:each="employee : ${employees}"
+					class="attendance-history-detail">
+					<div class="date">
+						<label
+							th:text="${#temporals.format(employee.date, 'dd-MM-yyyy ')}"></label>
+					</div>
+					<div class="punch-in">
+						<label>PunchIn</label> <label
+							th:text="${#temporals.format(employee.punchInTime, 'HH:mm')}"></label>
+					</div>
+					<div class="punch-out">
+						<label>PunchOut</label> <label
+							th:text="${#temporals.format(employee.punchOutTime, 'HH:mm')}"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:inline="javascript">
+	   
+	   function punchTime(button) {
+    	   var button = document.getElementById('punchButton');
+           var form = button.form;
+           var action = form.getAttribute('action');
+           
+           if(button.textContent === 'Punch In') {
+               fetch(action, {
+                   method: 'POST',
+                   body: new FormData(form)
+               }).then(response => {
+                   if(response.ok) {
+                       button.textContent = 'Punch Out';
+                       form.setAttribute('action', '/punchOutTime');
+                       localStorage.setItem('punchState', 'out');
+                   }
+               });
+           } else {
+               fetch(action, {
+                   method: 'POST',
+                   body: new FormData(form)
+               }).then(response => {
+                   if(response.ok) {
+                       button.textContent = 'Punch In';
+                       form.setAttribute('action', '/punchDateTime');
+                       localStorage.setItem('punchState', 'in');
+                       window.location.reload();
+                   }
+               });
+           }
+       }
+       
+       function setButtonState() {
+    	    var button = document.getElementById('punchButton');
+    	    var punchState = localStorage.getItem('punchState');
+    	    if (punchState === 'out') {
+    	        button.textContent = 'Punch Out';
+    	    } else {
+    	        button.textContent = 'Punch In';
+    	    }
+    	}
+
+    	window.onload = setButtonState;
+
+   </script>
+
+
+</body>
+</html>

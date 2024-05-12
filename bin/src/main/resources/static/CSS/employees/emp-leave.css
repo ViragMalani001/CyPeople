@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.emp-list {
+	width: 80%;
+	height: 80%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border-radius: 10px;
+	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.emp-header {
+	padding: 20px 30px;
+	height: 28px;
+	position: sticky;
+	top: -1px;
+	background-color: white;
+}
+
+.emp-list .emp-header label {
+	float: left;
+	font-size: 1.5rem;
+}
+
+.emp-list .emp-header a {
+	padding: 0.5rem;
+	float: right;
+	font-size: 1rem;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+
+.emp-list .emp-header a:hover {
+	background-color: #939393;
+	color: white;
+	transition: 0.5s;
+}
+
+.emp-table-div {
+	margin: 20px;
+	height: 85%;
+	border: 1px solid none;
+	border-radius: 15px;
+	overflow: auto;
+}
+
+.emp-table {
+	width: 100%;
+}
+
+.emp-table div {
+	display: inline;
+}
+
+.emp-table tr th {
+	padding: 15px;
+	text-align: left;
+	color: white;
+	font-size: 1.2rem;
+		position: sticky;
+	top: 0;
+	background-color: rgb(182, 182, 182);
+}
+
+.emp-table tr td {
+	height: 40px;
+	padding: 0.5rem 1rem;
+	vertical-align: top;
+}
+
+td {
+	border-bottom: 1px solid lightgray;
+}
+
+.emp-table tr:hover {
+	background-color: #d3d3d3a8;
+}
+
+.emp-table .edit a {
+	padding: 2px;
+	background-color: white;
+	border: 1px solid lightgray;
+	color: #8b8b8b;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.emp-table .action a {
+	padding: 2px;
+	display: inline-block;
+	text-decoration: none;
+	background-color: white;
+	border: 1px solid red;
+	color: red;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.emp-table .action a:hover {
+	color: white;
+	background-color: red;
+	transition: 0.5s;
+}
+
+.emp-table .done button {
+	padding: 2px;
+	background-color: lightgreen;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.emp-table .done button:hover {
+	background-color: darkgreen;
+}
+
+.emp-table .clear button {
+	padding: 2px;
+	background-color: white;
+	border: 1px solid red;
+	color: red;
+	border-radius: 5px;
+	font-size: 0.1rem;
+	cursor: pointer;
+}
+
+.emp-table .clear button:hover {
+	color: white;
+	background-color: red;
+	transition: 0.5s;
+}
+
+.emp-table form {
+	display: inline-block;
+}

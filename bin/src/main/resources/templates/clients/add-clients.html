@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Add Clients</title>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/clients/add-clients.css}" />
+</head>
+<body>
+	<div th:replace="/clients/clients :: clients"></div>
+	<div class="client-content">
+		<h4>Add Client Details</h4>
+		<hr>
+		<div class="client-details">
+			<form action="#" th:action="@{/add-clients}" th:object="${clients}"
+				method="POST">
+				<input type="hidden" th:field="*{id}" />
+				<div class="client-form-div">
+					<input type="text" th:field="*{clientName}"
+						placeholder="Client Name*" required="required"> <input
+						type="text" th:field="*{companyName}" placeholder="Company Name*"
+						required="required">
+				</div>
+
+				<div class="client-form-div">
+					<input type="text" th:field="*{clientId}" placeholder="Client Id*"
+						required="required"> <br>
+					<br> <input type="text" th:field="*{email}"
+						placeholder="Email Id*" required="required"> <span
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+						class="error"></span>
+				</div>
+
+				<div class="client-form-number">
+					<input type="text" th:field="*{mobileNo}" placeholder="Mobile No"
+						required="required"> <span
+						th:if="${#fields.hasErrors('mobileNo')}" th:errors="*{mobileNo}"
+						class="error"></span>
+				</div>
+
+				<div class="client-form-action">
+					<input type="submit" value="Add"> <a href="/clients-list">
+						Cancel </a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Add Employee</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/employees/emp-add.css}" />
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div th:replace="/employees/employees :: employees"></div>
+	<div class="add-content">
+		<h4>Add Employee</h4>
+		<hr>
+		<form action="#" th:action="@{/emp-add}" th:object="${employees}"
+			method="post">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="emp-form-div">
+				<div class="emp-form-div-1">
+					<label>Enter User Name</label> <input type="text"
+						th:field="*{name}" placeholder="Enter User Name">
+				</div>
+				<div class="emp-form-div-1">
+					<label>Employee Id</label> <input type="text"
+						th:field="*{employeeId}" placeholder="Employee Id"
+						required="required">
+						<span
+						th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}"
+						class="error"> </span>
+				</div>
+
+				<div class="emp-form-div-1">
+					<label>Phone Number</label> <input type="text" th:field="*{phone}"
+						placeholder="Phone Number" required="required"> <span
+						th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+						class="error"> </span>
+				</div>
+
+			<div class="emp-form-div-1">
+				<label>Email</label> <input type="text" th:field="*{email}"
+					placeholder="Email" required="required"> <span
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+					class="error"></span>
+			</div>
+			</div>
+
+			<div class="emp-form-gender">
+				<label>Gender</label>
+				<select th:field="*{gender}">
+					<option value="">Gender</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+			</div>
+
+			<div class="emp-form-date">
+				<label>Join Date</label> 
+				<input type="date" th:field="*{joinDate}"
+					placeholder="Join Date" required="required"> 
+					
+				<label>Select Department</label> 
+				<select th:field="*{role}" name="role"
+					required="required">
+					<option value="">Select Department</option>
+					<option th:each="department :${departments}"
+						th:text="${department.departmentName}"
+						th:value="${department.departmentName}"></option>
+				</select>
+			</div>
+
+			<div class="emp-form-salaryDetail"
+				sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
+				<div class="salary-ret">
+					<label>Salary Hourly Ret</label> <input type="number"
+						th:field="*{salaryHourlyRet}" placeholder="Hourly Ret">
+				</div>
+				<div class="house-rent">
+					<label> House Rent Allowances </label> <input type="number"
+						th:field="*{houseRentAllowances}" placeholder="House Rent">
+				</div>
+				<div class="medical-allowances">
+					<label> Medical Allowances </label> <input type="number"
+						th:field="*{medicalAllowances}" placeholder="Medical Allowances">
+				</div>
+				<div class="special-allowances">
+					<label> Special Allowances </label> <input type="number"
+						th:field="*{specialAllowances}" placeholder="Special Alowances">
+				</div>
+				<div class="health-allowances">
+					<label> health Insurance </label> <input type="number"
+						th:field="*{healthInsurance}" placeholder="Health Insurance">
+				</div>
+				<div class="tds">
+					<label> TDS </label> <input type="number" th:field="*{TDS}"
+						placeholder="TDS">
+				</div>
+				<div class="performance">
+					<label> Performance </label> <input type="text"
+						th:field="*{performance}" placeholder="Performance">
+				</div>
+			</div>
+
+			<div class="emp-form-action">
+				<input type="submit" value="Add Employee"> <a
+					href="/emp-list"> Cancel </a>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

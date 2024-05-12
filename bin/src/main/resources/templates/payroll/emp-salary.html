@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title> Salary Page </title>
+	    <link rel="stylesheet" type="text/css" th:href="@{/CSS/payroll/emp-salary.css}" />
+</head>
+<body>
+	
+	<div th:replace="/payroll/payroll :: payroll"></div>
+	<div class="emp-salary">
+		<div class="emp-salary-header">
+			<label> Employee Salary </label>		
+		</div>
+		<div class="emp-salary-table">
+			<table>
+		   			<tr>
+		   				<th> Name </th>
+		   				<th> Employee Id </th>
+		   				<th> Phone </th>
+		   				<th> Join Date </th>
+		   				<th> Role </th>
+		   				<th> Action </th>
+	 	   			</tr>
+	 	   			<tr th:each="employeeList : ${employeeList}">
+			            <td th:text="${employeeList.name}"></td>
+			            <td th:text="${employeeList.employeeId}"></td>
+			            <td th:text="${employeeList.phone}"></td>
+			            <td th:text="${#dates.format(employeeList.joinDate, 'dd-MM-yyyy')}"></td>
+			            <td th:text="${employeeList.role}"></td>
+						<td> 
+							<a th:href="@{/generatePaySlipe(employeeId=${employeeList.id})}" target="blank"> Generate Slip </a> 
+						</td>
+			        </tr>
+			</table>
+		</div>
+	</div>
+	
+</body>
+</html>

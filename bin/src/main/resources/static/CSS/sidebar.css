@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+body{
+	margin:0px;
+	padding:0px;
+}
+/* --------------------- Sidepanel ----------------------*/
+.sidepanel {
+  width: 10%;
+  height: 92.8%;
+  position:absolute;
+  top:60px;
+  border-bottom: 7px solid #30acb4;
+  border-left: 7px solid #30acb4;
+  border-top: 7px solid #30acb4;
+  background-color: white; 
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+@media screen and (max-height: 607px){
+	.sidepanel{
+		height: 88%;
+	}
+}
+
+.sidepanel ul {
+	margin: 0px;
+	padding:0px;
+	list-style-type: none;
+	width: 100%;
+}
+
+.sidepanel li a{
+	padding: 8px 16px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	border-radius: 0px 10px 10px 0px;
+}
+
+.sidepanel li a:hover {
+	color: white;
+	background-color: #30acb4;
+	transition: 0.3s;
+}
+
+.sidepanel li a i{
+	margin: 8px;
+	display: inline-block;
+	
+}
+
+.sidepanel li a span{
+	font-size: 1.5rem;
+}
+
+
+
+
+

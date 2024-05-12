@@ -1,0 +1,315 @@
+@charset "UTF-8";
+
+.dashboard-container {
+	width: 89.5%;
+	height: 92.7%;
+	position: absolute;
+	top: 67px;
+	left: 217px;
+	background-color: var(--primary-color);
+	overflow: auto;
+}
+
+@media screen and (max-width: 1884px) {
+	.dashboard-container {
+		width: 89.2%;
+		left: 195px;
+	}
+}
+
+@media screen and (max-height: 607px) {
+	.dashboard-container {
+		height: 88%;
+	}
+}
+
+.dashboard-header {
+	margin: 20px 0px 40px 30px;
+}
+
+.dashboard-header label {
+	font-size: 1.5rem;
+}
+.dashboard-header span{
+	font-size: 1.5rem;
+}
+
+.dashboard-second-container {
+	display: flex;
+	height: 45%;
+}
+
+.emp-list-count {
+	margin: 10px;
+	border: 1px solid none;
+	width: 20%;
+	/* height: 42.8%; */
+	background-color: white;
+	border-radius: 8px;
+	overflow: auto;
+	scrollbar-width: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.total-emp {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.total-emp div {
+	display: inline;
+}
+
+.emp-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.emp-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-department {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.department-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.department-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-client {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.client-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.client-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-project {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.project-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.project-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.total-leaveRequest {
+	padding: 10px;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+}
+
+.leaveRequest-png i {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.leaveRequest-count label {
+	margin: 5px 20px;
+	display: block;
+	font-size: 1.2rem;
+}
+
+.chartDiv {
+	margin-top: 10px;
+	padding: 20px 0px 40px 120px;
+	width: 45%;
+	height: 81%;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	background-color: white;
+	border-radius: 10px;
+}
+
+.chartDiv label {
+	font-size: 1.5rem;
+}
+
+.genderCount {
+	margin-top: 10px;
+	margin-left: 10px;
+	padding: 20px;
+	width: 18%;
+	height: 85%;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.genderCount label {
+	font-size: 1.5rem;
+}
+
+.emp-performance {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	width: 60%;
+	height: 70%;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	float: left;
+	width: 60%;
+}
+
+.emp-performance label {
+	margin-left: 20px;
+}
+
+.emp-performance .performance-div {
+	margin: 20px;
+	height: 90%;
+	border: 1px solid none;
+	border-radius: 15px;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.emp-performance label {
+	font-size: 1.5rem;
+}
+
+.performance-table {
+	width: 100%;
+}
+
+.performance-table tr th {
+	padding: 15px;
+	text-align: left;
+	position: sticky;
+	top: 0;
+	color: white;
+	font-size: 1.2rem;
+	background-color: rgb(182, 182, 182);
+	top: 0;
+}
+
+.performance-table tr td {
+	height: 40px;
+	padding: 0.5rem 1rem;
+	vertical-align: top;
+	border-bottom: 1px solid lightgray;
+}
+
+.performance-table tr:hover {
+	background-color: #d3d3d3a8;
+}
+
+.toDoList {
+	margin-left: 10px;
+	margin-bottom: 30px;
+	width: 32%;
+	height: 45%;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	float: left;
+	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.toDoList .toDoList-div {
+	margin: 15px;
+}
+
+.toDoList .toDoList-div {
+	margin: 15px;
+}
+
+.toDoList-add-div-1 {
+	padding: 10px;
+	position: sticky;
+	top: -1px;
+	background-color: white;
+	position: sticky;
+}
+
+.toDoList-add-div-2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+}
+
+.toDoList-add-div-2 form {
+	display: flex;
+	justify-content: space-between;
+}
+
+.toDoList-add-div-2 input {
+	padding: 10px;
+	width: 80%;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+	font-size: 1rem;
+}
+
+.toDoList-add-div-2 button {
+	padding: 10px;
+	background-color: white;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+}
+.toDoList-add-div-2 button:hover {
+	background-color: darkgray;
+	color: white;
+	transition: 0.5s;
+}
+
+.toDoList-add-div-3 {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.toDoList-add-div-3 div label{
+	font-size: 1.2rem;
+}
+
+.toDoList label {
+	font-size: 1.5rem;
+}
+
+.toDoList-add-div a {
+	display: inline;
+}

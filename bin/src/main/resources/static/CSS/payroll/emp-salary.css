@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.emp-salary {
+	width: 80%;
+	height: 80%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border-radius: 10px;
+	background-color: white;
+	overflow: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.emp-salary-header {
+	position: sticky;
+}
+
+.emp-salary-header label {
+	display: block;
+	font-size: 1.5rem;
+	margin: 20px;
+}
+
+.emp-salary-table {
+	margin: 20px;
+	height: 85%;
+	border: 1px solid none;
+	border-radius: 15px;
+	overflow: auto;
+		scrollbar-width: none;
+}
+
+.emp-salary table {
+	width: 100%;
+}
+
+.emp-salary table tr th {
+	padding: 15px;
+	text-align: left;
+	color: white;
+	font-size: 1.2rem;
+	background-color: rgb(182, 182, 182);
+		position: sticky;
+	top: 0;
+	
+}
+
+.emp-salary table tr td {
+	height: 40px;
+	padding: 0.5rem 1rem;
+	vertical-align: top;
+	border-bottom: 1px solid lightgray;
+}
+
+.emp-salary table tr:hover {
+	background-color: #d3d3d3a8;
+}
+
+.emp-salary-table table h2 {
+	display: inline;
+}
+
+.emp-salary-table a {
+	padding: 10px;
+	display: inline-block;
+	text-decoration: none;
+	background-color: orange;
+	color: white;
+	border-radius: 5px;
+}
+
+.emp-salary-table a:hover {
+	background-color: darkorange;
+	cursor: pointer;
+}

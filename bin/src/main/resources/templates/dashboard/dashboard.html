@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/manubar :: layout(~{ :: section})">
+<head>
+<meta charset="UTF-8" />
+<title>Dashboard</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/dashboard/dashboard.css}" th:fragment="dashboardCSS" />
+
+</head>
+
+<body>
+	<section>
+		<div class="setting">
+			<span>Setting </span> <img th:src="@{/images/moon.png}"
+				alt="not found" id="icon" />
+		</div>
+		<div class="dashboard-container">
+			<div class="dashboard-header">
+				<label> Dashboard </label>
+			</div>
+			<div class="dashboard-second-container">
+				<div class="emp-list-count">
+					<div class="total-emp">
+						<div class="emp-png">
+							<i class="material-icons" style="font-size: 36px">people</i>
+						</div>
+						<div class="emp-count">
+							<label> Total Employee </label> <label th:text="${employeeCount}"></label>
+						</div>
+					</div>
+
+					<div class="total-department">
+						<div class="department-png">
+							<i class="material-icons" style="font-size: 36px">collections_bookmark</i>
+						</div>
+						<div class="department-count">
+							<label> Total Department </label> <label
+								th:text="${departmentCount}"></label>
+						</div>
+					</div>
+
+					<div class="total-client">
+						<div class="client-png">
+							<i class="material-icons" style="font-size: 36px">person_add
+							</i>
+						</div>
+						<div class="client-count">
+							<label> Total client </label> <label th:text="${clientCount}"></label>
+						</div>
+					</div>
+
+					<div class="total-project">
+						<div class="project-png">
+							<i class="material-icons" style="font-size: 36px">add_to_photos</i>
+						</div>
+						<div class="project-count">
+							<label> Total projects </label> <label th:text="${projectCount}"></label>
+						</div>
+					</div>
+
+					<div class="total-leaveRequest">
+						<div class="leaveRequest-png">
+							<i class="material-icons" style="font-size: 36px">event_available</i>
+						</div>
+						<div class="leaveRequest-count">
+							<label> Total leaveRequest </label> <label
+								th:text="${leaveRequestCount}"></label>
+						</div>
+					</div>
+				</div>
+
+				<div id="employeeCount" class="chartDiv">
+					<label> Total Employee each Department </label>
+				</div>
+				<div id="genderChart" class="genderCount">
+					<label>Employee Structure</label>
+				</div>
+			</div>
+			<div class="emp-performance">
+				<label> Employees Performance </label>
+				<div class="performance-div">
+					<table class="performance-table">
+						<tr>
+							<th>NAME</th>
+							<th>DESIGNATION</th>
+							<th>PERFORMANCE</th>
+						</tr>
+						<tr th:each="employees : ${employeeList}">
+							<td th:text="${employees.name}"></td>
+							<td th:text=${employees.role}></td>
+							<td th:text="${employees.performance}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="toDoList">
+				<div class="toDoList-div">
+					<div class="toDoList-add-div-1">
+						<label> ToDoList </label>
+						<div sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"
+							class="toDoList-add-div-2">
+							<form action="#" th:action="@{/toDoMessage}"
+								th:object="${toDoMessage}" method="post">
+								<input type="hidden" th:field="*{id}" /> <input
+									th:field="*{message}" type="text" placeholder="ToDo Message">
+								<button type="submit">Send</button>
+							</form>
+						</div>
+					</div>
+
+					<div class="toDoList-add-div-3">
+						<div th:each="messages : ${message}">
+							<label th:text="${messages.message}"></label>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script th:inline="javascript">
+			var data = [
+			/*[# th:each="result : ${departments}"]*/
+			{
+				labels : /*[[${result[1]}]]*/[],
+				count : /*[[${result[0]}]]*/[]
+			},
+			/*[/]*/
+			];
+			var labels = data.map(function(item) {
+				return item.labels;
+			});
+			var counts = data.map(function(item) {
+				return item.count;
+			});
+
+			var ctx = document.createElement('canvas').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type : 'bar',
+				data : {
+					labels : labels,
+					datasets : [ {
+						label : 'Employee Counts By Department',
+						data : counts,
+						backgroundColor : 'rgba(54, 162, 235, 0.2)',
+						borderColor : 'rgba(54, 162, 235, 1)',
+						borderWidth : 1
+					} ]
+				},
+				options : {
+					scales : {
+						y : {
+							beginAtZero : true
+						}
+					}
+				}
+			});
+
+			var chartContainer = document.getElementById('employeeCount');
+			chartContainer.appendChild(ctx.canvas);
+		</script>
+		
+		<script th:inline="javascript">
+			var data = [
+			/*[# th:each="result : ${genderCount}"]*/
+			{
+				count : /*[[${result[0]}]]*/[],
+				gender : /*[[${result[1]}]]*/[]
+			},
+			/*[/]*/
+			];
+
+			var labels = data.map(function(item) {
+				return item.gender;
+			});
+			var counts = data.map(function(item) {
+				return item.count;
+			});
+
+			var ctx = document.createElement('canvas').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type : 'doughnut',
+				data : {
+					labels : labels,
+					datasets : [ {
+						label : 'Employee Gender Distribution',
+						data : counts,
+						backgroundColor : [ 'rgba(255, 99, 132, 0.5)', // Red
+						'rgba(54, 162, 235, 0.5)', // Blue
+						],
+						borderColor : [ 'rgba(255, 99, 132, 1)',
+								'rgba(54, 162, 235, 1)', ],
+						borderWidth : 1
+					} ]
+				},
+				options : {
+					cutoutPercentage : 50,
+				}
+			});
+			var chartContainer = document.getElementById('genderChart');
+			chartContainer.appendChild(ctx.canvas);
+		</script>
+	</section>
+
+</body>
+</html>

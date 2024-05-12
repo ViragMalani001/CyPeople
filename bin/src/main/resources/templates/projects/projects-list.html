@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects-list.css}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+   
+   <div th:replace="/projects/projects :: projects"></div>
+      <div class="projects-list">
+	   	<div class="projects-header">
+	   		<label>Project List</label>
+	   		<a href="/projects-add"> Add New Projects </a>
+	   	</div>
+	   	<div class="projects-table-div">
+	   		<table class="projects-table">
+	   			<tr>
+	   				<th> Project Name </th>
+	   				<th> Start Date </th>
+	   				<th> End Date </th>
+	   				<th> Team Leader </th>
+	   				<th> Status </th>
+	   				<th sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"> Action </th>
+ 	   			</tr>
+			  	<tr th:each="project : ${projects}"> 
+			  		<td th:text="${project.projectName}"></td>
+			  		<td th:text="${#dates.format(project.startDate, 'dd-MM-yyyy')}"></td>
+			  		<td th:text="${#dates.format(project.endDate, 'dd-MM-yyyy')}"></td>
+			  		<td th:text="${project.teamLeader}"></td>
+			  		<td th:text="${project.status}"></td>
+					<td sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"> 
+						<div class="view">
+							<a th:href="@{/projects-detail}">							
+								<i class="material-icons">visibility</i>
+							</a>
+						</div>
+						<div class="edit">
+							<a th:href="@{/projects-update(projectId = ${project.id})}">
+								<i class="material-icons">edit</i>
+							</a>
+						</div>
+						<div class="detele">
+							<a th:href="@{/projects-delete(projectId=${project.id})}"
+								 onclick="if (!(confirm('Are you sure you want to delete this projectsloyee?'))) return false">
+								<i class="material-icons">delete_forever</i>
+							</a>
+						</div>
+					</td>
+		        </tr>
+	   		</table>
+	   	</div>
+   </div>   
+   
+  </body>
+</html>

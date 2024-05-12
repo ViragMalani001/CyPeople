@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar::layout(~{::section})" th:fragment="projects">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/projects/projects.css}" th:fragment="projectsCSS"/>
+  </head>
+  <body>
+   
+   <section>
+   <div class="projects-content">
+		<ul>
+	        <li><a th:href="@{/projects-add}"> Add Projects </a></li>
+	        <li><a th:href="@{/projects-list}"> Project List </a></li>
+	        <li><a th:href="@{/projects-detail}"> Project Detail </a></li>
+	    </ul>
+   </div>
+   </section>
+   
+  </body>
+</html>

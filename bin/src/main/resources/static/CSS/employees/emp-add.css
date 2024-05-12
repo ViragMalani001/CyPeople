@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.add-content {
+	width: 80%;
+	height: 55%;
+	position: absolute;
+	top: 134px;
+	left: 250px;
+	border-radius: 10px;
+	background-color: white;
+	overflow: auto;
+	scrollbar-width: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.add-content h4 {
+	padding-left: 50px;
+	font-size: 1rem;
+}
+
+hr {
+	border: 1px solid lightgray;
+}
+
+.emp-form-div{
+	margin: 10px 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.emp-form-div div{
+	width: 20%;
+}
+.emp-form-div-1 label{
+	margin-bottom: 10px;
+	display: block;
+}
+
+.emp-form-div-1 input {
+	
+	padding: 8px 0px 8px 10px;
+	width: 90%;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+}
+
+.emp-form-gender{
+	margin: 10px 20px;
+}
+
+.emp-form-gender label{
+	display: block;
+	margin-bottom: 10px;
+}
+
+.emp-form-gender select {
+	padding: 8px 0px 8px 10px;
+	width: 16%;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+}
+
+
+.emp-form-date{
+	margin: 10px 20px;
+}
+.emp-form-date label {
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.emp-form-date input {
+	width: 15.5%;
+	padding: 8px 0px 8px 10px;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	display: inline-block;
+}
+
+.emp-form-date select {
+	width: 16%;
+	padding: 8px 0px 8px 10px;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	display: inline-block;
+}
+
+.emp-form-salaryDetail {
+	margin: 10px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.emp-form-salaryDetail div label{
+	margin-bottom: 10px;
+}
+
+.emp-form-salaryDetail input {
+	padding: 8px;
+	width: 90%;
+	display: block;
+	border-radius: 6px;
+	border: 1px solid lightgray;
+}
+
+.emp-form-action input {
+	margin: 10px 20px;
+	padding: 8px;
+	background-color: lightblue;
+	color: white;
+	border: 1px solid lightblue;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+.emp-form-action a {
+	padding: 8px;
+	text-decoration: none;
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	color: darkgray;
+	cursor: pointer;
+}
+
+.emp-form-action a:hover {
+	background-color: darkgray;
+	color: white;
+	border: 1px solid darkgray;
+}
+
+.error {
+	color: red;
+}

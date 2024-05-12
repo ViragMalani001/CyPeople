@@ -1,0 +1,1 @@
+alter table clients modify mobile_no varchar(10);
