@@ -13,12 +13,14 @@
 		<h4>Add Client Details</h4>
 		<hr>
 		<div class="client-details">
-			<form action="#" th:action="@{/add-clients}" th:object="${clients}"
+<!-- 			<form action="#" th:action="@{/add-clients}" th:object="${clients}"
 				method="POST">
 				<input type="hidden" th:field="*{id}" />
 				<div class="client-form-div">
 					<input type="text" th:field="*{clientName}"
-						placeholder="Client Name*" required="required"> <input
+						placeholder="Client Name*" required="required"> 
+						
+					<input
 						type="text" th:field="*{companyName}" placeholder="Company Name*"
 						required="required">
 				</div>
@@ -42,6 +44,34 @@
 				<div class="client-form-action">
 					<input type="submit" value="Add"> <a href="/clients-list">
 						Cancel </a>
+				</div>
+			</form> -->
+			<form action="#" th:action="@{/add-clients}"
+				method="POST">
+				<div class="client-form-div">
+					<input th:text="${clients.clientName}" type="text" name="clientName"
+						placeholder="Client Name*" required="required"> 
+						
+					<input th:text="${clients.companyName}"
+						type="text" name="companyName" placeholder="Company Name*"
+						required="required">
+				</div>
+
+				<div class="client-form-div">
+					<input th:text="${clients.clientId}" type="text" name="clientId" placeholder="Client Id*"
+						required="required"> <br>
+					<br> <input th:text="${clients.email}" type="text" name="email"
+						placeholder="Email Id*" required="required"> 
+				</div>
+
+				<div class="client-form-number">
+					<input th:text="${clients.mobileNo}" type="text" name="mobileNo" placeholder="Mobile No"
+						required="required">
+				</div>
+
+				<div class="client-form-action">
+					<input type="submit" value="Add"> 
+					<a href="/clients-list"> Cancel </a>
 				</div>
 			</form>
 		</div>

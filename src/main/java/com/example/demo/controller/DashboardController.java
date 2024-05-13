@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Collection;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.example.demo.JPARepository.EmployeeJPArepository;
 import com.example.demo.dao.EmployeeDAO;
 import com.example.demo.dao.ToDoMessageDAO;
 import com.example.demo.entity.Employee;
@@ -29,13 +31,15 @@ public class DashboardController {
 	private DashboardService dashboardService;
 	private EmployeeDAO employeeDAO;
 	private ToDoMessageDAO toDoMessageDAO;
+	private EmployeeJPArepository employeeJPArepository;
 
 	public DashboardController(DashboardService dashboardService, EmployeeDAO employeeDAO,
-			ToDoMessageDAO ToDoMessageDAO) {
+			ToDoMessageDAO toDoMessageDAO, EmployeeJPArepository employeeJPArepository) {
 		super();
 		this.dashboardService = dashboardService;
 		this.employeeDAO = employeeDAO;
-		this.toDoMessageDAO = ToDoMessageDAO;
+		this.toDoMessageDAO = toDoMessageDAO;
+		this.employeeJPArepository = employeeJPArepository;
 	}
 
 	@GetMapping("/dashboard")
@@ -62,8 +66,11 @@ public class DashboardController {
 			model.addAttribute("userAuthority", userAuthority);
 		}
 
-		long employeeCount = this.dashboardService.employeeCount();
-		model.addAttribute("employeeCount", employeeCount);
+		int countEmp = this.employeeJPArepository.countEmployee();
+		model.addAttribute("employeeCount", countEmp);
+		
+//		long employeeCount = this.dashboardService.employeeCount();
+//		model.addAttribute("employeeCount", employeeCount);
 
 		long departmentCount = this.dashboardService.departmentCount();
 		model.addAttribute("departmentCount", departmentCount);

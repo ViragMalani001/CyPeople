@@ -28,7 +28,6 @@ public interface EmployeeService {
 	
 	List<Object[]> groupByRole();
 
-
 	
 //	-------------------- LeaveRequest List --------------------
 

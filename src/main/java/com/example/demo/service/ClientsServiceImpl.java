@@ -4,19 +4,23 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.JPARepository.ClientsJPArepository;
 import com.example.demo.dao.ClientsDAO;
 import com.example.demo.entity.Clients;
 
 import jakarta.transaction.Transactional;
 
+@Transactional
 @Service
 public class ClientsServiceImpl implements ClientsService {
 	
 	private ClientsDAO clientsDAO;
+	private ClientsJPArepository clientsJPArepository;
 
-	public ClientsServiceImpl(ClientsDAO clientsDAO) {
+	public ClientsServiceImpl(ClientsDAO clientsDAO, ClientsJPArepository clientsJPArepository) {
 		super();
 		this.clientsDAO = clientsDAO;
+		this.clientsJPArepository = clientsJPArepository;
 	}
 
 	@Override
@@ -31,19 +35,28 @@ public class ClientsServiceImpl implements ClientsService {
 		return this.clientsDAO.findClientsById(theId);
 	}
 
-	@Transactional
 	@Override
 	public Clients saveClientsList(Clients clients) {
 		
 		return this.clientsDAO.saveClientsList(clients);
 	}
 
-	@Transactional
 	@Override
 	public void deleteClientsById(int theId) {
 
 		this.clientsDAO.deleteClientsById(theId);
 	}
+
+	@Override
+	public List<Clients> getClientsDetails() {
+		return this.clientsJPArepository.getClientsDetails();
+	}
+
+	@Override
+	public Clients findClientDetail(int id) {
+		return this.clientsJPArepository.findClientDetail(id);
+	}
+
 
 	
 }

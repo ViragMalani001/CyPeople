@@ -13,4 +13,8 @@ public interface ClientsService {
 	Clients saveClientsList(Clients clients);
 	
 	void deleteClientsById(int theId);
+	
+	List<Clients> getClientsDetails();
+	
+	Clients findClientDetail(int id);
 }

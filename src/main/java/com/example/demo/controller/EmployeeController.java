@@ -50,6 +50,8 @@ public class EmployeeController {
 		model.addAttribute("userAuthority",currentUserAuthority);
 		return "/employees/employees";
 	}
+	
+	
 
 //---------------------  Employees List Controller   -----------------------------------------
 	@GetMapping("/emp-list")

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.JPARepository.ClientsJPArepository;
 import com.example.demo.entity.Clients;
 import com.example.demo.service.ClientsService;
 
@@ -20,10 +21,12 @@ import jakarta.validation.Valid;
 public class ClientController {
 	
 	private ClientsService clientsService;
+	private ClientsJPArepository clientsJPArepository;
 
-	public ClientController(ClientsService clientsService) {
+	public ClientController(ClientsService clientsService, ClientsJPArepository clientsJPArepository) {
 		super();
 		this.clientsService = clientsService;
+		this.clientsJPArepository = clientsJPArepository;
 	}
 
 	// ----------------------------- Clients Page ------------------------------
@@ -48,8 +51,12 @@ public class ClientController {
 		String currentUserAuthority = (String) session.getAttribute("username");
 		model.addAttribute("userAuthority",currentUserAuthority);
 		
-		List<Clients> clients = this.clientsService.findClientsList();
+//		List<Clients> clients = this.clientsService.findClientsList();
+//		model.addAttribute("clients",clients);
+		
+		List<Clients> clients = this.clientsService.getClientsDetails();
 		model.addAttribute("clients",clients);
+		
 		return "/clients/clients-list";
 	}
 	
@@ -67,19 +74,34 @@ public class ClientController {
 		return "/clients/add-clients";
 	}
 	
+//	@PostMapping("/add-clients")
+//	public String clientsDetailsSave(@Valid @ModelAttribute("clients") Clients clients, BindingResult theBindingResult, HttpSession session, Model model,
+//			@RequestParam("id") int id) {
+//		
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username",userName);
+//		
+//		String currentUserAuthority = (String) session.getAttribute("role");
+//		model.addAttribute("userAuthority",currentUserAuthority);
+//		
+//		if(theBindingResult.hasErrors()) {
+//			return "/clients/add-clients";
+//		}
+//		this.clientsService.saveClientsList(clients);
+//		return "redirect:/clients-list";
+//	}
 	@PostMapping("/add-clients")
-	public String clientsDetailsSave(@Valid @ModelAttribute("clients") Clients clients, BindingResult theBindingResult, HttpSession session, Model model) {
+	public String clientsDetailsSave(@RequestParam("clientName") String clientName, @RequestParam("companyName") String companyName,
+			@RequestParam("clientId") String clientId, @RequestParam("email") String email, @RequestParam("mobileNo") String mobileNo, HttpSession session, Model model
+			) {
 		
 		String userName = (String) session.getAttribute("username");
 		model.addAttribute("username",userName);
 		
 		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
-		
-		if(theBindingResult.hasErrors()) {
-			return "/clients/add-clients";
-		}
-		this.clientsService.saveClientsList(clients);
+
+		this.clientsJPArepository.saveClientsDetails(clientName, companyName, clientId, email, mobileNo);
 		return "redirect:/clients-list";
 	}
 	
@@ -92,8 +114,11 @@ public class ClientController {
 		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
 		
-		Clients theClients = this.clientsService.findClientsById(theId);
+//		Clients theClients = this.clientsService.findClientsById(theId);
+		
+		Clients theClients = this.clientsService.findClientDetail(theId);
 		model.addAttribute("clients", theClients);
+		
 		return "clients/add-clients";
 	}
 	
