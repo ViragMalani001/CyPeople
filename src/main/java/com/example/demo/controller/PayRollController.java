@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Enum.EndPointEnum;
 import com.example.demo.entity.Employee;
 import com.example.demo.service.EmployeeService;
 import com.example.demo.service.payrollService;
@@ -30,6 +31,8 @@ public class PayRollController {
 		this.employeeService = employeeService;
 		this.payrollService = payrollService;
 	}
+	
+	String payrollURL = EndPointEnum.PAYROLL.getEndPoint();
 
 	@GetMapping("/payroll")
 	public String showPayrollsPage(Model model, HttpSession session) {
@@ -40,7 +43,7 @@ public class PayRollController {
 		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
 		
-		return "/payroll/payroll";
+		return payrollURL + "/payroll";
 	}
 	
 	@GetMapping("/payslip")
@@ -52,7 +55,7 @@ public class PayRollController {
 		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
 		
-		return "/payroll/payslip";
+		return payrollURL + "/payslip";
 	}
 	
 	@GetMapping("/emp-salary")
@@ -78,7 +81,7 @@ public class PayRollController {
 		model.addAttribute("totalSalary",totalSalary);
 		model.addAttribute("employeeList", employeeList);
 		model.addAttribute("currentUser",currentUserName);
-		return "/payroll/emp-salary";
+		return payrollURL + "/emp-salary";
 	}
 	
 	@GetMapping("/generatePaySlipe")

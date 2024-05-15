@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+
+import com.example.demo.Enum.EndPointEnum;
 import com.example.demo.entity.Reports;
 import com.example.demo.service.ReportsService;
 
@@ -25,6 +27,8 @@ public class ReportsController {
 		this.reportsService = reportsService;
 	}
 
+	String reportsURL = EndPointEnum.REPORTS.getEndPoint();
+	
 	@GetMapping("/reports")
 	public String showReportsPage(Model model, HttpSession session) {
 		
@@ -37,7 +41,7 @@ public class ReportsController {
 		List<Reports> reportsList = this.reportsService.findAll();
 		model.addAttribute("reportsList",reportsList);
 		
-		return "/reports/reports";
+		return reportsURL + "/reports";
 	}
 	
 	@GetMapping("/add-reports-expense")
@@ -51,7 +55,7 @@ public class ReportsController {
 		
 		Reports reports = new Reports();
 		model.addAttribute("reportsList",reports);
-		return "/reports/add-reports-expense";
+		return reportsURL + "/add-reports-expense";
 	}
 	
 	@PostMapping("/add-reports-expense")
@@ -72,7 +76,7 @@ public class ReportsController {
 		
 		Reports reports = this.reportsService.findById(theId);
 		model.addAttribute("reportsList", reports);
-		return "/reports/add-reports-expense";
+		return reportsURL + "/add-reports-expense";
 	}
 	
 	@GetMapping("/reports-delete")

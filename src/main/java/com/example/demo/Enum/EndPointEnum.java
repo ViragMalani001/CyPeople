@@ -2,16 +2,22 @@ package com.example.demo.Enum;
 
 public enum EndPointEnum {
 //	DASHBOARD
-	DASHBOARD("/dashboard/dashboard"),
-	DASHBOARDTODO("/dashboard"),
+	DASHBOARD("/dashboard"),
 	
-//	EMPLOYEE
-	EMPLOYEE("/employees/employees"),
-	EMPLOYEELIST("/employees/emp-list"),
-	EMPLOYEEADD("/employees/emp-add"),
-	EMPLOYEEDELETE("/emp-list"),
+//	EMPLOYEES
+	EMPLOYEES("/employees"),
 	
-	EMPLOYEEDETAIL("/employee/emp-detail");
+//	CLIENTS
+	CLIENTS("/clients"),
+	
+//	PROJECTS
+	PROJECTS("/projects"),
+	
+//	PAYROLL
+	PAYROLL("/payroll"),
+	
+//	REPORTS
+	REPORTS("/reports");
 	
 	private final String endPoint;
 

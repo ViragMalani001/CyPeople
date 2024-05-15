@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Enum.EndPointEnum;
 import com.example.demo.JPARepository.ClientsJPArepository;
 import com.example.demo.entity.Clients;
 import com.example.demo.service.ClientsService;
@@ -30,27 +31,30 @@ public class ClientController {
 		this.clientsJPArepository = clientsJPArepository;
 	}
 
+//	ENUM ENDPOINT
+	String clientsURL = EndPointEnum.CLIENTS.getEndPoint();
+	
 	// ----------------------------- Clients Page ------------------------------
 	@GetMapping("/clients")
 	public String showClientsPage(HttpSession session, Model model) {
 		
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username",userName);
-//		
-//		String currentUserAuthority = (String) session.getAttribute("role");
-//		model.addAttribute("userAuthority",currentUserAuthority);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
 		
-		return "/clients/clients";
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
+		
+		return clientsURL + "/clients";
 	}
 	
 	@GetMapping("/clients-list")
 	public String showClientsListPage(Model model, HttpSession session) {
 		
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username",userName);
-//		
-//		String currentUserAuthority = (String) session.getAttribute("username");
-//		model.addAttribute("userAuthority",currentUserAuthority);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("username");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 //		List<Clients> clients = this.clientsService.findClientsList();
 //		model.addAttribute("clients",clients);
@@ -58,24 +62,25 @@ public class ClientController {
 		List<Clients> clients = this.clientsService.getClientsDetails();
 		model.addAttribute("clients",clients);
 		
-		return "/clients/clients-list";
+		return clientsURL + "/clients-list";
 	}
 	
 	@GetMapping("/add-clients")
 	public String showAddClientsPage(Model model, HttpSession session) {
 		
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username",userName);
-//		
-//		String currentUserAuthority = (String) session.getAttribute("role");
-//		model.addAttribute("userAuthority",currentUserAuthority);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		Clients clients = new Clients();
 		model.addAttribute(clients);
-		return "/clients/add-clients";
+		return clientsURL + "/add-clients";
 	}
 	
 //	not using stored procedure
+//	
 //	@PostMapping("/add-clients")
 //	public String clientsDetailsSave(@Valid @ModelAttribute("clients") Clients clients, BindingResult theBindingResult, HttpSession session, Model model,
 //			@RequestParam("id") int id) {
@@ -99,11 +104,11 @@ public class ClientController {
 			@RequestParam("clientId") String clientId, @RequestParam("email") String email, @RequestParam("mobileNo") String mobileNo, HttpSession session, Model model
 			) {
 		
-//		String userName = (String) session.getAttribute("username");
-//		model.addAttribute("username",userName);
-//		
-//		String currentUserAuthority = (String) session.getAttribute("role");
-//		model.addAttribute("userAuthority",currentUserAuthority);
+		String userName = (String) session.getAttribute("username");
+		model.addAttribute("username",userName);
+		
+		String currentUserAuthority = (String) session.getAttribute("role");
+		model.addAttribute("userAuthority",currentUserAuthority);
 
 		this.clientsJPArepository.saveClientsDetails(clientName, companyName, clientId, email, mobileNo);
 		return "redirect:/clients-list";
@@ -123,7 +128,7 @@ public class ClientController {
 		Clients theClients = this.clientsService.findClientDetail(theId);
 		model.addAttribute("clients", theClients);
 		
-		return "clients/add-clients";
+		return clientsURL + "/add-clients";
 	}
 	
 	@GetMapping("/clients-delete")

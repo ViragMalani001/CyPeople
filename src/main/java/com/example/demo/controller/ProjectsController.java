@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Enum.EndPointEnum;
 import com.example.demo.entity.Projects;
 import com.example.demo.service.ProjectsService;
 
@@ -24,6 +25,7 @@ public class ProjectsController {
 		this.projectsService = projectsService;
 	}
 
+	String projectsURL = EndPointEnum.PROJECTS.getEndPoint();
 	
 	@GetMapping("/projects")
 	public String showProjectsPage(Model model, HttpSession session) {
@@ -34,7 +36,7 @@ public class ProjectsController {
 		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
 		
-		return "/projects/projects";
+		return projectsURL + "/projects";
 	}
 	
 	@GetMapping("/projects-add")
@@ -48,7 +50,7 @@ public class ProjectsController {
 		
 		Projects projects = new Projects();
 		model.addAttribute("projects",projects);
-		return "/projects/projects-add";		
+		return projectsURL + "/projects-add";		
 	}
 	
 	@PostMapping("/projects-add")
@@ -70,7 +72,7 @@ public class ProjectsController {
 		
 		List<Projects> projects = this.projectsService.findProjectsList();
 		model.addAttribute("projects",projects);
-		return "/projects/projects-list";
+		return projectsURL + "/projects-list";
 	}
 	
 	@GetMapping("/projects-update")
@@ -84,7 +86,7 @@ public class ProjectsController {
 		
 		Projects project = this.projectsService.findProjectsById(theId);
 		model.addAttribute("projects",project);
-		return "projects/projects-add";	
+		return projectsURL + "/projects-add";	
 	}
 	
 	@GetMapping("/projects-delete")
@@ -106,6 +108,6 @@ public class ProjectsController {
 		
 		List<Projects> projects = this.projectsService.findProjectsList();
 		model.addAttribute("projects",projects);
-		return "/projects/projects-detail";
+		return projectsURL + "/projects-detail";
 	}
 }
