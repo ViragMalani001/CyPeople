@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.security.Principal;
 import java.util.Collection;
 
 import java.util.List;
@@ -39,8 +40,14 @@ public class DashboardController {
 	}
 
 	@GetMapping("/dashboard")
-	public String showDashboardPage(Model model, HttpSession session) {
-
+	public String showDashboardPage(Principal principal, Authentication auth, Model model, HttpSession session) {
+		
+//		 String userName1 = principal.getName();
+//		 Collection<? extends GrantedAuthority> authorities1 = auth.getAuthorities();
+//		 
+//		 System.out.println(userName1);
+//		 System.out.println(authorities1);
+		 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //			Set CurrentUserName Session
 		String currentUser = authentication.getName();
@@ -50,7 +57,9 @@ public class DashboardController {
 		model.addAttribute("username",userName);
 		 
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
+		
+		System.out.println(currentUser);
+		System.out.println(authorities);
 //			Set CurrentUserName authority Session
 		for (GrantedAuthority authority : authorities) {
 			String authorityName = authority.getAuthority();
