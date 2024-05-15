@@ -84,7 +84,7 @@ public class PayRollController {
 		return payrollURL + "/emp-salary";
 	}
 	
-	@GetMapping("/generatePaySlipe")
+	@GetMapping("/generatePaySlip")
 	public ResponseEntity<InputStreamResource> generatePaySlipPdf(@RequestParam("employeeId") int theId) {
 		
 		ByteArrayInputStream pdf = payrollService.generatePaySlip(theId);

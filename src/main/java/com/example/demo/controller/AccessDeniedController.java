@@ -3,23 +3,25 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.Enum.EndPointEnum;
+
 @Controller
 public class AccessDeniedController {
 
+	String accessDeniedURL = EndPointEnum.ACCESSDENIED.getEndPoint();
 
 	@GetMapping("/access-denied-clients")
 	public String showAccessDeniedClietsPage() {
-		String a = "";
-		return "/access-denied-page/access-denied-clients";
+		return accessDeniedURL + "/access-denied-clients";
 	}
 	
 	@GetMapping("/access-denied-projects")
 	public String showAccessDeniedProjectsPage() {
-		return "/access-denied-page/access-denied-projects";
+		return accessDeniedURL + "/access-denied-projects";
 	}
 	
 	@GetMapping("/access-denied-employees")
 	public String showAccessDeniedEmployeesPage() {
-		return "/access-denied-page/access-denied-employees";
+		return accessDeniedURL + "/access-denied-employees";
 	}
 }

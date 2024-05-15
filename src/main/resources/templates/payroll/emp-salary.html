@@ -29,7 +29,7 @@
 			            <td th:text="${#dates.format(employeeList.joinDate, 'dd-MM-yyyy')}"></td>
 			            <td th:text="${employeeList.role}"></td>
 						<td> 
-							<a th:href="@{/generatePaySlipe(employeeId=${employeeList.id})}" target="blank"> Generate Slip </a> 
+							<a th:href="@{/generatePaySlip(employeeId=${employeeList.id})}" target="blank"> Generate Slip </a> 
 						</td>
 			        </tr>
 			</table>

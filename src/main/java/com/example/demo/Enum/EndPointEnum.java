@@ -17,7 +17,10 @@ public enum EndPointEnum {
 	PAYROLL("/payroll"),
 	
 //	REPORTS
-	REPORTS("/reports");
+	REPORTS("/reports"),
+	
+//	ACCESSDENIED
+	ACCESSDENIED("/access-denied-page");
 	
 	private final String endPoint;
 
