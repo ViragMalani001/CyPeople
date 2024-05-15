@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.Collection;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.example.demo.Enum.EndPointEnum;
+import com.example.demo.JPARepository.DepartmentJPArepository;
 import com.example.demo.JPARepository.EmployeeJPArepository;
 import com.example.demo.dao.EmployeeDAO;
 import com.example.demo.dao.ToDoMessageDAO;
@@ -32,39 +35,45 @@ public class DashboardController {
 	private EmployeeDAO employeeDAO;
 	private ToDoMessageDAO toDoMessageDAO;
 	private EmployeeJPArepository employeeJPArepository;
+	private DepartmentJPArepository departmentJPArepository;
 
 	public DashboardController(DashboardService dashboardService, EmployeeDAO employeeDAO,
-			ToDoMessageDAO toDoMessageDAO, EmployeeJPArepository employeeJPArepository) {
+			ToDoMessageDAO toDoMessageDAO, EmployeeJPArepository employeeJPArepository, DepartmentJPArepository departmentJPArepository) {
 		super();
 		this.dashboardService = dashboardService;
 		this.employeeDAO = employeeDAO;
 		this.toDoMessageDAO = toDoMessageDAO;
 		this.employeeJPArepository = employeeJPArepository;
+		this.departmentJPArepository =  departmentJPArepository;
 	}
+	
+//	Enum EndPoints
+	String dashboardURL = EndPointEnum.DASHBOARD.getEndPoint();
+	String dashboardTODOURL = EndPointEnum.DASHBOARDTODO.getEndPoint();
 
 	@GetMapping("/dashboard")
 	public String showDashboardPage(Model model, HttpSession session) {
 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //			Set CurrentUserName Session
-		String currentUser = authentication.getName();
-		session.setAttribute("username", currentUser);
-
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username",userName);
+//		String currentUser = authentication.getName();
+//		session.setAttribute("username", currentUser);
+//
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username",userName);
 		 
-		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+//		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
 //			Set CurrentUserName authority Session
-		for (GrantedAuthority authority : authorities) {
-			String authorityName = authority.getAuthority();
-
-			session.setAttribute("userAuthority", authorityName);
-			String currentUserAuthority = (String) session.getAttribute("userAuthority");
-			String userAuthority = currentUserAuthority.substring(5);
-			session.setAttribute("role", userAuthority);
-			model.addAttribute("userAuthority", userAuthority);
-		}
+//		for (GrantedAuthority authority : authorities) {
+//			String authorityName = authority.getAuthority();
+//
+//			session.setAttribute("userAuthority", authorityName);
+//			String currentUserAuthority = (String) session.getAttribute("userAuthority");
+//			String userAuthority = currentUserAuthority.substring(5);
+//			session.setAttribute("role", userAuthority);
+//			model.addAttribute("userAuthority", userAuthority);
+//		}
 
 		int countEmp = this.employeeJPArepository.countEmployee();
 		model.addAttribute("employeeCount", countEmp);
@@ -72,8 +81,11 @@ public class DashboardController {
 //		long employeeCount = this.dashboardService.employeeCount();
 //		model.addAttribute("employeeCount", employeeCount);
 
-		long departmentCount = this.dashboardService.departmentCount();
+		long departmentCount = this.departmentJPArepository.countDepartment();
 		model.addAttribute("departmentCount", departmentCount);
+		
+//		long departmentCount = this.dashboardService.departmentCount();
+//		model.addAttribute("departmentCount", departmentCount);
 
 		long clientCount = this.dashboardService.clientCount();
 		model.addAttribute("clientCount", clientCount);
@@ -99,14 +111,14 @@ public class DashboardController {
 		ToDoMessage toDoMessage = new ToDoMessage();
 		model.addAttribute("toDoMessage", toDoMessage);
 
-		return "/dashboard/dashboard";
+		return dashboardURL;
 	}
 
 	@PostMapping("/toDoMessage")
 	public String toDoMessageShow(@ModelAttribute("toDoMessage") ToDoMessage toDoMessage) {
 
 		this.toDoMessageDAO.save(toDoMessage);
-		return "redirect:/dashboard";
+		return "redirect:" + dashboardTODOURL;
 	}
 
 }

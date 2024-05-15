@@ -3,13 +3,16 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.Enum.EndPointEnum;
+
 @Controller
 public class ManubarController {
 
+	String dashboardURL = EndPointEnum.DASHBOARD.getEndPoint();
 	@GetMapping("/cypeople")
 	public String showCyPeoplePage() {
 		
-		return "/dashboard/dashboard";
+		return dashboardURL;
 	}
 
 //	@GetMapping("/manubar")

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,11 +34,11 @@ public class ClientController {
 	@GetMapping("/clients")
 	public String showClientsPage(HttpSession session, Model model) {
 		
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username",userName);
-		
-		String currentUserAuthority = (String) session.getAttribute("role");
-		model.addAttribute("userAuthority",currentUserAuthority);
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username",userName);
+//		
+//		String currentUserAuthority = (String) session.getAttribute("role");
+//		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		return "/clients/clients";
 	}
@@ -45,11 +46,11 @@ public class ClientController {
 	@GetMapping("/clients-list")
 	public String showClientsListPage(Model model, HttpSession session) {
 		
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username",userName);
-		
-		String currentUserAuthority = (String) session.getAttribute("username");
-		model.addAttribute("userAuthority",currentUserAuthority);
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username",userName);
+//		
+//		String currentUserAuthority = (String) session.getAttribute("username");
+//		model.addAttribute("userAuthority",currentUserAuthority);
 		
 //		List<Clients> clients = this.clientsService.findClientsList();
 //		model.addAttribute("clients",clients);
@@ -63,17 +64,18 @@ public class ClientController {
 	@GetMapping("/add-clients")
 	public String showAddClientsPage(Model model, HttpSession session) {
 		
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username",userName);
-		
-		String currentUserAuthority = (String) session.getAttribute("role");
-		model.addAttribute("userAuthority",currentUserAuthority);
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username",userName);
+//		
+//		String currentUserAuthority = (String) session.getAttribute("role");
+//		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		Clients clients = new Clients();
 		model.addAttribute(clients);
 		return "/clients/add-clients";
 	}
 	
+//	not using stored procedure
 //	@PostMapping("/add-clients")
 //	public String clientsDetailsSave(@Valid @ModelAttribute("clients") Clients clients, BindingResult theBindingResult, HttpSession session, Model model,
 //			@RequestParam("id") int id) {
@@ -90,16 +92,18 @@ public class ClientController {
 //		this.clientsService.saveClientsList(clients);
 //		return "redirect:/clients-list";
 //	}
+	
+//	
 	@PostMapping("/add-clients")
 	public String clientsDetailsSave(@RequestParam("clientName") String clientName, @RequestParam("companyName") String companyName,
 			@RequestParam("clientId") String clientId, @RequestParam("email") String email, @RequestParam("mobileNo") String mobileNo, HttpSession session, Model model
 			) {
 		
-		String userName = (String) session.getAttribute("username");
-		model.addAttribute("username",userName);
-		
-		String currentUserAuthority = (String) session.getAttribute("role");
-		model.addAttribute("userAuthority",currentUserAuthority);
+//		String userName = (String) session.getAttribute("username");
+//		model.addAttribute("username",userName);
+//		
+//		String currentUserAuthority = (String) session.getAttribute("role");
+//		model.addAttribute("userAuthority",currentUserAuthority);
 
 		this.clientsJPArepository.saveClientsDetails(clientName, companyName, clientId, email, mobileNo);
 		return "redirect:/clients-list";

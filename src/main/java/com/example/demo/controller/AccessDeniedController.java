@@ -9,6 +9,7 @@ public class AccessDeniedController {
 
 	@GetMapping("/access-denied-clients")
 	public String showAccessDeniedClietsPage() {
+		String a = "";
 		return "/access-denied-page/access-denied-clients";
 	}
 	
