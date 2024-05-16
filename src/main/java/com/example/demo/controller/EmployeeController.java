@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	private EmployeeDAO employeeDAO;
 
-
+	@Autowired
 	public EmployeeController(EmployeeService employeeService, EmployeeDAO employeeDAO) {
 		super();
 		this.employeeService = employeeService;
