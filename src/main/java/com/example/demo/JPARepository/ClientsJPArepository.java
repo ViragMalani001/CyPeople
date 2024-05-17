@@ -27,4 +27,6 @@ public interface ClientsJPArepository extends JpaRepository<Clients, Integer>{
 	
 	@Procedure(name = "findClientDetail")
 	public Clients findClientDetail(@Param("id") int id);
+	
+	
 }
