@@ -8,6 +8,7 @@ public class CyPeopleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CyPeopleApplication.class, args);
+		
 	}
 
 }
