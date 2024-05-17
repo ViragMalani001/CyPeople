@@ -58,8 +58,8 @@ public class DashboardController {
 		 
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
-		System.out.println(currentUser);
-		System.out.println(authorities);
+//		System.out.println(currentUser);
+//		System.out.println(authorities);
 //			Set CurrentUserName authority Session
 		for (GrantedAuthority authority : authorities) {
 			String authorityName = authority.getAuthority();
