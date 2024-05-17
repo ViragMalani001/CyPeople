@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Access Denied</title>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/CSS/access-denied-projects.css}" />
-    
-  </head>
-  <body>
-   <div id="projects"></div>
-   
-   <div class="container">
-	<h2>Access Denied - You are not authorized to access this resource.</h2>
-	<hr>
-   
-   </div>
-    	<script>
-		$(function() {
-			$("#projects").load("http://localhost:8080/projects");
-			});
-   </script>
-  </body>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/manubar::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Access Denied</title>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/access-denied-projects.css}"
+	th:fragment="accessDeniedProjectsCSS" />
+
+</head>
+<body>
+<section>
+<div th:replace="/projects/projects :: projects"></div>
+	<div class="container">
+		<h2>Access Denied - You are not authorized to access this
+			resource.</h2>
+		<hr>
+
+	</div>
+</section>
+</body>
 </html>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Access Denied</title>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/CSS/access-denied-employees.css}" />
-    
-  </head>
-  <body>
-   <div id="employees"></div>
-   
-   <div class="container">
-	<h2>Access Denied - You are not authorized to access this resource.</h2>
-	<hr>
-   
-   </div>
-    	<script>
-		$(function() {
-			$("#employees").load("http://localhost:8080/employees");
-			});
-   </script>
-  </body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/manubar::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Access Denied</title>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/access-denied-employees.css}"
+	th:fragment="accessDeniedEmployeeCSS" />
+
+</head>
+<body>
+<section>
+	<div th:replace="/employees/employees :: employees"></div>
+	<div class="container">
+		<h2>Access Denied - You are not authorized to access this
+			resource.</h2>
+		<hr>
+
+	</div>
+</section>
+
+</body>
 </html>
