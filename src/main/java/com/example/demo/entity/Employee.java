@@ -2,8 +2,6 @@ package com.example.demo.entity;
 
 import java.sql.Date;
 
-import com.example.demo.validation.employeeUniqueIdValidation;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,9 +23,10 @@ public class Employee {
 	private String name;
 	
 	@Column(unique = true)
-	@employeeUniqueIdValidation(message = "Enter Unique EmployeeId")
+//	@employeeUniqueIdValidation(message = "Enter Unique EmployeeId")
 	private String employeeId;
 
+	@Column(unique = true)
 	@NotNull
 	@Size(min=10, max=10, message = "Enter Valid Number")
 	private String phone;

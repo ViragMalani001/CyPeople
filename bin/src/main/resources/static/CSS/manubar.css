@@ -55,7 +55,7 @@ body{
   border-left: 7px solid #30acb4;
   border-top: 7px solid #30acb4;
   border-right: 7px solid #30acb4;
-  background-color: var(--primary-color); 
+  background-color: #ecf7ff; 
   overflow: scroll;
   scrollbar-width: none;
 }

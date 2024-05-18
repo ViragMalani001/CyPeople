@@ -12,15 +12,11 @@
 
 <body>
 	<section>
-		<div class="setting">
-			<span>Setting </span> <img th:src="@{/images/moon.png}"
-				alt="not found" id="icon" />
-		</div>
 		<div class="dashboard-container">
 			<div class="dashboard-header">
 				<label> Dashboard </label>
 			</div>
-			<div class="dashboard-second-container">
+			<div class="dashboard-flex-div">
 				<div class="emp-list-count">
 					<div class="total-emp">
 						<div class="emp-png">
@@ -70,17 +66,18 @@
 						</div>
 					</div>
 				</div>
-
 				<div id="employeeCount" class="chartDiv">
 					<label> Total Employee each Department </label>
 				</div>
+
 				<div id="genderChart" class="genderCount">
 					<label>Employee Structure</label>
 				</div>
-			</div>
-			<div class="emp-performance">
-				<label> Employees Performance </label>
-				<div class="performance-div">
+
+				<div class="emp-performance">
+					<div class="emp-performance-label">
+						<label> Employees Performance </label>
+					</div>
 					<table class="performance-table">
 						<tr>
 							<th>NAME</th>
@@ -94,27 +91,27 @@
 						</tr>
 					</table>
 				</div>
-			</div>
 
-			<div class="toDoList">
-				<div class="toDoList-div">
-					<div class="toDoList-add-div-1">
-						<label> ToDoList </label>
-						<div sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"
-							class="toDoList-add-div-2">
-							<form action="#" th:action="@{/toDoMessage}"
-								th:object="${toDoMessage}" method="post">
-								<input type="hidden" th:field="*{id}" /> <input
-									th:field="*{message}" type="text" placeholder="ToDo Message">
-								<button type="submit">Send</button>
-							</form>
+				<div class="toDoList">
+					<div class="toDoList-div">
+						<div class="toDoList-add-div-1">
+							<label> ToDoList </label>
+							<div sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"
+								class="toDoList-add-div-2">
+								<form action="#" th:action="@{/toDoMessage}"
+									th:object="${toDoMessage}" method="post">
+									<input type="hidden" th:field="*{id}" /> <input
+										th:field="*{message}" type="text" placeholder="ToDo Message">
+									<button type="submit">Send</button>
+								</form>
+							</div>
 						</div>
-					</div>
 
-					<div class="toDoList-add-div-3">
-						<div th:each="messages : ${message}">
-							<label th:text="${messages.message}"></label>
-							<hr>
+						<div class="toDoList-add-div-3">
+							<div th:each="messages : ${message}">
+								<label th:text="${messages.message}"></label>
+								<hr>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -137,7 +134,12 @@
 				return item.count;
 			});
 
-			var ctx = document.createElement('canvas').getContext('2d');
+			var canvas = document.createElement('canvas');
+
+			canvas.width = 680;
+			canvas.height = 280;
+
+			var ctx = canvas.getContext('2d');
 			var myChart = new Chart(ctx, {
 				type : 'bar',
 				data : {
@@ -179,8 +181,12 @@
 			var counts = data.map(function(item) {
 				return item.count;
 			});
+			var canvas = document.createElement('canvas');
 
-			var ctx = document.createElement('canvas').getContext('2d');
+			canvas.width = 800;
+			canvas.height = 600;
+
+			var ctx = canvas.getContext('2d');
 			var myChart = new Chart(ctx, {
 				type : 'doughnut',
 				data : {

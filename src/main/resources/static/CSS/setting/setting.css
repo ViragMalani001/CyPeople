@@ -1,7 +1,7 @@
-@charset "UTF-8";
+/* @charset "UTF-8";
 
 :root{
-	--primary-color: #f8fcff;
+	--primary-color: #ecf7ff;
 }
 .dark-theme{
 	--primary-color: black;
@@ -18,7 +18,7 @@ body{
   position:absolute;
   top: 67px;
   left: 217px;
-  background-color: var(--primary-color);
+  background-color: #ecf7ff;
  
 }
 
@@ -32,4 +32,4 @@ body{
 #icon{
 	width: 50px;
 	cursor: pointer;
-}
+} */

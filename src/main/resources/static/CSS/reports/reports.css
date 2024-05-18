@@ -12,7 +12,7 @@ body {
 	position: absolute;
 	top: 67px;
 	left: 217px;
-	background-color: #f8fcff;
+	background-color: #ecf7ff;
 }
 
 .reports-header label {
@@ -24,10 +24,10 @@ body {
 	padding: 10px;
 	text-decoration: none;
 	font-size: 1.2rem;
-	background-color: white;
+	background-color:  #d0d9bb;
 	border-radius: 8px;
 	color: black;
-	border: 1px solid darkgray;
+	border: 1px solid none;
 }
 
 .reports-header a:hover {
