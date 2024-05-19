@@ -67,9 +67,6 @@ public class EmployeeController {
 		
 		List<Employee> employeesList = this.employeeService.findAll();
 		model.addAttribute("employeesList", employeesList);
-//		System.out.println(employeesList);
-		
-		session.setAttribute("employeesList", employeesList);
 		
 		return employeeURL + "/emp-list";
 	}
@@ -119,6 +116,7 @@ public class EmployeeController {
 		model.addAttribute("userAuthority",currentUserAuthority);
 
 		Employee theEmployee = this.employeeService.findById(theId);
+		System.out.println(theEmployee.getDepartment());
 		List<Department> department = this.employeeService.findDepartmentList();
 
 		model.addAttribute("employees", theEmployee);

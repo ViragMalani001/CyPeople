@@ -4,11 +4,14 @@ import java.sql.Date;
 
 import com.example.demo.validation.employeeUniqueIdValidation;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -35,7 +38,10 @@ public class Employee {
 	private String gender;
 	
 	private Date joinDate;
-	private String role;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "role", referencedColumnName = "departmentName")
+	private Department department;
 	
 	@Column(name="salary_hourly_ret")
 	private String salaryHourlyRet;
@@ -64,18 +70,20 @@ public class Employee {
 	public Employee() {
 		super();
 	}
-
+	
 	public Employee(int id, String name, String employeeId,
-			@NotNull @Size(min = 10, max = 10, message = "Enter Valid Number") String phone, Date joinDate, String role,
-			String salaryHourlyRet, String houseRentAllowances, String medicalAllowances, String specialAllowances,
-			String healthInsurance, String tDS, @Email String email, String gender, String performance) {
+			@NotNull @Size(min = 10, max = 10, message = "Enter Valid Number") String phone, String gender,
+			Date joinDate, Department department, String salaryHourlyRet, String houseRentAllowances,
+			String medicalAllowances, String specialAllowances, String healthInsurance, String tDS, @Email String email,
+			String performance) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.employeeId = employeeId;
 		this.phone = phone;
+		this.gender = gender;
 		this.joinDate = joinDate;
-		this.role = role;
+		this.department = department;
 		this.salaryHourlyRet = salaryHourlyRet;
 		this.houseRentAllowances = houseRentAllowances;
 		this.medicalAllowances = medicalAllowances;
@@ -83,10 +91,8 @@ public class Employee {
 		this.healthInsurance = healthInsurance;
 		TDS = tDS;
 		this.email = email;
-		this.gender = gender;
 		this.performance = performance;
 	}
-	
 
 	public int getId() {
 		return id;
@@ -126,14 +132,6 @@ public class Employee {
 
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public String getEmail() {
@@ -208,14 +206,24 @@ public class Employee {
 		this.performance = performance;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", employeeId=" + employeeId + ", phone=" + phone + ", gender="
-				+ gender + ", joinDate=" + joinDate + ", role=" + role + ", salaryHourlyRet=" + salaryHourlyRet
-				+ ", houseRentAllowances=" + houseRentAllowances + ", medicalAllowances=" + medicalAllowances
-				+ ", specialAllowances=" + specialAllowances + ", healthInsurance=" + healthInsurance + ", TDS=" + TDS
-				+ ", email=" + email + ", performance=" + performance + "]";
+				+ gender + ", joinDate=" + joinDate + ", department=" + department + ", salaryHourlyRet="
+				+ salaryHourlyRet + ", houseRentAllowances=" + houseRentAllowances + ", medicalAllowances="
+				+ medicalAllowances + ", specialAllowances=" + specialAllowances + ", healthInsurance="
+				+ healthInsurance + ", TDS=" + TDS + ", email=" + email + ", performance=" + performance + "]";
 	}
+
+	
 
 
 }

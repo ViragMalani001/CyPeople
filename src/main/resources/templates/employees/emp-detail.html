@@ -31,6 +31,7 @@
 					<th> SpecialAllowances </th>
 					<th> HealthInsurance </th>
 					<th> TDS </th>
+					<th> Department Head </th>
 				</tr>
 				<tr th:each="employeesDetails : ${employeesDetail}"> 
 					<td th:text="${employeesDetails.name}"></td>
@@ -46,6 +47,7 @@
 					<td th:text="${employeesDetails.specialAllowances}"></td>
 					<td th:text="${employeesDetails.healthInsurance}"></td>
 					<td th:text="${employeesDetails.TDS}"></td>
+					<td th:text="${employeeDetails.departmentHead}"></td>
 				</tr>
 			</table>
 		</div>

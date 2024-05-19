@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.Department;
 import com.example.demo.entity.Employee;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
@@ -38,6 +39,7 @@ public class payrollServiceImpl implements payrollService {
 	public ByteArrayInputStream generatePaySlip(int theId) {
 		
 		Employee employeeDetail = this.employeeService.findById(theId);
+		Department getRole =  employeeDetail.getDepartment();
         String totalHours = this.employeeService.attendanceHoursCount(employeeDetail.getName());
         
 		int totalHoursInt = Integer.parseInt(totalHours);
@@ -105,7 +107,7 @@ public class payrollServiceImpl implements payrollService {
 		nameDetails.addCell(new Phrase("Phone: " + employeeDetail.getPhone(), font12));
 		
 		nameDetails.getDefaultCell().setPaddingBottom(20);
-		nameDetails.addCell(new Phrase("Department: " + employeeDetail.getRole(), font12));
+		nameDetails.addCell(new Phrase("Department: " + getRole.getDepartmentName(), font12));
 
 		document.add(nameDetails);
 		
