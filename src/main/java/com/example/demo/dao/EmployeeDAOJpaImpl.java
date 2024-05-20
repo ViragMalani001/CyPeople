@@ -97,7 +97,7 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
 	@Override
 	public List<Object[]> groupByRole() {
 		
-		TypedQuery<Object[]> theQuery = entityManager.createQuery("SELECT e.department.departmentName, COUNT(name) FROM Employee e GROUP BY e.e.department.departmentName", Object[].class);
+		TypedQuery<Object[]> theQuery = entityManager.createQuery("SELECT role, COUNT(name) FROM Employee GROUP BY role", Object[].class);
 		List<Object[]> groupByRole = theQuery.getResultList();
 		return groupByRole;
 	}
