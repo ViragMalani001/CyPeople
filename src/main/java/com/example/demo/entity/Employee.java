@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -25,7 +26,6 @@ public class Employee {
 	private String name;
 	
 	@Column(unique = true)
-	@employeeUniqueIdValidation(message = "Enter Unique EmployeeId")
 	private String employeeId;
 
 	@NotNull

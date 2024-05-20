@@ -45,7 +45,7 @@ public class ClientController {
 		String userName = (String) session.getAttribute("username");
 		model.addAttribute("username",userName);
 		
-		String currentUserAuthority = (String) session.getAttribute("username");
+		String currentUserAuthority = (String) session.getAttribute("role");
 		model.addAttribute("userAuthority",currentUserAuthority);
 		
 		List<Clients> clients = this.clientsService.findClientsList();
