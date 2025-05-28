@@ -17,17 +17,17 @@ public class SecurityConfig {
 	@Bean
 	public InMemoryUserDetailsManager userDetailsManager() {
 		UserDetails virag = User.builder()
-				.username("ViragMalani")
-				.password("{noop}viragmalani")
+				.username("employee")
+				.password("{noop}employee@#123")
 				.roles("EMPLOYEE").build();
 		UserDetails priyesh = User.builder()
-				.username("PriyeshGajera")
-				.password("{noop}1234")
+				.username("manager")
+				.password("{noop}manager@#123")
 				.roles("MANAGER")
 				.build();
 		UserDetails shekhar = User.builder()
-				.username("ShekharPatel")
-				.password("{noop}shekharpatel")
+				.username("Admin")
+				.password("{noop}admin@#123")
 				.roles("ADMIN")
 				.build();
 		return new InMemoryUserDetailsManager(virag, priyesh, shekhar);
